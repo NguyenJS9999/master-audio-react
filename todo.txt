@@ -1,0 +1,20 @@
+Quản lý các thành phần của trang web
+- Các trang đã tạo:
+Nav
+
+Home
+products
+product-detail
+cart
+check-out thanh toán
+wishlist
+build-config
+News - Tin tức
+	
+
+Footer
+
+
+---
+typical-projects
+
