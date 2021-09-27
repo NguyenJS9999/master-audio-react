@@ -29,10 +29,10 @@ input::placeholder {
   font-size: 14px;
 }
 /* Ghi đè các css của fontawesom hiệu ứng di chuột vào */
-.fas {
+/* .fas {
   cursor: pointer;
   transition: all 0.2s ease;
-}
+} */
 .fas:hover {
   /* color: #e42313!important; */
 }
@@ -898,6 +898,7 @@ trang khác dùng chung ở nav tác động */
 
 .nav-2-category-title {
   padding: 6px 0px;
+  cursor: pointer;
 }
 .nav-2-category-title, .nav-2-category-title:hover {
   color: rgba(255, 255, 255, 1);
@@ -914,6 +915,9 @@ trang khác dùng chung ở nav tác động */
   align-items: center;
 }
 .nav-2-menu a {
+  color: white;
+}
+.nav-2-menu a:hover {
   color: white;
 }
 /* Danh mục sản phẩm cố định hoặc bấm sổ xuống*/
@@ -955,6 +959,7 @@ trang khác dùng chung ở nav tác động */
 
   /* position điểm tựa cho menu con bậc 1 */
   position: relative;
+  z-index: 11;
 
 }
 .category {
@@ -1172,7 +1177,7 @@ trang khác dùng chung ở nav tác động */
   .navigation-mobile {
     display: block;
     display: flex;
-    padding: 4px 0px;
+    /* padding: 4px 0px; */
   }
   .menu-infos-header-mobile {
     top: 64px;
@@ -1219,7 +1224,7 @@ trang khác dùng chung ở nav tác động */
   .navigation-mobile {
     /* display: block; */
     /* display: flex; */
-    padding: 4px 0px;
+    /* padding: 4px 0px; */
   }
   .menu-infos-header-mobile {
     top: 74px;

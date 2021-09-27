@@ -11,8 +11,7 @@ function BuildConfigPage() {
   return (
     <>
       <div className=" container">
-        <h1 className={BuildConfig.heading}>BuildConfigPage</h1>
-        <h2 className={BuildConfig.subHeading}>HELLO</h2>
+        <h1 className={BuildConfig.heading}>Tính năng xây dựng cấu hình đang được phát triển</h1>
       </div>
     </>
   );

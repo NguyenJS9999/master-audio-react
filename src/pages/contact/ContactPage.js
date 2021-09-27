@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import ContactCss from "./Contact.module.css";
+import "./Contact.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
@@ -11,9 +11,8 @@ function ContactPage() {
 
   return (
     <>
-      <div className="container">
-        <h1 className={ContactCss.heading}>Contact Page</h1>
-
+  <div className=" container">
+        <h1 className='heading'>Tính năng liên hệ đang được phát triển</h1>
       </div>
     </>
   );

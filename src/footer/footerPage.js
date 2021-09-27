@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 // import FootereCss from "./footer.module.css";
-import "./footer.css";
+import "./Footer.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
@@ -14,7 +14,7 @@ function FooterPage() {
     <>
         <footer>
         <div className="footer-container   container-fluid">
-          <div className="footer-infors">
+          <div className="footer-infors   container ">
             <div className="footer-infor">
               <h6>THÔNG TIN LIÊN HỆ</h6>
               <div className="footer-infor-description">

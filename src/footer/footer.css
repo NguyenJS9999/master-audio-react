@@ -1,7 +1,7 @@
 /* Start footer*/
 .footer-container {
   /* border: 1px solid red; */
-  padding: 60px 80px;
+  padding: 3.75rem 0;
   background: #1a2c42;
   color: white;
 }
@@ -17,7 +17,7 @@
 }
 .footer-infor h6 {
   /* height: 72px; */
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 36px;
 }
@@ -40,10 +40,10 @@
 
 .footer-infor a,
 p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 21px;
   font-weight: 400;
-  color: rgba(225, 225, 225, 0.8)
+  color: rgba(225, 225, 225, 0.8);  
 }
 
 
@@ -74,13 +74,6 @@ p {
 /* Start Responsive by @Media same bootstrap */
 /* X-Small */
 @media (max-width: 576px) {
-  /* Khung ngoài chân trang giảm khoảng cách lề ngang */
-  .footer-container {
-    /* border: 1px solid red; */
-    padding: 30px 20px;
-    background: #1a2c42;
-    color: white;
-  }
   /* footer chia 3 cột */
   .footer-infors {
     grid-template-columns: 1fr;
@@ -118,11 +111,6 @@ p {
 /* Ở điểm ngắt này tách biệt nên ko cần mốc giữ khác ở màn lớn hơn */
 /* Small Điểm ngắt 1 */
 @media (min-width: 576px) {
-  /* Khung ngoài chân trang giảm khoảng cách lề ngang */
-  .footer-container {
-    /* border: 1px solid red; */
-    padding: 30px 40px;
-  }
   /* footer chia 1 cột */
   .footer-infors {
     grid-template-columns: 1fr;
@@ -150,11 +138,6 @@ p {
 
 /* Large */
 @media (min-width: 992px) {
-  /* Khung ngoài chân trang giảm khoảng cách lề 60px ngang */
-  .footer-container {
-    /* border: 1px solid red; */
-    padding: 30px 80px;
-  }
   /* footer chia 4 cột */
   .footer-infors {
     grid-template-columns: 1fr 1fr;

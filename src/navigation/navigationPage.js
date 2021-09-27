@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // import NavigationCss from "./navigation.module.css";
-import "./navigation.css";
+import "./Navigation.css";
 
 
 function NavigationPage() {
-  const [ stateStatusCategory, setStatusCategory  ] = useState( true );
+  const [ stateStatusCategory, setStatusCategory  ] = useState( false );
 
   useEffect( () => {
     console.log('NavigationPage')
@@ -120,7 +120,7 @@ function NavigationPage() {
               </div>
               <div className=" search-header-desktop ">
                 <span>
-                  <input type="text" name id placeholder="Tìm sản phẩm bạn muốn ..." />
+                  <input type="text" name id placeholder="Tìm kiếm" />
                   <i className="fas fa-search" />
                 </span>
               </div>
@@ -261,19 +261,18 @@ function NavigationPage() {
         <div className="  container-nav-2  container-fluid  ">
           <div className="  container-category-menu  container ">
             <div className=" nav-2-category  ">
-              <Link to="/products" onClick = { toggleCategory }  
+              <div onClick = { toggleCategory }  
                 className=" nav-2-category-title  ">             
                 Danh mục sản phẩm&nbsp;&nbsp;
                 <i className="fas fa-sort-down   sort-down-category " />
-              </Link>
+              </div>
 
-{/*  ${ stateStatusCategory ? 'd-flex' : 'd-none' } */}
               <div   className= " categorys-position " > 
                 {/* style=' display: none;' */}
                 <ul className=  {`${ stateStatusCategory ? 'd-flex' : 'd-none' } categorys    `} >
                   {/* 1 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Loa fullrange</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -281,19 +280,19 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Loa fullrange theo thương hiệu</p>
-                          <Link to="/products.html">4 Acoustic</Link>
-                          <Link to="/products.html">Nexo</Link>
-                          <Link to="/products.html">Adamson</Link>
-                          <Link to="/products.html">Amate</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">DK</Link>
+                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products">Nexo</Link>
+                          <Link to="/products">Adamson</Link>
+                          <Link to="/products">Amate</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">DK</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 2 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Loa subwoofer</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -301,19 +300,19 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Loa subwoofer theo thương hiệu</p>
-                          <Link to="/products.html">4 Acoustic</Link>
-                          <Link to="/products.html">Nexo</Link>
-                          <Link to="/products.html">Adamson</Link>
-                          <Link to="/products.html">Amate</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">DK</Link>
+                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products">Nexo</Link>
+                          <Link to="/products">Adamson</Link>
+                          <Link to="/products">Amate</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">DK</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 3 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Loa line array</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -321,19 +320,19 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Loa line array theo thương hiệu</p>
-                          <Link to="/products.html">4 Acoustic</Link>
-                          <Link to="/products.html">Nexo</Link>
-                          <Link to="/products.html">Adamson</Link>
-                          <Link to="/products.html">Amate</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">DK</Link>
+                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products">Nexo</Link>
+                          <Link to="/products">Adamson</Link>
+                          <Link to="/products">Amate</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">DK</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 4 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Đẩy công suất</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -341,20 +340,20 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Đẩy công suất theo thương hiệu</p>
-                          <Link to="/products.html">4 Acoustic</Link>
-                          <Link to="/products.html">Nexo</Link>
-                          <Link to="/products.html">Adamson</Link>
-                          <Link to="/products.html">Amate</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">DK</Link>
-                          <Link to="/products.html">Hours</Link>
+                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products">Nexo</Link>
+                          <Link to="/products">Adamson</Link>
+                          <Link to="/products">Amate</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">DK</Link>
+                          <Link to="/products">Hours</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 5 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Vang Số - DSP</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -362,20 +361,20 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Vang Số - DSP theo thương hiệu</p>
-                          <Link to="/products.html">4 Acoustic</Link>
-                          <Link to="/products.html">Vainal</Link>
-                          <Link to="/products.html">Nexo</Link>
-                          <Link to="/products.html">Amate</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">Zongson</Link>
-                          <Link to="/products.html">Marani</Link>
+                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products">Vainal</Link>
+                          <Link to="/products">Nexo</Link>
+                          <Link to="/products">Amate</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">Zongson</Link>
+                          <Link to="/products">Marani</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 6 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Mixcer</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -383,15 +382,15 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Mixcer theo thương hiệu</p>
-                          <Link to="/products.html">Pioneer-dj</Link>
-                          <Link to="/products.html">Allen &amp; Heath </Link>
+                          <Link to="/products">Pioneer-dj</Link>
+                          <Link to="/products">Allen &amp; Heath </Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 7 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Micro không dây</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -399,18 +398,18 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Micro không dây theo thương hiệu</p>
-                          <Link to="/products.html">Baiervires</Link>
-                          <Link to="/products.html">DK</Link>
-                          <Link to="/products.html">DB acoustic</Link>
-                          <Link to="/products.html">Maingo</Link>
-                          <Link to="/products.html">VTA</Link>
+                          <Link to="/products">Baiervires</Link>
+                          <Link to="/products">DK</Link>
+                          <Link to="/products">DB acoustic</Link>
+                          <Link to="/products">Maingo</Link>
+                          <Link to="/products">VTA</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 8 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Quản lý nguồn</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -418,18 +417,18 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Quản lý nguồn theo thương hiệu</p>
-                          <Link to="/products.html">Kuledy</Link>
-                          <Link to="/products.html">VTA</Link>
-                          <Link to="/products.html">dBacoustic</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">MK</Link>
+                          <Link to="/products">Kuledy</Link>
+                          <Link to="/products">VTA</Link>
+                          <Link to="/products">dBacoustic</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">MK</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 9 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Phụ kiện âm Thanh</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -437,20 +436,20 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Phụ kiện từ các hãng</p>
-                          <Link to="/products.html">Tủ kĩ thuật</Link>
-                          <Link to="/products.html">Chân loa</Link>
-                          <Link to="/products.html">Cọc loa</Link>
-                          <Link to="/products.html">Dây jack</Link>
-                          <Link to="/products.html">Treo loa</Link>
-                          <Link to="/products.html">Khung treo loa</Link>
-                          <Link to="/products.html">Khác ...</Link>
+                          <Link to="/products">Tủ kĩ thuật</Link>
+                          <Link to="/products">Chân loa</Link>
+                          <Link to="/products">Cọc loa</Link>
+                          <Link to="/products">Dây jack</Link>
+                          <Link to="/products">Treo loa</Link>
+                          <Link to="/products">Khung treo loa</Link>
+                          <Link to="/products">Khác ...</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 10 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Combo âm thanh gia đình</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -458,27 +457,27 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Combo theo giá</p>
-                          <Link to="/products.html">Combo từ 20 - 30 triệu</Link>
-                          <Link to="/products.html">Combo từ 30 - 50 triệu</Link>
-                          <Link to="/products.html">Combo từ 50 - 70 triệu</Link>
-                          <Link to="/products.html">Combo từ 120 - 150 triệu</Link>
-                          <Link to="/products.html">Combo từ 150 - 200 triệu</Link>
+                          <Link to="/products">Combo từ 20 - 30 triệu</Link>
+                          <Link to="/products">Combo từ 30 - 50 triệu</Link>
+                          <Link to="/products">Combo từ 50 - 70 triệu</Link>
+                          <Link to="/products">Combo từ 120 - 150 triệu</Link>
+                          <Link to="/products">Combo từ 150 - 200 triệu</Link>
                         </li>
                         <li className="submenu-items">
                           <p>Combo theo thương hiệu</p>
-                          <Link to="/products.html">4 Acoustic</Link>
-                          <Link to="/products.html">Nexo</Link>
-                          <Link to="/products.html">Adamson</Link>
-                          <Link to="/products.html">Amate</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">DK</Link>
+                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products">Nexo</Link>
+                          <Link to="/products">Adamson</Link>
+                          <Link to="/products">Amate</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">DK</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 11 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Combo phòng phim</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -486,27 +485,27 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Combo theo giá</p>
-                          <Link to="/products.html">Combo từ 20 - 30 triệu</Link>
-                          <Link to="/products.html">Combo từ 30 - 50 triệu</Link>
-                          <Link to="/products.html">Combo từ 50 - 70 triệu</Link>
-                          <Link to="/products.html">Combo từ 120 - 150 triệu</Link>
-                          <Link to="/products.html">Combo từ 150 - 200 triệu</Link>
+                          <Link to="/products">Combo từ 20 - 30 triệu</Link>
+                          <Link to="/products">Combo từ 30 - 50 triệu</Link>
+                          <Link to="/products">Combo từ 50 - 70 triệu</Link>
+                          <Link to="/products">Combo từ 120 - 150 triệu</Link>
+                          <Link to="/products">Combo từ 150 - 200 triệu</Link>
                         </li>
                         <li className="submenu-items">
                           <p>Combo theo thương hiệu</p>
-                          <Link to="/products.html">4 Acoustic</Link>
-                          <Link to="/products.html">Nexo</Link>
-                          <Link to="/products.html">Adamson</Link>
-                          <Link to="/products.html">Amate</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">DK</Link>
+                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products">Nexo</Link>
+                          <Link to="/products">Adamson</Link>
+                          <Link to="/products">Amate</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">DK</Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   {/* 12 */}
                   <li className=" category ">
-                    <Link to="/products.html">
+                    <Link to="/products">
                       <span>Combo âm thanh hội trường</span>
                       <i className="fas fa-angle-right   category-right-arrow " />
                     </Link>
@@ -514,20 +513,20 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Combo theo giá</p>
-                          <Link to="/products.html">Combo từ 20 - 30 triệu</Link>
-                          <Link to="/products.html">Combo từ 30 - 50 triệu</Link>
-                          <Link to="/products.html">Combo từ 50 - 70 triệu</Link>
-                          <Link to="/products.html">Combo từ 120 - 150 triệu</Link>
-                          <Link to="/products.html">Combo từ 150 - 200 triệu</Link>
+                          <Link to="/products">Combo từ 20 - 30 triệu</Link>
+                          <Link to="/products">Combo từ 30 - 50 triệu</Link>
+                          <Link to="/products">Combo từ 50 - 70 triệu</Link>
+                          <Link to="/products">Combo từ 120 - 150 triệu</Link>
+                          <Link to="/products">Combo từ 150 - 200 triệu</Link>
                         </li>
                         <li className="submenu-items">
                           <p>Combo theo thương hiệu</p>
-                          <Link to="/products.html">4 Acoustic</Link>
-                          <Link to="/products.html">Nexo</Link>
-                          <Link to="/products.html">Adamson</Link>
-                          <Link to="/products.html">Amate</Link>
-                          <Link to="/products.html">Kukedy</Link>
-                          <Link to="/products.html">DK</Link>
+                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products">Nexo</Link>
+                          <Link to="/products">Adamson</Link>
+                          <Link to="/products">Amate</Link>
+                          <Link to="/products">Kukedy</Link>
+                          <Link to="/products">DK</Link>
                         </li>
                       </ul>
                     </div>
@@ -562,7 +561,7 @@ function NavigationPage() {
           </div>
           {/* 2 - Input tìm kiếm sp bất kì */}
           <div className=" search-collapse">
-            <input type="text" placeholder="Tìm sản phẩm bạn muốn ..." />
+            <input type="text" placeholder="Tìm kiếm" />
           </div>
           {/* 3 - accordion Tuôn ra giữa Menu và danh mục */}
           <div className="accordion accordion-flush" id="accordionFlushExample">
@@ -621,7 +620,7 @@ function NavigationPage() {
                     {/* 1 */}
                     <li className=" category-hide ">
                       <span className=" category-hide-title ">
-                        <Link to="/products.html">
+                        <Link to="/products">
                           <div>Loa fullrange</div>
                         </Link>
                         <i className="fas fa-angle-right  category-hide-right-arrow " />
@@ -630,12 +629,12 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Loa fullrange theo thương hiệu</p>
-                            <Link to="/products.html">4 Acoustic</Link>
-                            <Link to="/products.html">Nexo</Link>
-                            <Link to="/products.html">Adamson</Link>
-                            <Link to="/products.html">Amate</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">DK</Link>
+                            <Link to="/products">4 Acoustic</Link>
+                            <Link to="/products">Nexo</Link>
+                            <Link to="/products">Adamson</Link>
+                            <Link to="/products">Amate</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">DK</Link>
                           </li>
                         </ul>
                       </div>
@@ -650,12 +649,12 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Loa subwoofer theo thương hiệu</p>
-                            <Link to="/products.html">4 Acoustic</Link>
-                            <Link to="/products.html">Nexo</Link>
-                            <Link to="/products.html">Adamson</Link>
-                            <Link to="/products.html">Amate</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">DK</Link>
+                            <Link to="/products">4 Acoustic</Link>
+                            <Link to="/products">Nexo</Link>
+                            <Link to="/products">Adamson</Link>
+                            <Link to="/products">Amate</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">DK</Link>
                           </li>
                         </ul>
                       </div>
@@ -670,12 +669,12 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Loa line array theo thương hiệu</p>
-                            <Link to="/products.html">4 Acoustic</Link>
-                            <Link to="/products.html">Nexo</Link>
-                            <Link to="/products.html">Adamson</Link>
-                            <Link to="/products.html">Amate</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">DK</Link>
+                            <Link to="/products">4 Acoustic</Link>
+                            <Link to="/products">Nexo</Link>
+                            <Link to="/products">Adamson</Link>
+                            <Link to="/products">Amate</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">DK</Link>
                           </li>
                         </ul>
                       </div>
@@ -690,13 +689,13 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Đẩy công suất theo thương hiệu</p>
-                            <Link to="/products.html">4 Acoustic</Link>
-                            <Link to="/products.html">Nexo</Link>
-                            <Link to="/products.html">Adamson</Link>
-                            <Link to="/products.html">Amate</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">DK</Link>
-                            <Link to="/products.html">Hours</Link>
+                            <Link to="/products">4 Acoustic</Link>
+                            <Link to="/products">Nexo</Link>
+                            <Link to="/products">Adamson</Link>
+                            <Link to="/products">Amate</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">DK</Link>
+                            <Link to="/products">Hours</Link>
                           </li>
                         </ul>
                       </div>
@@ -711,13 +710,13 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Vang Số - DSP theo thương hiệu</p>
-                            <Link to="/products.html">4 Acoustic</Link>
-                            <Link to="/products.html">Vainal</Link>
-                            <Link to="/products.html">Nexo</Link>
-                            <Link to="/products.html">Amate</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">Zongson</Link>
-                            <Link to="/products.html">Marani</Link>
+                            <Link to="/products">4 Acoustic</Link>
+                            <Link to="/products">Vainal</Link>
+                            <Link to="/products">Nexo</Link>
+                            <Link to="/products">Amate</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">Zongson</Link>
+                            <Link to="/products">Marani</Link>
                           </li>
                         </ul>
                       </div>
@@ -732,8 +731,8 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Mixcer theo thương hiệu</p>
-                            <Link to="/products.html">Pioneer-dj</Link>
-                            <Link to="/products.html">Allen &amp; Heath </Link>
+                            <Link to="/products">Pioneer-dj</Link>
+                            <Link to="/products">Allen &amp; Heath </Link>
                           </li>
                         </ul>
                       </div>
@@ -748,11 +747,11 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Micro không dây theo thương hiệu</p>
-                            <Link to="/products.html">Baiervires</Link>
-                            <Link to="/products.html">DK</Link>
-                            <Link to="/products.html">DB acoustic</Link>
-                            <Link to="/products.html">Maingo</Link>
-                            <Link to="/products.html">VTA</Link>
+                            <Link to="/products">Baiervires</Link>
+                            <Link to="/products">DK</Link>
+                            <Link to="/products">DB acoustic</Link>
+                            <Link to="/products">Maingo</Link>
+                            <Link to="/products">VTA</Link>
                           </li>
                         </ul>
                       </div>
@@ -767,11 +766,11 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Quản lý nguồn theo thương hiệu</p>
-                            <Link to="/products.html">Kuledy</Link>
-                            <Link to="/products.html">VTA</Link>
-                            <Link to="/products.html">dBacoustic</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">MK</Link>
+                            <Link to="/products">Kuledy</Link>
+                            <Link to="/products">VTA</Link>
+                            <Link to="/products">dBacoustic</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">MK</Link>
                           </li>
                         </ul>
                       </div>
@@ -786,13 +785,13 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Phụ kiện từ các hãng</p>
-                            <Link to="/products.html">Tủ kĩ thuật</Link>
-                            <Link to="/products.html">Chân loa</Link>
-                            <Link to="/products.html">Cọc loa</Link>
-                            <Link to="/products.html">Dây jack</Link>
-                            <Link to="/products.html">Treo loa</Link>
-                            <Link to="/products.html">Khung treo loa</Link>
-                            <Link to="/products.html">Khác ...</Link>
+                            <Link to="/products">Tủ kĩ thuật</Link>
+                            <Link to="/products">Chân loa</Link>
+                            <Link to="/products">Cọc loa</Link>
+                            <Link to="/products">Dây jack</Link>
+                            <Link to="/products">Treo loa</Link>
+                            <Link to="/products">Khung treo loa</Link>
+                            <Link to="/products">Khác ...</Link>
                           </li>
                         </ul>
                       </div>
@@ -807,20 +806,20 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Combo theo giá</p>
-                            <Link to="/products.html">Combo từ 20 - 30 triệu</Link>
-                            <Link to="/products.html">Combo từ 30 - 50 triệu</Link>
-                            <Link to="/products.html">Combo từ 50 - 70 triệu</Link>
-                            <Link to="/products.html">Combo từ 120 - 150 triệu</Link>
-                            <Link to="/products.html">Combo từ 150 - 200 triệu</Link>
+                            <Link to="/products">Combo từ 20 - 30 triệu</Link>
+                            <Link to="/products">Combo từ 30 - 50 triệu</Link>
+                            <Link to="/products">Combo từ 50 - 70 triệu</Link>
+                            <Link to="/products">Combo từ 120 - 150 triệu</Link>
+                            <Link to="/products">Combo từ 150 - 200 triệu</Link>
                           </li>
                           <li className="submenu-hide-items">
                             <p>Combo theo thương hiệu</p>
-                            <Link to="/products.html">4 Acoustic</Link>
-                            <Link to="/products.html">Nexo</Link>
-                            <Link to="/products.html">Adamson</Link>
-                            <Link to="/products.html">Amate</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">DK</Link>
+                            <Link to="/products">4 Acoustic</Link>
+                            <Link to="/products">Nexo</Link>
+                            <Link to="/products">Adamson</Link>
+                            <Link to="/products">Amate</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">DK</Link>
                           </li>
                         </ul>
                       </div>
@@ -835,20 +834,20 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Combo theo giá</p>
-                            <Link to="/products.html">Combo từ 20 - 30 triệu</Link>
-                            <Link to="/products.html">Combo từ 30 - 50 triệu</Link>
-                            <Link to="/products.html">Combo từ 50 - 70 triệu</Link>
-                            <Link to="/products.html">Combo từ 120 - 150 triệu</Link>
-                            <Link to="/products.html">Combo từ 150 - 200 triệu</Link>
+                            <Link to="/products">Combo từ 20 - 30 triệu</Link>
+                            <Link to="/products">Combo từ 30 - 50 triệu</Link>
+                            <Link to="/products">Combo từ 50 - 70 triệu</Link>
+                            <Link to="/products">Combo từ 120 - 150 triệu</Link>
+                            <Link to="/products">Combo từ 150 - 200 triệu</Link>
                           </li>
                           <li className="submenu-hide-items">
                             <p>Combo theo thương hiệu</p>
-                            <Link to="/products.html">4 Acoustic</Link>
-                            <Link to="/products.html">Nexo</Link>
-                            <Link to="/products.html">Adamson</Link>
-                            <Link to="/products.html">Amate</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">DK</Link>
+                            <Link to="/products">4 Acoustic</Link>
+                            <Link to="/products">Nexo</Link>
+                            <Link to="/products">Adamson</Link>
+                            <Link to="/products">Amate</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">DK</Link>
                           </li>
                         </ul>
                       </div>
@@ -863,20 +862,20 @@ function NavigationPage() {
                         <ul className=" submenu-hide ">
                           <li className="submenu-hide-items">
                             <p>Combo theo giá</p>
-                            <Link to="/products.html">Combo từ 20 - 30 triệu</Link>
-                            <Link to="/products.html">Combo từ 30 - 50 triệu</Link>
-                            <Link to="/products.html">Combo từ 50 - 70 triệu</Link>
-                            <Link to="/products.html">Combo từ 120 - 150 triệu</Link>
-                            <Link to="/products.html">Combo từ 150 - 200 triệu</Link>
+                            <Link to="/products">Combo từ 20 - 30 triệu</Link>
+                            <Link to="/products">Combo từ 30 - 50 triệu</Link>
+                            <Link to="/products">Combo từ 50 - 70 triệu</Link>
+                            <Link to="/products">Combo từ 120 - 150 triệu</Link>
+                            <Link to="/products">Combo từ 150 - 200 triệu</Link>
                           </li>
                           <li className="submenu-hide-items">
                             <p>Combo theo thương hiệu</p>
-                            <Link to="/products.html">4 Acoustic</Link>
-                            <Link to="/products.html">Nexo</Link>
-                            <Link to="/products.html">Adamson</Link>
-                            <Link to="/products.html">Amate</Link>
-                            <Link to="/products.html">Kukedy</Link>
-                            <Link to="/products.html">DK</Link>
+                            <Link to="/products">4 Acoustic</Link>
+                            <Link to="/products">Nexo</Link>
+                            <Link to="/products">Adamson</Link>
+                            <Link to="/products">Amate</Link>
+                            <Link to="/products">Kukedy</Link>
+                            <Link to="/products">DK</Link>
                           </li>
                         </ul></div>
                       {/* Danh mục con các sản phẩm - Accordion Luôn mở */}

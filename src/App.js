@@ -1,9 +1,8 @@
 // Ngày tạo dự án 20/09/2021
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import NavigationPage from "./navigation/navigationPage";
-import FooterPage from "./footer/footerPage";
+import NavigationPage from "./navigation/NavigationPage";
 
 import HomePage from "./pages/home/HomePage";
 import ProductsPage from "./pages/product/ProductsPage";
@@ -13,10 +12,11 @@ import ShoppingCartPage from "./pages/shopping-cart/ShoppingCartPage";
 import CheckOutPage from "./pages/check-out/CheckOutPage";
 import BuildConfigPage from "./pages/build-config/BuildConfigPage";
 import TypicalProjectsPage from "./pages/typical-projects/TypicalProjectsPage";
-
-
 import NewsPage from "./pages/news/NewsPage";
-import ContactPage from "./pages/about/ContactPage";
+import ContactPage from "./pages/contact/ContactPage";
+
+import FooterPage from "./footer/FooterPage";
+
 
 
 function App() {
@@ -24,7 +24,6 @@ function App() {
     <Router>
       <div>
         <NavigationPage />
-
         {/* <nav>
           <ul>
 
@@ -77,7 +76,7 @@ function App() {
             <ProductsPage />
           </Route>
 
-          <Route path="/product-detail">
+          <Route path="/product-detail:slug/:id">
             <ProductDetailPage />
           </Route>
 

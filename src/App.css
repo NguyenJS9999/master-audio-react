@@ -1,0 +1,54 @@
+/* CSS Dùng chung, mã màu tạo tay, các thẻ chung */
+:root {
+    --color-danger: #ee3b47;
+    --color-success: #1fd312;
+    --color-info: #167efb;
+    --color-logo: #2c2e3e;
+    --color-logo-light: #34374c;
+    --color-text: #121212;
+    --color-text-light: rgba(18, 18, 18, 0.8);
+    --color-neutral-bg: #f6f6f6;
+    --color-highlight-bg: rgba(228, 35, 19, 0.1);
+    --color-neutral-border: rgba(18, 18, 18, 0.2);
+    --color-highlight-border: rgba(228, 35, 19, 0.5);
+    --color-primary: #c3811d;
+    --color-primary-master-audio: rgba(228, 35, 19, 1);
+    --color-primary-light: rgba(183, 136, 51, 0.9);
+    --color-secondary: #fef5e8;
+    --color-secondary-hightlight: #ffecd1;
+  }
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border-radius: 2px;
+  }
+  body {
+    background: #f6f6f6;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+  }
+  .container-fluid {
+    /* padding: 0px; */
+  }
+  /* style cho ô INPUT dùng chung  */
+  input {
+    border: 1px solid rgba(208, 208, 208, 1);
+    border-radius: 2px;
+    padding: 8px 6px;
+    transition: all 0.2s;
+  }
+  input:hover {
+    box-shadow: 0px 0px 4px 0px rgba(208, 208, 208, 1);
+  }
+  input:focus {
+    outline: none !important;
+    box-shadow: 0px 0px 2px 0px rgba(208, 208, 208, 1);
+  }
+  input::placeholder {
+    color: rgba(208, 208, 208, 0.8);
+    font-size: 14px;
+  }
