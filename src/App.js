@@ -6,7 +6,7 @@ import NavigationPage from "./navigation/NavigationPage";
 
 import HomePage from "./pages/home/HomePage";
 import ProductsPage from "./pages/product/ProductsPage";
-import ProductDetailPage from ".//pages/productDetail/ProductDetailPage";
+import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
 import WishListPage from "./pages/wishlist/WishListPage";
 import ShoppingCartPage from "./pages/shopping-cart/ShoppingCartPage";
 import CheckOutPage from "./pages/check-out/CheckOutPage";
