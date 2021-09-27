@@ -26,9 +26,9 @@ function NewsPage() {
                 Loa Amate Nitid N46 là mẫu loa nằm trong Series Nitid của Amate. Đây là mẫu loa cao cấp với 4
                 Driver bass 6” và có công suất 700W sử dụng mạch active Class D...
               </div>
-              <a className=" blog-see-more-button " href="#">
+              <button className=" blog-see-more-button " >
                 <div className=" blog-see-more ">Xem thêm</div>
-              </a>
+              </button>
             </div>
             <div className=" blog-img ">
               <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/blog/ADAMSON-LOUDSPEAKED-SERIES-IS-WEATHERIZED.png" alt="blog-img" />
@@ -43,9 +43,9 @@ function NewsPage() {
                 tỷ lệ kích thước trên công suất, các hướng thay đổi và cấu hình có thể mở rộng linh hoạt cao cho
                 một danh mục loa phù hợp với nhiều ứng dụng...
               </div>
-              <a className=" blog-see-more-button " href="#">
+              <button className=" blog-see-more-button " >
                 <div className=" blog-see-more ">Xem thêm</div>
-              </a>
+              </button>
             </div>
             <div className=" blog-img ">
               <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/blog/Nexo-ID84.png?raw=true" alt="blog-img" />
@@ -59,9 +59,9 @@ function NewsPage() {
                 Hệ thống gồm 1 vế, sử dụng 4 chiếc line array 210L kết hợp với quái vật 3 đầu – sub 3 bass 318NB
                 của 4acoustic!...
               </div>
-              <a className=" blog-see-more-button " href="#">
+              <button className=" blog-see-more-button " >
                 <div className=" blog-see-more ">Xem thêm</div>
-              </a>
+              </button>
             </div>
             <div className=" blog-img ">
               <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/blog/blog-test-Sub-318NB.jpg" alt="blog-img" />
@@ -75,9 +75,9 @@ function NewsPage() {
                 Loa Amate Nitid N46 là mẫu loa nằm trong Series Nitid của Amate. Đây là mẫu loa cao cấp với 4
                 Driver bass 6” và có công suất 700W sử dụng mạch active Class D...
               </div>
-              <a className=" blog-see-more-button " href="#">
+              <button className=" blog-see-more-button " >
                 <div className=" blog-see-more ">Xem thêm</div>
-              </a>
+              </button>
             </div>
             <div className=" blog-img ">
               <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/blog/loa-amate-nitid-n46-active-P6481.jpg?raw=true" alt="blog-img" />

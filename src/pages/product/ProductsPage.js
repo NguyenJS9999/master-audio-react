@@ -13,11 +13,11 @@ function ProductsPage() {
   const [stateFilterResults, setFilterResults] = useState([]);
   const [loading, setLoading] = useState(true);
   // Ô input seatch
-  const [stateInputValue, setInputValue] = useState("");
+  const [stateInputSearchValue, setInputSearchValue] = useState("");
   // Giá trị ô option sắp xếp giá
   const [stateSortValueItem, setSortValueItem] = useState("default");
   // Giá trị ô option số sp 1 trang
-  const [stateNumOfPaginate, setNumOfPaginate] = useState("6");
+  const [stateNumOfPaginate, setNumOfPaginate] = useState( 6 );
 
   // Tải dữ liệu về 1 lần đầu
   useEffect(() => {
@@ -34,19 +34,38 @@ function ProductsPage() {
     }
 
     fetchData();
-  }, []);
+  }, [stateNumOfPaginate]);
+
+  // Sắp xếp sp
+  useEffect(() => {
+    let filteredList = [...stateProducts];
+    filteredList = stateProducts.filter(
+      (product) =>
+        product.brand.toLowerCase().includes(stateInputSearchValue) ||
+        product.name.toLowerCase().includes(stateInputSearchValue)
+    );
+
+    if (stateSortValueItem === "ascending") {
+      filteredList = filteredList.sort((a, b) => a.price - b.price);
+    } else if (stateSortValueItem === "descending") {
+      filteredList = filteredList.sort((a, b) => b.price - a.price);
+    } else if (stateSortValueItem === "default") {
+      filteredList = stateProducts;
+    }
+    setFilterResults(filteredList);
+  }, [stateInputSearchValue, stateProducts, stateSortValueItem]);
 
   // Lấy giá trị ô input
   function inputSearchValue(event) {
-    console.log("Giá trị ô input: ", stateInputValue);
-    setInputValue(event.target.value);
+    console.log("Giá trị ô input: ", stateInputSearchValue);
+    setInputSearchValue(event.target.value);
   }
 
   // Chức năng Search
   function searchProduct() {
     async function searchData() {
       const response = await fetch(
-        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products/?q=${stateInputValue}  `
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products/?q=${stateInputSearchValue}  `
       );
       const result = await response.json();
       setProducts(result);
@@ -60,44 +79,14 @@ function ProductsPage() {
     setSortValueItem(event.target.value);
     console.log("Giá trị ô select item:", stateSortValueItem);
   }
-  // Sắp xếp sp
-  useEffect(() => {
-    let filteredList = [...stateProducts];
-    filteredList = stateProducts.filter(
-      (product) =>
-        product.brand.toLowerCase().includes(stateInputValue) ||
-        product.name.toLowerCase().includes(stateInputValue)
-    );
-
-    if (stateSortValueItem === "ascending") {
-      filteredList = filteredList.sort((a, b) => a.price - b.price);
-    } else if (stateSortValueItem === "descending") {
-      filteredList = filteredList.sort((a, b) => b.price - a.price);
-    } else if (stateSortValueItem === "default") {
-      filteredList = stateProducts;
-    }
-    setFilterResults(filteredList);
-  }, [stateInputValue, stateSortValueItem, stateProducts]);
+  
 
   // Lấy giá trị phân trang trong select dropdown
   function getPaginate(event) {
     setNumOfPaginate(event.target.value);
     console.log("Giá trị ô select phân trang:", stateSortValueItem);
   }
-  // Số item trên 1 Phân trang
-  useEffect(() => {
-    console.log("stateNumOfPaginate", stateNumOfPaginate);
-    let numInPaginate;
-    if (stateNumOfPaginate === 3) {
-      numInPaginate = 3;
-    } else if (stateNumOfPaginate === 6) {
-      numInPaginate = 6;
-    } else if (stateNumOfPaginate === 9) {
-      numInPaginate = 9;
-    }
 
-    setNumOfPaginate(numInPaginate);
-  }, [stateNumOfPaginate]);
 
   // Phân Trang
 
@@ -548,7 +537,7 @@ function ProductsPage() {
                   <div className="loadding_products-list">
                     Đang tải các sản phẩm, xin chờ...
                   </div>
-                ) : stateFilterResults.length === 0 && stateInputValue ? (
+                ) : stateFilterResults.length === 0 && stateInputSearchValue ? (
                   "Không tìm thấy sản phẩm phù hợp!"
                 ) : (
                   ProductCardElement
