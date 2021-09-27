@@ -104,7 +104,7 @@ function ProductsPage() {
   // List tất cả data
   let ProductCardElement = stateFilterResults.map( (item) => 
 
-    <div className=" col__product-card ">
+    <div className=" col__product-card " key={item.id} >
       <div className=" product-card ">
 
         <div className="product-card__wishlist">
@@ -318,7 +318,7 @@ function ProductsPage() {
 
                 <div className=" product__search   d-flex ">
                   <input onClick = {inputSearchValue} type="search" className="header-component__search-input" placeholder="Tìm kiếm" />
-                  <i onClick = {searchProduct} class="fas fa-search"></i>
+                  <i onClick = {searchProduct} className="fas fa-search"></i>
                 </div>
 
                 <div className="products__sort-item products__sort-order">
@@ -327,7 +327,7 @@ function ProductsPage() {
                     className="form-select" aria-label="select-sort-order">
 
                     {/* <option selected>Sắp xếp sản phẩm</option> */}
-                    <option selected value='default'>Theo mức độ phổ biến</option>
+                    <option value='default'>Theo mức độ phổ biến</option>
                     <option value='ascending' >Theo giá từ thấp đến cao</option>
                     <option value='descending' >Theo giá từ cao đến thấp</option>
                   </select>
@@ -340,7 +340,7 @@ function ProductsPage() {
                     className="form-select" aria-label="select-page-items">
 
                     <option value={3} >3 sản phẩm/trang</option>
-                    <option selected value={6} >6 sản phẩm/trang</option>
+                    <option value={6} >6 sản phẩm/trang</option>
                     <option value={9} >9 sản phẩm/trang</option>
                   </select>
 
@@ -352,7 +352,7 @@ function ProductsPage() {
 
                 <div className=" products-list__inner ">   
                   { loading ? 
-                  (<div class='loadding_products-list'>Đang tải các sản phẩm, xin chờ...</div>) 
+                  (<div className='loadding_products-list'>Đang tải các sản phẩm, xin chờ...</div>) 
                   : 
                   stateFilterResults.length === 0  &&  stateInputValue ?
                   "Không tìm thấy sản phẩm phù hợp!"
