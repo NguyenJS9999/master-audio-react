@@ -1,45 +1,6 @@
-a {
-  text-decoration: none;
-  color: #000000;
-  cursor: pointer;
-}
-li {
-  list-style: none;
-}
-main {
-  /* background: rgba(246, 246, 246, 1); */
-  background: rgba(255, 255, 255, 1);
-}
-/* style cho ô INPUT dùng chung  */
-input {
-  border: 1px solid rgb(148, 148, 148);
-  border-radius: 2px;
-  padding: 8px 6px;
-  transition: all 0.2s;
-}
-input:hover {
-  box-shadow: 0px 0px 2px 0px rgba(208, 208, 208, 1);
-}
-input:focus {
-  outline: none !important;
-  box-shadow: 0px 0px 2px 0px rgba(208, 208, 208, 1);
-}
-input::placeholder {
-  color: rgba(148, 148, 148, 0.8);
-  font-size: 14px;
-}
-/* Ghi đè các css của fontawesom hiệu ứng di chuột vào */
-/* .fas {
-  cursor: pointer;
-  transition: all 0.2s ease;
-} */
-.fas:hover {
-  /* color: #e42313!important; */
-}
-
 /* Start Nav 1 */
 .container-nav-1 {
-  /* border-bottom: 1px solid rgba(228, 35, 19, 0.5); */
+  border-bottom: 0.1px solid rgba(228, 35, 19, 0.2);
   /* max-width: 1920px; */
   margin: auto;
   padding: 0px;
@@ -47,9 +8,6 @@ input::placeholder {
 }
 
 /* Strat Nav Mobile*/
-.navigation-mobile-container {
-  /* border: 0.1px dotted red; */
-}
 .navigation-mobile {
   /* border: 0.1px dotted violet; */
   /* Vì cố định FIXED nên độ cao sẽ che các khối dưới */
@@ -194,9 +152,6 @@ input::placeholder {
   align-items: center;
 } */
 
-.mobile-accoun-login-status i {
-  /* border: 0.1px solid red; */
-}
 .mobile-component > a,
 .mobile-component > div {
   display: flex;
@@ -279,9 +234,6 @@ input::placeholder {
 /* End Nav Mobile*/
 
 /* Strat Nav Desktop1 Logo - search -cart/like/login */
-.navigation-desktop-container {
-  /* box-shadow: 0px 0px 1.5px 0px rgba(228, 35, 19, 1); */
-}
 .navigation-desktop {
   /* border: 0.1px dotted violet; */
   /* Cố định thanh Menu */
@@ -309,9 +261,6 @@ input::placeholder {
   justify-content: center;
   align-items: center;
 }
-.logo-master-audio a {
-  /* border: 0.1px dotted red; */
-}
 .logo-master-audio img {
   /* max-width: 100%; */
   width: 96px;
@@ -329,7 +278,7 @@ input::placeholder {
   /* padding-left: 19%; */
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
 
   align-items: center;
 }
@@ -447,7 +396,7 @@ input::placeholder {
   border-radius: 25px;
   width: 100%;
   vertical-align: middle;
-  display: none;
+  /* display: none; */
 }
 
 /* Giỏ hàng - like - login Desktop  */
@@ -501,8 +450,8 @@ input::placeholder {
   overflow-x: hidden;
 
   /* Trang thái đóng modal */
-  display: none;
-  transform: translateX(-100%);
+  /* display: none; */
+  /* transform: translateX(-100%); */
 
   transition: 0.45s ease;
 }
@@ -530,8 +479,6 @@ input::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.mobile-nav-bar span {
 }
 .mobile-nav-bar a:hover {
   color: rgba(228, 35, 19, 1);
@@ -594,9 +541,6 @@ input::placeholder {
   width: 100% !important;
   /* border: 1px solid red; */
 }
-.accordion-button::after {
-  /* background-image: none; */
-}
 .accordion-button:hover {
   color: rgba(228, 35, 19, 1);
   background-color: rgba(228, 35, 19, 0.1) !important;
@@ -625,7 +569,7 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   color: #000000;
   grid-gap: 2px;
 }
@@ -637,7 +581,6 @@ input::placeholder {
   padding: 10px 8px 10px 8px;
   background: white;
   font-size: 16px;
-
   /* position điểm tựa cho menu con bậc 1 */
   /* position: relative; */
 
@@ -653,9 +596,7 @@ input::placeholder {
   justify-content: space-between;
   align-items: center;
 }
-.category-hide-title:hover {
-  /* color: rgba(228, 35, 19, 1); */
-}
+
 .category-hide-title-background-color {
   background: #e42313;
 }
@@ -689,7 +630,7 @@ input::placeholder {
   top: 4px;
   /* Ẩn menu con, được hiện khi di chuột vào */
   /* display: flex; */
-  display: none;
+  /* display: none; */
   transition: all 0.3s ease;
 }
 /* -- Js tác động lên collap danh mục con -- */
@@ -732,9 +673,6 @@ input::placeholder {
   flex-direction: column;
   /* background: rgba(228, 35, 19, 0.1); */
 }
-.submenu-hide-items:hover {
-  /* background: rgba(228, 35, 19, 0.2); */
-}
 .submenu-hide-items p {
   border-bottom: 0.1px solid rgba(228, 35, 19, 0.1);
   padding: 16px 8px;
@@ -754,12 +692,6 @@ input::placeholder {
   background: rgba(228, 35, 19, 0.1);
   color: rgba(228, 35, 19, 1);
 }
-
-/* thành phần con cuối thẻ chọc */
-.submenu-hide-items a:last-child {
-  border: none;
-}
-
 /* End Nav Desktop 1 Danh mục sản phẩm */
 
 /* -- Start Đăng nhập / đăng kí -- */
@@ -929,7 +861,7 @@ trang khác dùng chung ở nav tác động */
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  align-items: start;
+  align-items: flex-start;
   color: #000000;
 }
 
@@ -951,7 +883,7 @@ trang khác dùng chung ở nav tác động */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   grid-gap: 2px;
 
   margin-top: 12px;
@@ -1162,9 +1094,6 @@ trang khác dùng chung ở nav tác động */
   .container-nav-2 {
     display: none;
   }
-  .categorys {
-    /* display: none; */
-  }
   /* Banner Trên 992px co nhỏ 79% */
   .banners {
     width: 100%;
@@ -1186,10 +1115,6 @@ trang khác dùng chung ở nav tác động */
   .navigation-desktop-container {
     display: none;
   }
-  /* Giảm kích thước trông thấy của logo chúng ở màn nhỏ >567px */
-  .logo-master-audio {
-    /* width: 92px; */
-  }
   /* Kê navigation giảm chiều cao màn */
   .margin-top-nav {
     height: 64.59px;
@@ -1209,9 +1134,7 @@ trang khác dùng chung ở nav tác động */
   .container-nav-2 {
     display: none;
   }
-  .categorys {
-    /* display: none; */
-  }
+
   /* Banner Trên 992px co nhỏ 79% */
   .banners {
     width: 100%;
@@ -1221,17 +1144,8 @@ trang khác dùng chung ở nav tác động */
 /* Medium Điểm ngắt 2  */
 @media (min-width: 768px) {
   /* Hiện menu mobile-icon hambeger <=576px giảm lề */
-  .navigation-mobile {
-    /* display: block; */
-    /* display: flex; */
-    /* padding: 4px 0px; */
-  }
   .menu-infos-header-mobile {
     top: 74px;
-  }
-  /* Giảm kích thước trông thấy của logo chúng ở màn nhỏ >768px */
-  .logo-master-audio {
-    /* width: 96px; */
   }
 
   /* Kê navigation giữ chiều cao */
@@ -1254,9 +1168,6 @@ trang khác dùng chung ở nav tác động */
     display: none;
   }
 
-  .categorys {
-    /* display: none; */
-  }
   /* Banner Trên 992px co nhỏ 79% */
   .banners {
     width: 100%;
@@ -1277,9 +1188,7 @@ trang khác dùng chung ở nav tác động */
     /* padding: 8px 60px; */
   }
   /* Giữ kích thước trông thấy của logo chúng ở màn nhỏ >992px */
-  .logo-master-audio {
-    /* width: 96px; */
-  }
+
 
   /* Mốc lớn-1 Màn trên 992px -- Hiện -- menu và các danh mục sản phẩm */
   .container-nav-2 {
@@ -1297,9 +1206,7 @@ trang khác dùng chung ở nav tác động */
   .categorys-banners-container {
     max-width: 960px !important;
   }
-  .categorys {
-    /* display: flex; */
-  }
+
   /* Mỗi danh mục sản phẩm đơn giảm padding cho cao vừa với banner */
   .category {
     padding: 6px 8px 6px 8px;
@@ -1313,10 +1220,7 @@ trang khác dùng chung ở nav tác động */
 
 /* Extra large */
 @media (min-width: 1200px) {
-  /* Hiện menu desktop flex lại, thêm padding */
-  .navigation-desktop {
-    /* padding: 8px 80px; */
-  }
+
   /* khung form đăng kí - đăng nhập co ngang vừa màn nhỏ */
   .login-register-form {
     width: 380px;

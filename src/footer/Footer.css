@@ -30,10 +30,11 @@
   flex-direction: row;
   grid-gap: 10px;
 }
-.social-network-icon a{
+.social-network-icon i{
+  cursor: pointer;
   transition: all 0.2s;
 }
-.social-network-icon a:hover {
+.social-network-icon i:hover {
   transform: scale(1.5);
   color: #E42313;
 }

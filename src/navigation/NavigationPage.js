@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // import NavigationCss from "./navigation.module.css";
@@ -6,10 +6,6 @@ import "./Navigation.css";
 
 function NavigationPage() {
   const [stateStatusCategory, setStatusCategory] = useState(false);
-
-  useEffect(() => {
-    console.log("NavigationPage");
-  }, []);
 
   function toggleCategory() {
     console.log("Đóng mở danh mục");
@@ -169,237 +165,15 @@ function NavigationPage() {
           {/* End navigation desktop 1*/}
         </div>
         {/* container-nav-1 */}
+
         {/* Moadal Đăng nhập / đăng kí */}
         <div className=" login-register-container   container-fluid ">
-          <div className=" login-register-form container-fluid ">
-            <ul
-              className="nav nav-pills mb-3  d-flex justify-content-center   login-register-tab-change "
-              id="pills-tab"
-              role="tablist"
-            >
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link"
-                  id="pills-profile-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-profile"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-profile"
-                  aria-selected="false"
-                >
-                  Đăng nhập
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link active"
-                  id="pills-home-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-home"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-home"
-                  aria-selected="true"
-                >
-                  Đăng ký
-                </button>
-              </li>
-            </ul>
-            <div className="tab-content" id="pills-tabContent">
-              {/* 1 - Đăng nhập */}
-              <div
-                className="tab-pane fade"
-                id="pills-profile"
-                role="tabpanel"
-                aria-labelledby="pills-profile-tab"
-              >
-                <form>
-                  {/* <div class=" login-register-form-title ">Đăng nhập</div> <br> */}
-                  <div className=" laber-inputs-infor ">
-                    <div className=" laber-input-infor  mb-3 ">
-                      {/* <label for="exampleInputEmail1" class="form-label">Email
-                                        <span class="text-danger">*</span>
-                                    </label> */}
-                      <input
-                        type="email"
-                        id="exampleInputEmail1"
-                        placeholder="Email *"
-                      />
-                      <small className="error-mess d-none ">
-                        Email không hợp lệ. VD: abc_123@gmail.com
-                      </small>
-                    </div>
-                    <div className=" laber-input-infor  mb-3 ">
-                      {/* <label for="password" class="form-label">Mật khẩu
-                                        <span class="text-danger">*</span>
-                                    </label> */}
-                      <input
-                        type="password"
-                        id="password"
-                        placeholder="Mật khẩu *"
-                      />
-                      <small className="error-mess d-none">
-                        Vui lòng nhập mật khẩu
-                      </small>
-                    </div>
-
-                    <div className=" mb-3  form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="showHidePass"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="showHidePass"
-                      >
-                        Ẩn/Hiện mật khẩu
-                      </label>
-
-                    </div>
-                    <div className=" mb-3  form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="rememberAccount"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="rememberAccount"
-                      >
-                        Ghi nhớ tài khoản
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    type="button"
-                    className=" login-btn  register-button mt-2"
-                  >
-                    Đăng nhập
-                  </div>
-                  <p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlnsXlink="http://www.w3.org/1999/xlink"
-                      aria-hidden="true"
-                      focusable="false"
-                      width="1em"
-                      height="1em"
-                      preserveAspectRatio="xMidYMid meet"
-                      viewBox="0 0 16 16"
-                      className="iconify"
-                      data-icon="codicon:question"
-                      data-inline="false"
-                      style={{ transform: "rotate(360deg)" }}
-                    >
-                      <g fill="currentColor">
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M7.5 1a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13zm0 12a5.5 5.5 0 1 1 0-11a5.5 5.5 0 0 1 0 11zm1.55-8.42a1.84 1.84 0 0 0-.61-.42A2.25 2.25 0 0 0 7.53 4a2.16 2.16 0 0 0-.88.17c-.239.1-.45.254-.62.45a1.89 1.89 0 0 0-.38.62a3 3 0 0 0-.15.72h1.23a.84.84 0 0 1 .506-.741a.72.72 0 0 1 .304-.049a.86.86 0 0 1 .27 0a.64.64 0 0 1 .22.14a.6.6 0 0 1 .16.22a.73.73 0 0 1 .06.3c0 .173-.037.343-.11.5a2.4 2.4 0 0 1-.27.46l-.35.42c-.12.13-.24.27-.35.41a2.33 2.33 0 0 0-.27.45a1.18 1.18 0 0 0-.1.5v.66H8v-.49a.94.94 0 0 1 .11-.42a3.09 3.09 0 0 1 .28-.41l.36-.44a4.29 4.29 0 0 0 .36-.48a2.59 2.59 0 0 0 .28-.55a1.91 1.91 0 0 0 .11-.64a2.18 2.18 0 0 0-.1-.67a1.52 1.52 0 0 0-.35-.55zM6.8 9.83h1.17V11H6.8V9.83z"
-                        ></path>
-                      </g>
-                    </svg>
-                    Quên mật khẩu
-                  </p>
-                </form>
-              </div>{" "}
-              {/* 2 - Đăng nhập */}
-              {/* 2 - Đăng kí */}
-              <div
-                className="tab-pane fade show active"
-                id="pills-home"
-                role="tabpanel"
-                aria-labelledby="pills-home-tab"
-              >
-                <form>
-                  {/* <div class=" login-register-form-title ">Đăng ký</div> <br> */}
-                  <div className=" laber-inputs-infor ">
-                    {/* Họ và tên */}
-                    <div className=" laber-input-infor  mb-3 ">
-                      <input
-                        type="text"
-                        id="full-name"
-                        placeholder="Họ và tên *"
-                      />
-                      <small className="error-mess d-none ">
-                        Vui lòng nhập đúng họ và tên
-                      </small>
-                    </div>
-                    {/*sdt */}
-                    <div className=" laber-input-infor  mb-3 ">
-                      <input
-                        type="text"
-                        id="phone-number"
-                        placeholder="Số điện thoại *"
-                      />
-                      <small className="error-mess d-none ">
-                        Vui lòng nhập vào số điện thoại của bạn
-                      </small>
-                    </div>
-                    {/* Email */}
-                    <div className=" laber-input-infor  mb-3 ">
-                      <input
-                        type="email"
-                        id="exampleInputEmail1"
-                        placeholder="Email *"
-                      />
-                      <small className="error-mess d-none ">
-                        Vui lòng nhập đúng Email
-                      </small>
-                    </div>
-                    {/*  */}
-                    <div className=" laber-input-infor  mb-3 ">
-                      <input
-                        type="password"
-                        id="password"
-                        placeholder="Mật khẩu *"
-                      />
-                      <small className="error-mess d-none ">
-                        Vui lòng nhập đúng Mật khẩu
-                      </small>
-                    </div>
-                    {/*  */}
-                    <div className=" mb-3  form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id=" "
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor=" "
-                      >
-                        Ẩn/Hiện mật khẩu
-                      </label>
-                    </div>
-                  </div>
-                  <div className=" mb-3  form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="exampleCheck1"
-                    />
-                    <label className="form-check-label" htmlFor="exampleCheck1">
-                      Quý khách đồng ý với điều khoản dịch vụ của chúng tôi
-                    </label>
-                  </div>
-                  <div
-                    type="button"
-                    className="  register-btn  register-button "
-                  >
-                    Đăng ký
-                  </div>
-                </form>
-              </div>{" "}
-              {/* 2 - Đăng kí */}
-            </div>
-          </div>
-          {/* login-register-form */}
+          Đăng nhập đăng kí
         </div>
         {/* Moadal Đăng nhập / đăng kí */}
+
         {/* **************************************************************************** */}
+
         {/* container Navigation 2 Mobile Danh mục sán phẩm, menu */}
         <div className="  container-nav-2  container-fluid  ">
           <div className="  container-category-menu  container ">
@@ -412,9 +186,8 @@ function NavigationPage() {
               <div className=" categorys-position ">
                 {/* style=' display: none;' */}
                 <ul
-                  className={`${
-                    stateStatusCategory ? "d-flex" : "d-none"
-                  } categorys    `}
+                  className={`${stateStatusCategory ? "d-flex" : "d-none"
+                    } categorys    `}
                 >
                   {/* 1 */}
                   <li className=" category ">

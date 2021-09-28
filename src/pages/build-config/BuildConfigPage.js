@@ -6,7 +6,7 @@ import BuildConfig from "./BuildConfig.module.css";
 
 function BuildConfigPage() {
   useEffect(() => {
-    console.log("BuildConfigPage");
+  
   }, []);
   return (
     <>

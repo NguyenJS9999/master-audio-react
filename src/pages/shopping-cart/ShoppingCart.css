@@ -1,67 +1,3 @@
-/* font Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
-/* font Rubik */
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  border-radius: 2px;
-}
-:root {
-  --color-danger: #ee3b47;
-  --color-success: #0db102;
-  --color-info: #167efb;
-  --color-logo: #2c2e3e;
-  --color-logo-light: #34374c;
-  --color-text: #121212;
-  --color-text-light: rgba(18, 18, 18, 0.8);
-  --color-neutral-bg: #f6f6f6;
-  --color-highlight-bg: rgba(255, 253, 240, 0.5);
-  --color-neutral-border: rgba(18, 18, 18, 0.2);
-  --color-highlight-border: #f9c372;
-  --color-primary: #c3811d;
-  --color-primary-light: rgba(183, 136, 51, 0.9);
-  --color-secondary: #fef5e8;
-  --color-secondary-hightlight: #ffecd1;
-}
-/* ::selection {
-    color: red;
-} */
-body {
-  /* background: #f8f8f8; */
-  background: #ffffff;
-}
-/* Màu Ink cho web - màu vàng kem nhạt */
-body {
-  background: #f6f6f6;
-}
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
-a:hover {
-  color: rgba(228, 35, 19, 1);
-}
-/* style cho ô INPUT dùng chung */
-input {
-  border: 1px solid rgba(208, 208, 208, 0.5);
-  border-radius: 2px;
-  padding: 8px 6px;
-  transition: all 0.2s;
-}
-input:hover {
-  box-shadow: 0px 0px 4px 0px rgba(208, 208, 208, 1);
-}
-input:focus {
-  outline: none !important;
-  box-shadow: 0px 0px 4px 0px rgba(208, 208, 208, 1);
-}
-input::placeholder {
-  color: rgba(228, 35, 19, 0.5);
-  font-size: 14px;
-}
 
 /* -- Start khối giỏ hàng --  */ /* Desktop  */
 .cart-container-background {
@@ -156,7 +92,6 @@ input::placeholder {
   /* border: 1px solid #e42313; */
   margin: auto;
 }
-
 .cart-item-product-image {
   /* border: 1px solid #13e47b; */
   width: 90%;
@@ -202,7 +137,7 @@ input::placeholder {
   border: 1px solid rgba(208, 208, 208, 0.5);
   border-radius: 2px;
   /* width: 50%; */
-  max-width: 8.5rem;
+  /* max-width: 8.5rem; */
 
   background: #f6f6f6;
   padding: 0px 0px;
@@ -220,7 +155,6 @@ input::placeholder {
   /* border: 1px solid rgba(228,35,19, 0.5); */
   border-radius: 2px;
   background: rgba(255, 255, 255, 255);
-  max-width: 4rem;
   text-align: center;
 }
 .custom-number i {
@@ -413,6 +347,7 @@ input::placeholder {
 
 /* Start Mã giảm giá khối thanh toán */
 .order-container {
+  padding: 0;
   display: flex;
   gap: 4rem;
   margin-top: 4rem;
@@ -582,15 +517,8 @@ input::placeholder {
     width: 80%;
     height: 80%;
   }
-  /* Khung nhập số lượng sản phẩm giảm khoảng cách các ph tử */
-  .custom-number {
-    grid-gap: 2px;
-    width: 50px;
-  }
-  /* Ô nhập số cố giảm độ rộng */
-  .custom-number-input {
-    width: 25px;
-  }
+
+
   /* Nút mua tiếp và xóa tất cả xoay ngang */
   .cart-button-buy-delete-all {
     flex-direction: column;

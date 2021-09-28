@@ -22,6 +22,7 @@
     padding: 0;
     margin: 0;
     border-radius: 2px;
+    list-style-type: none;
   }
   body {
     background: #f6f6f6;
@@ -29,10 +30,10 @@
   a {
     text-decoration: none;
     cursor: pointer;
-    color: black;
+    color: #000;
   }
-  .container-fluid {
-    /* padding: 0px; */
+  a:hover {
+    color: #000;
   }
   /* style cho ô INPUT dùng chung  */
   input {
@@ -51,4 +52,11 @@
   input::placeholder {
     color: rgba(208, 208, 208, 0.8);
     font-size: 14px;
+  }
+
+  .custom-number {
+    max-width: 8.5rem;
+  }
+  .custom-number input {
+    max-width: 3.5rem;
   }

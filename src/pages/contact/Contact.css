@@ -1,6 +1,135 @@
-.heading {
-  color: rgba(26, 44, 66, 1);
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 100px;
+/* Start khối Giới thiệu */
+.about-container-background {
+  background: #fff;
 }
+.about-container {
+  background: #fff;
+  padding: 40px 0px;
+  line-height: 28px;
+}
+.about-description {
+  /* border: 1px solid rgba(228, 35, 19, 1); */
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+}
+.about-description p {
+  color: #000;
+}
+.name-company {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(228, 35, 19, 1);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.contact-logo {
+  /* border: 1px solid rgba(228, 35, 19, 1); */
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+.contact-logo img {
+  width: 160px;
+}
+.text-layout-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Eng khối Giới thiệu*/
+
+/* Start Đăng kí nhận tin mới */
+.subscribe-receive-news {
+  /* border: 1px solid red; */
+  /* margin-top: 40px; */
+  padding: 64px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 48px;
+}
+.subscribe-receive-news-text {
+  /* border: 1px solid violet; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 0px;
+}
+.subscribe-receive-news-text span {
+  font-size: 24px;
+  font-weight: 600;
+}
+.subscribe-receive-news-text small {
+  font-size: 16px;
+}
+
+/* Ô nhập địa chỉ email */
+.subscribe-receive-news-email-input {
+  /* border: 1px solid red; */
+  margin-top: 12px;
+  width: 300px;
+  color: #e42313;
+
+  position: relative;
+}
+.subscribe-receive-news-email-input input {
+  width: 100%;
+  border-radius: 2px;
+}
+.subscribe-receive-news-email-input i {
+  font-size: 22px;
+  opacity: 0.5;
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  transition: all 0.2s;
+}
+.subscribe-receive-news-email-input i:hover {
+  transform: scale(1.2);
+}
+.subscribe-receive-news-email-input i:active {
+  opacity: 1;
+}
+/* End Đăng kí nhận tin mới */
+
+/* End Khối blog */
+
+/* Start Responsive by @Media same bootstrap */
+
+/* X-Small */
+@media (max-width: 576px) {
+}
+
+/* Small */
+@media (min-width: 576px) {
+}
+
+/* Medium */
+@media (min-width: 768px) {
+}
+
+/* Large */
+@media (min-width: 992px) {
+}
+
+/* Extra large */
+@media (min-width: 1200px) {
+}
+
+/* Extra extra large */
+@media (min-width: 1400px) {
+}
+/* End Responsive by @Media same  bootstrap*/
+
+/* Start */
+/* End */

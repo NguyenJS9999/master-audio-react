@@ -27,21 +27,31 @@ export function DiscountTotalCalculation() {
           <div className=" count-money ">
             <span className=" total-money ">
               <b>Tạm tính</b>
-              <div className=" total-money-number ">195,600,000₫</div>
+              <div className=" total-money-number ">195,600,000 ₫</div>
             </span>
-            {/*  */}
             <div className="border-bottom" />
+
+            {/*  */}
+            <span className=" tax-avt ">
+              <b>VAT (10%)</b>
+              <div>{ ( (195600000/100)*10 ).toLocaleString() } ₫</div>
+            </span>
+            <div className="border-bottom" />
+
+            {/*  */}
             <span className=" tax-avt ">
               <b>Giảm giá</b>
               <div>- 0₫</div>
             </span>
-            {/*  */}
             <div className="border-bottom" />
+
+            {/*  */}
             <span className="into-money">
               <b>Thành tiền</b>
-              <div className="into-money-number">197,556,000₫</div>
+              <div className="into-money-number">((197,556,000).toLocaleString()) ₫</div>
             </span>
           </div> 
+
           {/* count-money */}
           <span className=" make-payment ">
             <a className=" make-payment-button    section__btn " href="./check-out.html">

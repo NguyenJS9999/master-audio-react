@@ -1,14 +1,12 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 // import FootereCss from "./footer.module.css";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
 function FooterPage() {
-  useEffect(() => {
-    console.log("HomePage");
-  }, []);
 
   return (
     <>
@@ -29,12 +27,12 @@ function FooterPage() {
                 <p>Hotline: 0988360148</p>
                 <p>Email: admin@master-audio.com</p>
                 <div className="social-network-icon">
-                  <i className="fab fa-youtube" />
-                  <i className="fab fa-facebook-f" />
-                  <i className="far fa-envelope" />
-                  <i className="fab fa-instagram" />
-                  <i className="fab fa-pinterest" />
-                  <i className="fab fa-twitter" />
+                  <Link to="/contact"><i className="fab fa-youtube" /></Link>
+                  <Link to="/contact"><i className="fab fa-facebook-f" /></Link>
+                  <Link to="/contact"><i className="far fa-envelope" /></Link>
+                  <Link to="/contact"><i className="fab fa-instagram" /></Link>
+                  <Link to="/contact"><i className="fab fa-pinterest" /></Link>
+                  <Link to="/contact"><i className="fab fa-twitter" /></Link>
                 </div>
               </div>
             </div>
@@ -51,15 +49,21 @@ function FooterPage() {
               <h6>DỊCH VỤ KHÁCH HÀNG</h6>
               <div className="footer-infor-description">
                 <span>
-                  <p>Hướng dẫn mua hàng online</p>
-
-                  <p>Hướng dẫn mua hàng trả góp</p>
-
-                  <p>Chính sách bảo mật</p>
-
-                  <p>Liên hệ &amp; góp ý</p>
-
-                  <p>Câu hỏi thường gặp</p>
+                  <Link to="/products">
+                    <p>Hướng dẫn mua hàng online</p>
+                  </Link>
+                  <Link to="/products">
+                    <p>Hướng dẫn mua hàng trả góp</p>
+                  </Link>
+                  <Link to="/products">
+                    <p>Chính sách bảo mật</p>
+                  </Link>
+                  <Link to="/products">
+                    <p>Liên hệ &amp; góp ý</p>
+                  </Link>
+                  <Link to="/products">
+                    <p>Câu hỏi thường gặp</p>
+                  </Link>
                 </span>
               </div>
             </div>
@@ -67,15 +71,21 @@ function FooterPage() {
               <h6>CHÍNH SÁCH MUA HÀNG</h6>
               <div className="footer-infor-description">
                 <span>
-                  <p>Chính sách bảo hành</p>
-
-                  <p>Chính sách giao hàng</p>
-
-                  <p>Chính sách đổi trả</p>
-
-                  <p>Chính sách bảo mật</p>
-
-                  <p>Thẻ thành viên</p>
+                  <Link to="/products">
+                    <p>Chính sách bảo hành</p>
+                  </Link>
+                  <Link to="/products">
+                    <p>Chính sách giao hàng</p>
+                  </Link>
+                  <Link to="/products">
+                    <p>Chính sách đổi trả</p>
+                  </Link>
+                  <Link to="/products">
+                    <p>Chính sách bảo mật</p>
+                  </Link>
+                  <Link to="/products">
+                    <p>Thẻ thành viên</p>
+                  </Link>
                 </span>
               </div>
             </div>

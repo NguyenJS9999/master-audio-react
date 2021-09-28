@@ -357,6 +357,9 @@ p {
   .proud span {
     font-size: 24px;
   }
+  .featured-product__list {
+    grid-template-columns: 1fr 1fr ;
+  }
   .services {
     grid-template-columns: 1fr 1fr ;
   }
@@ -367,6 +370,9 @@ p {
   .brands-proud {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+  }
+  .featured-product__list {
+    grid-template-columns: 1fr 1fr ;
   }
   .services {
     grid-template-columns: 1fr 1fr 1fr;
@@ -379,6 +385,9 @@ p {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 8px;
   }
+  .featured-product__list {
+    grid-template-columns: 1fr 1fr 1fr ;
+  }
     .services {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -389,6 +398,9 @@ p {
   .brands-proud {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 8px;
+  }
+  .featured-product__list {
+    grid-template-columns:  1fr 1fr 1fr 1fr ;
   }
 }
 

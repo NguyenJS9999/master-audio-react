@@ -1,13 +1,10 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import "./Home.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
 function HomePage() {
-  useEffect( () => {
-    console.log('HomePage')
-  }, [] ) 
   
   return (
     <>

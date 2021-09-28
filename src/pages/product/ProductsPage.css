@@ -57,7 +57,7 @@
   padding: 0px 0px 0px 8px;
 
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   gap: 8px;
 }
@@ -132,7 +132,8 @@
 /* Ô Tìm sản phẩm */
 .product__search {
   /* border: 1px solid red; */
-  min-width: 14.25rem;
+  /* min-width: 14.25rem; */
+  width: 100%;
   /* margin-bottom: 4rem; */
   /* position: relative; */
   padding: 0px 0.5rem 0px 0;
@@ -168,6 +169,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+  padding: 0px 1rem;
 }
 .products__sort-item {
   min-width: 14.25rem;
@@ -372,7 +374,7 @@ p {
     display: none;
   }
   .products__sorts {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
   }
   /* Danh sách sản phẩm chia 3 cột */
@@ -386,6 +388,10 @@ p {
   /* Khối lọc trái ẩn màn 992 */
   .products__filter {
     display: none;
+  }
+  .products__sorts {
+    flex-direction: column;
+    justify-content: center;
   }
   /* Hiện nút lọc-thu gọn ở màn 992 */
   .mobile-filter-icon {

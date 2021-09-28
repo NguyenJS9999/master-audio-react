@@ -76,7 +76,7 @@ function App() {
             <ProductsPage />
           </Route>
 
-          <Route path="/product-detail:slug/:id">
+          <Route path="/product-detail/:slug/:id">
             <ProductDetailPage />
           </Route>
 
