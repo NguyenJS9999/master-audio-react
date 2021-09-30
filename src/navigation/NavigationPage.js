@@ -1,3 +1,4 @@
+// import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,6 +7,11 @@ import "./Navigation.css";
 
 function NavigationPage() {
   const [stateStatusMenuMobile, setStatusCategory] = useState(false);
+  
+  const numberItems = 0;
+  // useSelector((state) => state.cart.numberItems);
+
+  console.log('numberItems', numberItems)
 
   function toggleMenuHiddenMobile() {
     if (stateStatusMenuMobile === true) {
@@ -58,7 +64,7 @@ function NavigationPage() {
                 <Link to="/shopping-cart" className="cart-icon">
                   <span>
                     <i className="fas fa-shopping-cart" />
-                    <span className=" cart-number-items ">0</span>
+                    <span className=" cart-number-items ">{numberItems}</span>
                   </span>
                 </Link>
                 {/* Like mobile */}
@@ -92,7 +98,7 @@ function NavigationPage() {
                       <div className="mobile-wishlist-status ">
                         <i className="fas fa-heart" />
                         <span className=" mobile-wishlist-number ">
-                          0<span></span>
+                          {numberItems}<span></span>
                         </span>
                       </div>
                       <span>Yêu thích</span>
@@ -143,7 +149,7 @@ function NavigationPage() {
                 <Link to="/shopping-cart" className="cart-icon">
                   <div>
                     <i className="fas fa-shopping-cart" />
-                    <span className=" cart-number-items ">0</span>
+                    <span className=" cart-number-items ">{numberItems}</span>
                   </div>
                 </Link>
                 {/* Like desktop */}

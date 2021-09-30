@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import "./ProductsPage.css";
 import "../../App.css";
 
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
-
 import Newsletter from "../../newsletter/NewsLetter"
+import { addProduct } from "../../store/cartSlice"
 
 function ProductsPage() {
   const [stateProducts, setProducts] = useState([]);
@@ -22,7 +23,8 @@ function ProductsPage() {
   const [stateLimitOfPaginate, setLimitOfPaginate] = useState(9);
   // Giá trị 1 nút phân trang
   const [stateNumOfPaginate, setNumOfPaginate] = useState( 1 );
-
+  // Redux
+  const dispatch = useDispatch();
 
   // Tải dữ liệu về 1 lần đầu
   useEffect(() => {
@@ -117,7 +119,8 @@ function ProductsPage() {
           <p className="card-text product-card__price">
             {item.price.toLocaleString()}&nbsp;₫</p>
 
-          <button className="btn-addtocart product-card__btn">
+          <button onClick = { () => dispatch( addProduct() ) }
+            className="btn-addtocart product-card__btn">
             <i className="fas fa-shopping-cart" />
             <span>Thêm vào giỏ hàng</span>
           </button>
@@ -386,13 +389,13 @@ function ProductsPage() {
             {/* Chọn lọc sản phẩm   */}
             <div className="products__sorts ">
               <div className=" product__search   d-flex ">
+                <i onClick={searchProduct} className="fas fa-search"></i>
                 <input
                   onChange={inputSearchValue}
                   type="search"
                   className="header-component__search-input"
                   placeholder="Tìm kiếm"
                 />
-                <i onClick={searchProduct} className="fas fa-search"></i>
               </div>
 
               <div className="products__sort-item products__sort-order">
@@ -445,33 +448,23 @@ function ProductsPage() {
                   </li>
 
                   <li className="pagination-item">
-                    <span onClick={ () => getNumOfPaginate( 1 )} >
-                      <div className="pagination-link">1</div>
-                    </span>
+                      <div onClick={ () => getNumOfPaginate( 2 )} className="pagination-link">1</div>
                   </li>
 
                   <li className="pagination-item">
-                    <span onClick={ () => getNumOfPaginate( 2 )} >
-                      <div className="pagination-link">2</div>
-                    </span>
+                      <div onClick={ () => getNumOfPaginate( 2 )} className="pagination-link">2</div>
                   </li>
 
                   <li className="pagination-item">
-                    <span onClick={ () => getNumOfPaginate( 3 )} >
-                      <div className="pagination-link">3</div>
-                    </span>
+                      <div onClick={ () => getNumOfPaginate( 3 )} className="pagination-link">3</div>
                   </li>
 
                   <li lassName="pagination-item">
-                    <span onClick={ () => getNumOfPaginate( 4 )} >
-                      <div className="pagination-link">4</div>
-                    </span>
+                      <div onClick={ () => getNumOfPaginate( 4 )} className="pagination-link">4</div>
                   </li>
 
                   <li className="pagination-item">
-                    <span onClick={ () => getNumOfPaginate( 5 )} >
-                      <div className="pagination-link">5</div>
-                    </span>
+                      <div onClick={ () => getNumOfPaginate( 5 )} className="pagination-link">5</div>
                   </li>
 
                   <li className="pagination-item page-next">
