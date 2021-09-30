@@ -5,6 +5,8 @@ import "./ProductDetail.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
+import Newsletter from "../../newsletter/NewsLetter"
+
 function ProductDetailPage() {
     // Mảng data 1 { item }
     const [stateProducts, setProducts] = useState([]); 
@@ -118,8 +120,15 @@ function ProductDetailPage() {
               <div className=" product-detail-buy ">
                 {/* 1 */}
                 <div className="product-name-code">
-                  <div className="product-name-detail ">{stateProducts.brand}</div>
-                  <div className="product-code-detail ">{stateProducts.name}</div>
+                  <div>
+                    <div className="product__brand ">{stateProducts.brand}</div>
+                    
+                    <span className="product-detail__type ">{stateProducts.type}</span> 
+
+                    <span className="product-detail__name  ">{stateProducts.name}</span>
+
+                  </div>
+ 
                   <b>Đơn giá 1 chiếc chưa bao gồm VAT</b>
                   <div className="product-price-detail ">{ stateProducts.price.toLocaleString() } ₫</div>
                 </div>
@@ -175,6 +184,8 @@ function ProductDetailPage() {
         )
       }
 
+      {/* Email nhận tin tức mới */}
+      <Newsletter />
     </>
   );
 }

@@ -7,6 +7,8 @@ import "../../App.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
+import Newsletter from "../../newsletter/NewsLetter"
+
 function ProductsPage() {
   const [stateProducts, setProducts] = useState([]);
   // Lọc sp
@@ -17,9 +19,9 @@ function ProductsPage() {
   // Giá trị ô option sắp xếp giá
   const [stateSortValueItem, setSortValueItem] = useState("default");
   // Giá trị ô option số sp 1 trang
-  const [stateLimitOfPaginate, setLimitOfPaginate] = useState( 6 );
+  const [stateLimitOfPaginate, setLimitOfPaginate] = useState(9);
   // Giá trị 1 nút phân trang
-  const [stateNumOfPaginate , setNumOfPaginate ] = useState( 1 );
+  const [stateNumOfPaginate, setNumOfPaginate] = useState( 1 );
 
 
   // Tải dữ liệu về 1 lần đầu
@@ -27,7 +29,7 @@ function ProductsPage() {
     // Async await
     async function fetchData() {
       const response = await fetch(
-        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products?_page=${stateNumOfPaginate}&_limit=${stateLimitOfPaginate}`
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products?_page=1&_limit=${stateLimitOfPaginate}`
       );
       const result = await response.json();
       setProducts(result);
@@ -38,7 +40,7 @@ function ProductsPage() {
     fetchData();
   }, [stateLimitOfPaginate, stateNumOfPaginate]);
 
-  // Sắp xếp sp
+  // Sắp xếp sp - sort 
   useEffect(() => {
     let filteredList = [...stateProducts];
     filteredList = stateProducts.filter(
@@ -57,11 +59,10 @@ function ProductsPage() {
     setFilterResults(filteredList);
   }, [stateInputSearchValue, stateProducts, stateSortValueItem]);
 
-  // Lấy giá trị ô input
+  // Lấy giá trị ô Search input
   function inputSearchValue(event) {
     setInputSearchValue(event.target.value);
   }
-
   // Chức năng Search
   function searchProduct() {
     async function searchData() {
@@ -86,9 +87,9 @@ function ProductsPage() {
     console.log("Số sp 1 trang:", stateSortValueItem);
   }
   // Lấy giá trị 1 nút phân trang
-  function getNumOfPaginate (event) {
-    setNumOfPaginate(event.target.value);
-    console.log("Số trả về của 1 phân trang:", stateSortValueItem);
+  function getNumOfPaginate( num ) {
+    setNumOfPaginate(num);
+    console.log("Số trả về của 1 phân trang:", stateNumOfPaginate, 'num', num);
 
   }
 
@@ -98,9 +99,9 @@ function ProductsPage() {
   let ProductCardElement = stateFilterResults.map((item) => (
     <div className=" col__product-card " key={item.id}>
       <div className=" product-card ">
-        <div className="product-card__wishlist">
+        {/* <div className="product-card__wishlist">
           <i className="far fa-heart" />
-        </div>
+        </div> */}
 
         <Link to={`/product-detail/${item.slug}/${item.id}`}>
           <div className="product-card__img">
@@ -117,7 +118,7 @@ function ProductsPage() {
             {item.price.toLocaleString()}&nbsp;₫</p>
 
           <button className="btn-addtocart product-card__btn">
-            <i className="fas fa-shopping-cart" /> 
+            <i className="fas fa-shopping-cart" />
             <span>Thêm vào giỏ hàng</span>
           </button>
         </div>
@@ -359,59 +360,8 @@ function ProductsPage() {
             </span>
           </div>
         </div>
-
         {/* Loc theo giá */}
-        <div className=" filter__price">
-          <h4 className="section-title filter-title">LỌC THEO GIÁ</h4>
-          <div className="filter__price-list filter__list">
-            <span>
-              <input type="checkbox" id="<10" defaultValue="<10" />
-              <label className="filter__item filter__price-item" htmlFor="<10">
-                Dưới 10,000,000₫
-              </label>
-            </span>
-            <span>
-              <input type="checkbox" id="10-30" defaultValue="10-30" />
-              <label
-                className="filter__item filter__price-item"
-                htmlFor="10-30"
-              >
-                10,000,001₫ - 30,000,000₫
-              </label>
-            </span>
-            <span>
-              <input type="checkbox" id="30-50" defaultValue="30-50" />
-              <label
-                className="filter__item filter__price-item"
-                htmlFor="30-50"
-              >
-                30,000,001₫ - 50,000,000₫
-              </label>
-            </span>
-            <span>
-              <input type="checkbox" id="50-70" defaultValue="50-70" />
-              <label className="filter__item filter__price-item" htmlFor=" ">
-                50,000,001₫ - 70,000,000₫
-              </label>
-            </span>
-            <span>
-              <input type="checkbox" id="70-90" defaultValue="70-90" />
-              <label
-                className="filter__item filter__price-item"
-                htmlFor="70-90"
-              >
-                70,000,001₫ - 90,000,000₫
-              </label>
-            </span>
-            <span>
-              <input type="checkbox" id=">90" defaultValue=">90" />
-              <label className="filter__item filter__price-item" htmlFor=">90">
-                Trên 90,000,000₫
-              </label>
-            </span>
-          </div>{" "}
-          {/* Loc theo giá */}
-        </div>
+
       </div>
     );
   }
@@ -462,7 +412,7 @@ function ProductsPage() {
               <div className="products__sort-item   products__sort-page-items">
                 <select
                   value={stateLimitOfPaginate}
-                  onChange = { getLimitOfPaginate }
+                  onChange={getLimitOfPaginate}
                   className="form-select"
                   aria-label="select-page-items"
                 >
@@ -476,15 +426,10 @@ function ProductsPage() {
             {/* Danh sách các sản phẩm */}
             <div className=" products-list ">
               <div className=" products-list__inner ">
-                {loading ? (
-                  <div className="loadding_products-list">
-                    Đang tải các sản phẩm, xin chờ...
-                  </div>
-                ) : stateFilterResults.length === 0 && stateInputSearchValue ? (
-                  "Không tìm thấy sản phẩm phù hợp!"
-                ) : (
-                  ProductCardElement
-                )}
+                { loading 
+                ? ( <div className="loadding_products-list"> Đang tải các sản phẩm, xin chờ... </div>  ) 
+                : stateFilterResults.length === 0 && stateInputSearchValue ? ( "Không tìm thấy sản phẩm phù hợp!" ) 
+                : ( ProductCardElement )}
               </div>
             </div>
 
@@ -494,19 +439,41 @@ function ProductsPage() {
                 <ul className="pagination">
 
                   <li className="pagination-item">
-                    <div className="pagination-link page-prev"  aria-label="Previous" >
+                    <div className="pagination-link page-prev" aria-label="Previous" >
                       <i className="fas fa-chevron-left" />
                     </div>
                   </li>
 
-                  <li onClick={ () => getNumOfPaginate(1) } className="pagination-item">
-                    <div className="pagination-link">1</div>
+                  <li className="pagination-item">
+                    <span onClick={ () => getNumOfPaginate( 1 )} >
+                      <div className="pagination-link">1</div>
+                    </span>
                   </li>
 
-                  <li onClick={() => getNumOfPaginate(2)} className="pagination-item">
-                    <div className="pagination-link"> 2 </div>
+                  <li className="pagination-item">
+                    <span onClick={ () => getNumOfPaginate( 2 )} >
+                      <div className="pagination-link">2</div>
+                    </span>
                   </li>
-                 
+
+                  <li className="pagination-item">
+                    <span onClick={ () => getNumOfPaginate( 3 )} >
+                      <div className="pagination-link">3</div>
+                    </span>
+                  </li>
+
+                  <li lassName="pagination-item">
+                    <span onClick={ () => getNumOfPaginate( 4 )} >
+                      <div className="pagination-link">4</div>
+                    </span>
+                  </li>
+
+                  <li className="pagination-item">
+                    <span onClick={ () => getNumOfPaginate( 5 )} >
+                      <div className="pagination-link">5</div>
+                    </span>
+                  </li>
+
                   <li className="pagination-item page-next">
                     <div className="pagination-link" aria-label="Next">
                       <i className="fas fa-chevron-right" />
@@ -520,6 +487,9 @@ function ProductsPage() {
           </div>
         </div>
       </section>
+
+      {/* Email nhận tin tức mới */}
+      <Newsletter />
     </>
   );
 }

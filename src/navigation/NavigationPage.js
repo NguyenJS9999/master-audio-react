@@ -5,16 +5,18 @@ import { Link } from "react-router-dom";
 import "./Navigation.css";
 
 function NavigationPage() {
-  const [stateStatusCategory, setStatusCategory] = useState(false);
+  const [stateStatusMenuMobile, setStatusCategory] = useState(false);
 
-  function toggleCategory() {
-    console.log("Đóng mở danh mục");
-    if (stateStatusCategory === true) {
+  function toggleMenuHiddenMobile() {
+    if (stateStatusMenuMobile === true) {
       setStatusCategory(false);
     } else {
       setStatusCategory(true);
     }
-    console.log("stateStatusCategory", stateStatusCategory);
+  }
+
+  function closeMenuMobile() {
+    setStatusCategory(false);
   }
 
   return (
@@ -27,10 +29,12 @@ function NavigationPage() {
             {/* Start navigation mobile */}
             <div className=" navigation-mobile  container-fluid ">
               <div className="icon-menu-search">
+
                 {/* Menu Hambeger ẩn màn iphone - Home - Xây dựng cấu hình */}
-                <div className=" icon-menu-hidden-mobile  ">
+                <div onClick = { toggleMenuHiddenMobile } className=" icon-menu-hidden-mobile  ">
                   <i className="fas fa-bars" />
                 </div>
+
                 {/* Icon tìm kiếm Màn min992 */}
                 <div className=" icon-search-hidden-mobile-992  ">
                   <i className="fas fa-search" />
@@ -54,7 +58,7 @@ function NavigationPage() {
                 <Link to="/shopping-cart" className="cart-icon">
                   <span>
                     <i className="fas fa-shopping-cart" />
-                    <span className=" cart-number-items ">3</span>
+                    <span className=" cart-number-items ">0</span>
                   </span>
                 </Link>
                 {/* Like mobile */}
@@ -62,7 +66,7 @@ function NavigationPage() {
                   <div className="wishlist-status ">
                     <i className="fas fa-heart" />
                     <span className=" wishlist-number ">
-                      3<span></span>
+                      <span></span>
                     </span>
                   </div>
                 </Link>
@@ -88,7 +92,7 @@ function NavigationPage() {
                       <div className="mobile-wishlist-status ">
                         <i className="fas fa-heart" />
                         <span className=" mobile-wishlist-number ">
-                          3<span></span>
+                          0<span></span>
                         </span>
                       </div>
                       <span>Yêu thích</span>
@@ -139,7 +143,7 @@ function NavigationPage() {
                 <Link to="/shopping-cart" className="cart-icon">
                   <div>
                     <i className="fas fa-shopping-cart" />
-                    <span className=" cart-number-items ">3</span>
+                    <span className=" cart-number-items ">0</span>
                   </div>
                 </Link>
                 {/* Like desktop */}
@@ -147,7 +151,7 @@ function NavigationPage() {
                   <div className="wishlist-status ">
                     <i className="fas fa-heart" />
                     <span className=" wishlist-number ">
-                      3<span></span>
+                      <span></span>
                     </span>
                   </div>
                 </Link>
@@ -178,17 +182,16 @@ function NavigationPage() {
         <div className="  container-nav-2  container-fluid  ">
           <div className="  container-category-menu  container ">
             <div className=" nav-2-category  ">
-              <div onClick={toggleCategory} className=" nav-2-category-title  ">
+              {/* onClick={toggleCategory}  */}
+              <div className=" nav-2-category-title  ">
                 Danh mục sản phẩm&nbsp;&nbsp;
                 <i className="fas fa-sort-down   sort-down-category " />
               </div>
 
               <div className=" categorys-position ">
-                {/* style=' display: none;' */}
-                <ul
-                  className={`${stateStatusCategory ? "d-flex" : "d-none"
-                    } categorys    `}
-                >
+                {/* <ul className={`${stateStatusCategory ? "d-flex" : "d-none" } categorys  `} > */}
+                <ul className={` categorys  `} >
+
                   {/* 1 */}
                   <li className=" category ">
                     <Link to="/products">
@@ -480,12 +483,19 @@ function NavigationPage() {
         {/* container Navigation 2 Mobile Danh mục sán phẩm, menu  */}
 
         {/*  d-none  Nav Menu2 Ẩn - thu gọn - nền xám */}
-        <div className=" backdrop-bg "></div>
+        {/* <div className=" backdrop-bg "></div> */}
+        <div onClick = { closeMenuMobile  } 
+          className = { ` ${stateStatusMenuMobile ?  "d-flex" : "d-none" }  backdrop-bg ` } > 
+        </div>
         {/* Menu ẩn nhỏ bên trái màn hình */}
-        <div className=" mobile-nav-bar ">
-          <div className="btn-close-menu" type="button">
+        
+        <div className = { ` ${stateStatusMenuMobile ?  "mobile-nav-bar__translate-left" : "d-none" } mobile-nav-bar ` } >
+
+          <div onClick = { closeMenuMobile  } 
+            className="btn-close-menu" type="button">
             <i className="fas fa-times" />
           </div>
+
           {/* 1 - Logo menu hidden */}
           <div className=" mobile-menu__item-logo ">
             <div className="logo-master-audio ">

@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import "./Contact.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
+import Newsletter from "../../newsletter/NewsLetter"
+
 function ContactPage() {
-  useEffect( () => {
-    console.log('ContactPage')
-  }, [] ) 
 
   return (
+    <>
       <div className='about-container-background  container-fluid '>
         <div className=" about-container  container  ">
           <div className=" name-company ">CÔNG TY CỔ PHẦN MASTER AUDIO VIỆT NAM</div>
@@ -80,7 +80,12 @@ function ContactPage() {
             </span>
           </div>
         </div>
-      </div>             
+      </div>
+
+
+      {/* Email nhận tin tức mới */}
+      <Newsletter />
+    </>
   );
 }
 

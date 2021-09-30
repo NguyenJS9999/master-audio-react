@@ -189,7 +189,7 @@
 }
 .mobile-wishlist-number {
   /* border: 0.1px solid red; */
-  background: rgba(228, 35, 19, 0.8);
+  /* background: rgba(228, 35, 19, 0.8); */
   border-radius: 25px;
   color: white;
   font-size: 0.575rem;
@@ -362,7 +362,7 @@
   width: 100%;
 }
 .wishlist-number {
-  background: rgba(228, 35, 19, 0.8);
+  /* background: rgba(228, 35, 19, 0.8); */
   border-radius: 25px;
   color: white;
   font-size: 0.575rem;
@@ -453,7 +453,11 @@
   /* display: none; */
   /* transform: translateX(-100%); */
 
-  transition: 0.45s ease;
+  transition: all 0.45s ease;
+}
+.mobile-nav-bar__translate-left {
+  display: flex;
+  transform: translateX(0%);
 }
 /* Thêm class đóng mở menu icon */
 /* .open-menu {
@@ -827,6 +831,9 @@ trang khác dùng chung ở nav tác động */
 .nav-2-category {
   position: relative;
 }
+.nav-2-category:hover .categorys {
+  display: flex;
+} 
 
 .nav-2-category-title {
   padding: 6px 0px;
@@ -887,7 +894,7 @@ trang khác dùng chung ở nav tác động */
   grid-gap: 2px;
 
   margin-top: 12px;
-  /* display: none; */
+  display: none;
 
   /* position điểm tựa cho menu con bậc 1 */
   position: relative;
@@ -937,7 +944,7 @@ trang khác dùng chung ở nav tác động */
   /* background: #a58e8e; */
   padding-top: 4px;
 
-  width: 250%;
+  width: 200%;
   height: 100%;
 
   position: absolute;

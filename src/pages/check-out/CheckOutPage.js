@@ -1,19 +1,19 @@
 import { useEffect } from "react";
 
-import CheckOutCss from "./CheckOut.module.css";
+import "./CheckOut.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
+import Newsletter from "../../newsletter/NewsLetter"
 function CheckOutPage() {
   useEffect(() => {
     console.log("CheckOutPage");
   }, []);
   return (
     <>
-      <div className=" container">
-        <h1 className={CheckOutCss.heading}>CheckOutPage</h1>
-        <h2 className={CheckOutCss.subHeading}>HELLO</h2>
-      </div>
+         {/* Email nhận tin tức mới */}
+         <Newsletter />
+
     </>
   );
 }

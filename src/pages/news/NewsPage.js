@@ -1,13 +1,12 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import "./News.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
+import Newsletter from "../../newsletter/NewsLetter"
+
 function NewsPage() {
-  useEffect(() => {
-    console.log("NewsPage");
-  }, []);
   
   return (
     <>
@@ -87,6 +86,9 @@ function NewsPage() {
       </section>
       {/* Blog */}
       
+      
+      {/* Email nhận tin tức mới */}
+      <Newsletter />
     </>
   );
 }

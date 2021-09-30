@@ -1,10 +1,45 @@
-import React, {  useEffect } from "react";
+import React, {  useState,useEffect } from "react";
+import { Link } from "react-router-dom";
 
-export function DiscountTotalCalculation() {
+export function DiscountTotalCalculation( { stateProducts } ) {
+  const [ stateNetMoney, setNetMoney] = useState( 0 ); 
+  // Giá trị ô nhập Discount
+  const [ stateDiscountValue, setDiscountValue ] = useState( null )
+  const [ stateNumDiscountValue, setNumDiscountValue ] = useState( 0 )
+  // .toLocaleString()
+  let VAT =  Math.round( ( stateNetMoney / 100 ) * 10 ) ;
+  let numDiscountValue =  stateNumDiscountValue;
+  let grossMoney = ( stateNetMoney + VAT - numDiscountValue ).toLocaleString();
 
     useEffect(() => {
-        console.log("TotalCalculation");
-      }, []);
+      let sum = 0;
+      for ( let i = 0; i < stateProducts.length; i++ ) {
+         sum += ( stateProducts[i].price *  stateProducts[i].quantity )
+      }
+      setNetMoney( sum )
+      
+    }, [setNetMoney, stateProducts]);
+
+    function getValueDiscountInput( event ) {
+      setDiscountValue( event.target.value )
+    } 
+
+    //  Thay đổi thảng state trong if else?
+    function applyDiscountCode() { console.log('Áp dụng mã giảm giá')
+      if      ( stateDiscountValue === "M10" ) {
+        setNumDiscountValue( Math.round( ( stateNetMoney / 100 ) * 10 ) )
+      } 
+      else if ( stateDiscountValue === "M20" ) {
+        setNumDiscountValue( Math.round( ( stateNetMoney / 100 ) * 20 ) )
+      } 
+      else if ( stateDiscountValue === "M30" ) {
+        setNumDiscountValue( Math.round( ( stateNetMoney / 100 ) * 30 ) )
+      } 
+      else {
+        setNumDiscountValue( 0 )
+      }
+    }
+
     return (
     <>
       <section className=" order-container    container ">
@@ -12,13 +47,17 @@ export function DiscountTotalCalculation() {
         {/* Khối giảm giá */}
         <div className="order-discount">
           <h4 className="order__title">MÃ GIẢM GIÁ</h4>
+
           <div className="discount-wrapper">
-            <input className=" discount-input" type="text" placeholder="Nhập mã giảm giá (M10, M20, M30)" />
-            {/* <div class="feedback-noti">Mã giảm giá đã hết hạn</div> */}
+            <input onChange = { (event) => getValueDiscountInput( event )  }
+              className=" discount-input" type="text" placeholder="Nhập mã giảm giá (M10, M20, M30)" />
+              {/* Thêm biến thông báo css và chữ */}
+            <div className="feedback-noti">Mã giảm giá không hợp lệ</div>
           </div>
-          <button className="section__btn btn-apply-discount">
-            ÁP DỤNG MÃ GIẢM GIÁ
-          </button>
+          
+          <button onClick = { applyDiscountCode }
+            className="section__btn btn-apply-discount">  ÁP DỤNG MÃ GIẢM GIÁ   </button>
+          
         </div>
 
         {/* Khối Thành tiền */}
@@ -27,36 +66,37 @@ export function DiscountTotalCalculation() {
           <div className=" count-money ">
             <span className=" total-money ">
               <b>Tạm tính</b>
-              <div className=" total-money-number ">195,600,000 ₫</div>
+              <div className=" total-money-number ">{ stateNetMoney.toLocaleString() } ₫</div>
             </span>
             <div className="border-bottom" />
 
             {/*  */}
             <span className=" tax-avt ">
               <b>VAT (10%)</b>
-              <div>{ ( (195600000/100)*10 ).toLocaleString() } ₫</div>
+              <div>{ VAT.toLocaleString() } ₫</div>
             </span>
             <div className="border-bottom" />
 
             {/*  */}
             <span className=" tax-avt ">
               <b>Giảm giá</b>
-              <div>- 0₫</div>
+              <div>- { numDiscountValue.toLocaleString() } ₫</div>
             </span>
             <div className="border-bottom" />
 
             {/*  */}
             <span className="into-money">
               <b>Thành tiền</b>
-              <div className="into-money-number">((197,556,000).toLocaleString()) ₫</div>
+              <div className="into-money-number">{ grossMoney } ₫</div>
             </span>
+
           </div> 
 
           {/* count-money */}
           <span className=" make-payment ">
-            <a className=" make-payment-button    section__btn " href="./check-out.html">
+            <Link to="/check-out"  className=" make-payment-button    section__btn " >
               <i className="fas fa-hand-holding-usd" /> &nbsp;TIẾN HÀNH ĐẶT HÀNG
-            </a>
+            </Link>
           </span>
         </div> 
 
