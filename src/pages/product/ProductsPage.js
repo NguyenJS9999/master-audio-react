@@ -22,16 +22,17 @@ function ProductsPage() {
   // Giá trị ô option số sp 1 trang
   const [stateLimitOfPaginate, setLimitOfPaginate] = useState(9);
   // Giá trị 1 nút phân trang
-  const [stateNumOfPaginate, setNumOfPaginate] = useState( 1 );
+  const [stateNumOfPaginate, setNumOfPaginate] = useState(1);
   // Redux
   const dispatch = useDispatch();
+  // console.log('dispatch', dispatch)
 
   // Tải dữ liệu về 1 lần đầu
   useEffect(() => {
     // Async await
     async function fetchData() {
       const response = await fetch(
-        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products?_page=1&_limit=${stateLimitOfPaginate}`
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products?_page=${stateNumOfPaginate}&_limit=${stateLimitOfPaginate}`
       );
       const result = await response.json();
       setProducts(result);
@@ -88,14 +89,24 @@ function ProductsPage() {
     setLimitOfPaginate(event.target.value);
     console.log("Số sp 1 trang:", stateSortValueItem);
   }
-  // Lấy giá trị 1 nút phân trang
-  function getNumOfPaginate( num ) {
+  // Phân Trang - Lấy giá trị 1 nút phân trang
+  function getNumOfPaginate(num) {
     setNumOfPaginate(num);
     console.log("Số trả về của 1 phân trang:", stateNumOfPaginate, 'num', num);
+  }
+  // Tích checkbox để lọc sp
+  function filterWithCheckBox(textFilter) {
+    console.log('Lọc với check-box, textFilter', textFilter);
+    async function filterProduct() {
+      const response = await fetch(
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products/?q=${textFilter}  `
+      );
+      const result = await response.json();
+      setProducts(result);
+    }
+    filterProduct()
 
   }
-
-  // Phân Trang
 
   // List tất cả data
   let ProductCardElement = stateFilterResults.map((item) => (
@@ -119,11 +130,12 @@ function ProductsPage() {
           <p className="card-text product-card__price">
             {item.price.toLocaleString()}&nbsp;₫</p>
 
-          <button onClick = { () => dispatch( addProduct() ) }
+          <button onClick={() => dispatch(addProduct(1))}
             className="btn-addtocart product-card__btn">
             <i className="fas fa-shopping-cart" />
             <span>Thêm vào giỏ hàng</span>
           </button>
+
         </div>
       </div>
     </div>
@@ -145,114 +157,126 @@ function ProductsPage() {
           <div className="filter__list">
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('4 Acoustic')}
+                type="radio"
                 id="4 Acoustic"
-                name="speak"
+                name="filter"
                 defaultValue="4 Acoustic"
               />
               <label
                 className="filter__item filter__brand-item"
                 htmlFor="4 Acoustic"
               >
-                4 Acoustic{" "}
+                4 Acoustic
               </label>
             </span>
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Nexo')}
+                type="radio"
                 id="Nexo"
-                name="speak"
+                name="filter"
                 defaultValue="Nexo"
               />
               <label className="filter__item filter__brand-item" htmlFor="Nexo">
-                Nexo{" "}
+                Nexo
               </label>
             </span>
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Adamson')}
+                type="radio"
                 id="Adamson"
-                name="speak"
+                name="filter"
                 defaultValue="Adamson"
               />
               <label
                 className="filter__item filter__brand-item"
                 htmlFor="Adamson"
               >
-                Adamson{" "}
+                Adamson
               </label>
             </span>
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Amate')}
+                type="radio"
                 id="Amate"
-                name="speak"
+                name="filter"
                 defaultValue="Amate"
               />
               <label
                 className="filter__item filter__brand-item"
                 htmlFor="Amate"
               >
-                Amate{" "}
+                Amate
               </label>
             </span>
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Kuledy')}
+                type="radio"
                 id="Kuledy"
-                name="speak"
+                name="filter"
                 defaultValue="Kuledy"
               />
               <label
                 className="filter__item filter__brand-item"
                 htmlFor="Kuledy"
               >
-                Kuledy{" "}
+                Kuledy
               </label>
             </span>
+
             <span>
-              <input type="checkbox" id="DK" name="speak" defaultValue="DK" />
+              <input onClick={() => filterWithCheckBox('DK')}
+                type="radio" id="DK" name="filter" defaultValue="DK" />
               <label className="filter__item filter__brand-item" htmlFor="DK">
-                DK{" "}
+                DK
               </label>
             </span>
+
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Baiervires')}
+                type="radio"
                 id="Baiervires"
-                name="micro"
+                name="filter"
                 defaultValue="Baiervires"
               />
               <label
                 className="filter__item filter__brand-item"
                 htmlFor="Baiervires"
               >
-                Baiervires{" "}
+                Baiervires
               </label>
             </span>
+
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Hous')}
+                type="radio"
                 id="Hous"
-                name="amplifier"
+                name="filter"
                 defaultValue="Hous"
               />
               <label className="filter__item filter__brand-item" htmlFor="Hous">
-                Hous{" "}
+                Hous
               </label>
             </span>
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Pioneer Dj')}
+                type="radio"
                 id="Pioneer Dj"
-                name="mixcer"
+                name="filter"
                 defaultValue="Pioneer Dj"
               />
               <label
                 className="filter__item filter__brand-item"
                 htmlFor="Pioneer Dj"
               >
-                Pioneer Dj{" "}
+                Pioneer Dj
               </label>
             </span>
           </div>
@@ -261,74 +285,84 @@ function ProductsPage() {
         <div className=" filter__type">
           <h4 className="section-title filter-title">LỌC THEO LOẠI SẢN PHẨM</h4>
           <div className="filter__type-list filter__list">
+
             <span>
-              <input type="checkbox" id="Subwoofer" defaultValue="Subwoofer" />
+              <input onClick={() => filterWithCheckBox('Subwoofer')}
+                type="radio" name="filter" id="Subwoofer" defaultValue="Subwoofer" />
               <label
                 className="filter__item filter__type-item"
                 htmlFor="Subwoofer"
               >
-                {" "}
-                Subwoofer{" "}
+                Subwoofer
               </label>
             </span>
+
             <span>
               <input
-                type="checkbox"
-                id="Full-range"
-                defaultValue="Full range"
+                onClick={() => filterWithCheckBox('full-range')}
+                type="radio" name="filter"
+                id="full-range"
+                defaultValue="full-range"
               />
               <label
                 className="filter__item filter__type-item"
-                htmlFor="Full-range"
+                htmlFor="full-range"
               >
-                {" "}
-                Full range{" "}
+                Full range
               </label>
             </span>
+
             <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('line-array')}
+                type="radio" name="filter"
                 id="Line-array"
-                defaultValue="Line array"
+                defaultValue="line-array"
               />
               <label
                 className="filter__item filter__type-item"
                 htmlFor="Line-array"
               >
-                {" "}
-                Line array{" "}
+                Line array
               </label>
             </span>
-            <span>
-              <input type="checkbox" id="Mid-low" defaultValue="Mid low" />
+
+            {/* <span>
+              <input onClick={() => filterWithCheckBox('Line array')}
+                type="radio" name="filter" id="Mid-low" defaultValue="Mid low" />
               <label
                 className="filter__item filter__type-item"
                 htmlFor="Mid-low"
               >
-                {" "}
-                Mid low{" "}
+
+                Mid low
               </label>
-            </span>
+            </span> */}
+
             <span>
-              <input type="checkbox" id="Amplifier" defaultValue="Amplifier" />
+
+              <input onClick={() => filterWithCheckBox('amplifier')}
+                type="radio" name="filter" id="Amplifier" defaultValue="amplifier" />
               <label
                 className="filter__item filter__type-item"
                 htmlFor="Amplifier"
               >
-                {" "}
-                Amplifier{" "}
+                Amplifier
               </label>
             </span>
             <span>
-              <input type="checkbox" id="Micro" defaultValue="Micro" />
+
+              <input onClick={() => filterWithCheckBox('micro')}
+                type="radio" name="filter" id="Micro" defaultValue="micro" />
               <label className="filter__item filter__type-item" htmlFor="Micro">
-                {" "}
-                Micro{" "}
+                Micro
               </label>
             </span>
-            <span>
+
+            {/* <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Digital echo')}
+                type="radio" name="filter"
                 id="Digital-echo"
                 defaultValue="Digital echo"
               />
@@ -336,20 +370,22 @@ function ProductsPage() {
                 className="filter__item filter__type-item"
                 htmlFor="Digital-echo"
               >
-                {" "}
-                Digital echo{" "}
+                Digital echo
               </label>
-            </span>
+            </span> */}
+
             <span>
-              <input type="checkbox" id="Mixer" defaultValue="Mixer" />
+              <input onClick={() => filterWithCheckBox('Mixer')}
+                type="radio" name="filter" id="Mixer" defaultValue="Mixer" />
               <label className="filter__item filter__type-item" htmlFor="Mixer">
-                {" "}
-                Mixer{" "}
+                Mixer
               </label>
             </span>
-            <span>
+
+            {/* <span>
               <input
-                type="checkbox"
+                onClick={() => filterWithCheckBox('Auto power')}
+                type="radio" name="filter"
                 id="Auto-power"
                 defaultValue="Auto power"
               />
@@ -357,10 +393,10 @@ function ProductsPage() {
                 className="filter__item filter__type-item"
                 htmlFor="Auto-power"
               >
-                {" "}
-                Auto power{" "}
+                Auto power
               </label>
-            </span>
+            </span> */}
+
           </div>
         </div>
         {/* Loc theo giá */}
@@ -371,7 +407,7 @@ function ProductsPage() {
   return (
     <>
       {/* Section Products List */}
-      <section className="section  section-products-list container-fluid">
+      <section className=" section-products-list   container-fluid ">
         <div className="products__container container">
           {/* Khối lọc bên trái */}
           <FilterBrandsComponent />
@@ -388,14 +424,14 @@ function ProductsPage() {
 
             {/* Chọn lọc sản phẩm   */}
             <div className="products__sorts ">
-              <div className=" product__search   d-flex ">
-                <i onClick={searchProduct} className="fas fa-search"></i>
+              <div className=" product__search ">
                 <input
                   onChange={inputSearchValue}
                   type="search"
                   className="header-component__search-input"
                   placeholder="Tìm kiếm"
                 />
+                <i onClick={searchProduct} className="fas fa-search"></i>
               </div>
 
               <div className="products__sort-item products__sort-order">
@@ -429,10 +465,10 @@ function ProductsPage() {
             {/* Danh sách các sản phẩm */}
             <div className=" products-list ">
               <div className=" products-list__inner ">
-                { loading 
-                ? ( <div className="loadding_products-list"> Đang tải các sản phẩm, xin chờ... </div>  ) 
-                : stateFilterResults.length === 0 && stateInputSearchValue ? ( "Không tìm thấy sản phẩm phù hợp!" ) 
-                : ( ProductCardElement )}
+                {loading
+                  ? (<div className="loadding_products-list"> Đang tải các sản phẩm, xin chờ... </div>)
+                  : stateFilterResults.length === 0 && stateInputSearchValue ? ("Không tìm thấy sản phẩm phù hợp!")
+                    : (ProductCardElement)}
               </div>
             </div>
 
@@ -448,23 +484,23 @@ function ProductsPage() {
                   </li>
 
                   <li className="pagination-item">
-                      <div onClick={ () => getNumOfPaginate( 2 )} className="pagination-link">1</div>
+                    <div onClick={() => getNumOfPaginate(1)} className="pagination-link">1</div>
                   </li>
 
                   <li className="pagination-item">
-                      <div onClick={ () => getNumOfPaginate( 2 )} className="pagination-link">2</div>
+                    <div onClick={() => getNumOfPaginate(2)} className="pagination-link">2</div>
                   </li>
 
                   <li className="pagination-item">
-                      <div onClick={ () => getNumOfPaginate( 3 )} className="pagination-link">3</div>
-                  </li>
-
-                  <li lassName="pagination-item">
-                      <div onClick={ () => getNumOfPaginate( 4 )} className="pagination-link">4</div>
+                    <div onClick={() => getNumOfPaginate(3)} className="pagination-link">3</div>
                   </li>
 
                   <li className="pagination-item">
-                      <div onClick={ () => getNumOfPaginate( 5 )} className="pagination-link">5</div>
+                    <div onClick={() => getNumOfPaginate(4)} className="pagination-link">4</div>
+                  </li>
+
+                  <li className="pagination-item">
+                    <div onClick={() => getNumOfPaginate(5)} className="pagination-link">5</div>
                   </li>
 
                   <li className="pagination-item page-next">

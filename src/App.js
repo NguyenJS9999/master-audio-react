@@ -7,9 +7,12 @@ import NavigationPage from "./navigation/NavigationPage";
 import HomePage from "./pages/home/HomePage";
 import ProductsPage from "./pages/product/ProductsPage";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
+
 import WishListPage from "./pages/wishlist/WishListPage";
 import ShoppingCartPage from "./pages/shopping-cart/ShoppingCartPage";
 import CheckOutPage from "./pages/check-out/CheckOutPage";
+import OrderCompletePage from "./pages/order-complete/OrderCompletePage";
+
 import BuildConfigPage from "./pages/build-config/BuildConfigPage";
 import TypicalProjectsPage from "./pages/typical-projects/TypicalProjectsPage";
 import NewsPage from "./pages/news/NewsPage";
@@ -88,6 +91,9 @@ function App() {
             <CheckOutPage />
           </Route>
           
+          <Route path="/order-complete" exact>
+            <OrderCompletePage />
+          </Route>
 
           <Route path="/wish-list" exact>
             <WishListPage />
@@ -101,7 +107,6 @@ function App() {
             <TypicalProjectsPage />
           </Route>
 
-          
           <Route path="/news" exact>
             <NewsPage />
           </Route>

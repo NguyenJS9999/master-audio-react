@@ -1,20 +1,167 @@
-.heading {
-    color: rgb(255, 0, 0);
+/* Section Order Info */
+.section-order__container {
+  background-color: var(--color-neutral-bg);
+  padding-top: 5rem;
+  margin-bottom: 5rem;
+}
+.order-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.order__title {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  line-height: 1.625rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Thông tin khách hàng */
+.order-info {
+  width: 100%;
+  height: fit-content;
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(18, 18, 18, 0.1);
+}
+
+.order__first-info {
+  margin-bottom: 0rem;
+}
+.order__first-info input {
+  width: 100%;
+}
+.order-note {
+  width: 100%;
+  border-radius: 2px !important;
+}
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+  border: 1px solid var(--color-highlight-border);
+}
+.form-check {
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  /* height: 168px; */
+}
+
+.order__receiver-info {
+  margin-top: 1rem;
+}
+.row {
+  --bs-gutter-x: 0;
+}
+
+/* Thông tin đơn thàng và phương thức thanh toán */
+.order-payment__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Thông tin đơn hàng */
+.order__details {
+  width: 100%;
+  height: fit-content;
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(18, 18, 18, 0.1);
+}
+.order__list {
+  margin-bottom: 0rem;
+}
+.order-header.order-row {
+  padding: 0.75rem 0;
+  font-weight: 500;
+}
+.order-item {
+  border-bottom: 1px solid rgba(18, 18, 18, 0.1);
+}
+.order-row,
+.order-row-small {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+.order-row-small .col-left {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.625rem;
+  font-weight: 500;
+}
+.order-price {
+  margin-top: 1.5rem;
+}
+.order-row-small {
+  padding: 0 0 0.75rem 0;
+  justify-content: space-between;
+}
+.order-ship-fee {
+  border-bottom: 1px solid rgba(18, 18, 18, 0.1);
+}
+.order-subtotal .col-left {
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+  font-weight: 500;
+}
+.order-subtotal .col-right {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Khối phương thức thanh toán */
+.payment-methods__container {
+  width: 100%;
+  height: fit-content;
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(18, 18, 18, 0.1);
+}
+.payment-methods {
+  margin-bottom: 2rem;
+}
+
+/* Start Responsive by @Media same bootstrap */
+
+/* X-Small */
+@media (max-width: 576px) {
+  .order-form {
+    flex-direction: column;
   }
-  
-  .subHeading {
-    color: rgb(17, 230, 245);
-    font-size: 30px;
+}
+
+/* Small */
+@media (min-width: 576px) {
+  .order-form {
+    flex-direction: column;
   }
-  
-  .button {
-    display: inline-block;
-    border-radius: 3px;
-    padding: 0.5rem 0;
-    margin: 0.5rem 1rem;
-    width: 11rem;
-    background: #047ab1;
-    color: white;
-    border: 2px solid white;
+}
+
+/* Medium */
+@media (min-width: 768px) {
+  .order-form {
+    flex-direction: row;
   }
-  
+}
+
+/* Large */
+@media (min-width: 992px) {
+}
+
+/* Extra large */
+@media (min-width: 1200px) {
+}
+
+/* Extra extra large */
+@media (min-width: 1400px) {
+}
+/* End Responsive by @Media same  bootstrap*/
+
+/* Start */
+/* End */

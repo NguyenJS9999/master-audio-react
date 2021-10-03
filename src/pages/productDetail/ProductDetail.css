@@ -158,6 +158,7 @@
 .product-detail__type {
   font-weight: 300;
   margin-bottom: 1.5rem;
+  margin-right: 0.5rem;
   text-transform: capitalize;
 }
 .product-price-detail {
@@ -179,6 +180,9 @@
 .product-status-detail {
   font-size: 16px;
   font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
 .product-status-detail span {
   color: var(--color-success);

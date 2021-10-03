@@ -1,4 +1,4 @@
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,8 +8,11 @@ import "./Navigation.css";
 function NavigationPage() {
   const [stateStatusMenuMobile, setStatusCategory] = useState(false);
   
-  const numberItems = 0;
-  // useSelector((state) => state.cart.numberItems);
+  const numberItems = useSelector( function( state ) { 
+    console.log( 'state', state )
+    return state.cart.numberItems 
+  });
+  
 
   console.log('numberItems', numberItems)
 
@@ -208,7 +211,7 @@ function NavigationPage() {
                       <ul className=" submenu ">
                         <li className="submenu-items">
                           <p>Loa fullrange theo thương hiệu</p>
-                          <Link to="/products">4 Acoustic</Link>
+                          <Link to="/products/4-Acoustic">4 Acoustic</Link>
                           <Link to="/products">Nexo</Link>
                           <Link to="/products">Adamson</Link>
                           <Link to="/products">Amate</Link>

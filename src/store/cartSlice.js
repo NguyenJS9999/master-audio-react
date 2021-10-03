@@ -20,5 +20,5 @@ export const cartSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { addProduct, removeProduct } = cartSlice.actions  
-
-export default cartSlice.reduce;
+// console.log('addProduct', addProduct(1)  )
+export default cartSlice.reducer;

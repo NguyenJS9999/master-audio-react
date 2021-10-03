@@ -13,6 +13,7 @@ function ShoppingCartPage() {
   // Store prop tạm thời sau thay = redux;
   const [stateProducts, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  // const [state, set] = useState([]);
 
   // Tải dữ liệu về 1 lần đầu
   useEffect(() => {
@@ -30,64 +31,65 @@ function ShoppingCartPage() {
   }, []);
 
   // Tăng số lượng sp ô input
-  function addProductNumber( event, id ) { console.log('Tăng')
-  let cloneDataItems = stateProducts.map( (obj) => ( {...obj} ) );
-
-  cloneDataItems.forEach( (item)=> {
-      if(item.id === id){
+  function addProductNumber(quantity, id) {
+    let cloneDataItems
+    if (quantity < 100) {
+      cloneDataItems = stateProducts.map((obj) => ({ ...obj }));
+      cloneDataItems.forEach((item) => {
+        if (item.id === id) {
           item.quantity += 1
-      }
-  });
-  console.log('cloneDataItems', cloneDataItems)
-  setProducts(cloneDataItems)
-  // Truyền obj data mới vào state-truyền snag payment
-
+        }
+      })
+    } else {
+      return
+    }
+    setProducts(cloneDataItems);
   }
   // Giảm số lượng sp ô input
-  function minusProductNumber( event, id ) { console.log('Giảm')
-      let cloneDataItems = stateProducts.map( (obj) => ( {...obj}) );
-      cloneDataItems.forEach( ( item) => {
-          if ( item.id === id ) {
-              item.quantity -= 1
-          }
-      }) 
-      console.log('cloneDataItems', cloneDataItems)
-      setProducts(cloneDataItems);
-
+  function minusProductNumber(quantity, id) {
+    let cloneDataItems
+    if (quantity > 1) {
+      cloneDataItems = stateProducts.map((obj) => ({ ...obj }));
+      cloneDataItems.forEach((item) => {
+        if (item.id === id) {
+          item.quantity -= 1
+        }
+      })
+    } else {
+      return
+    }
+    setProducts(cloneDataItems);
   }
   // Lấy giá trị ô input số lượng item
-  function valueInputQuantity( event, id ) {
+  function getValueInputQuantity(event, id) {
     let valueQuantity = event.target.value;
-    console.log('valueQuantity', valueQuantity)
-
     let dataItemClone;
 
-    if (valueInputQuantity > 0 && valueInputQuantity <= 100) {
-      dataItemClone = stateProducts.map((obj) => ({ ...obj }) );
+    if (valueQuantity > 0 && valueQuantity <= 100) {
+      dataItemClone = stateProducts.map((obj) => ({ ...obj }));
       dataItemClone.forEach((item) => {
         if (item.id === id) {
           item.quantity = parseInt(valueQuantity);
-        }        
+        }
       })
     } else {
       return;
     }
-    setProducts( dataItemClone )
-    console.log('stateProducts[1]', stateProducts[1])
+    setProducts(dataItemClone)
   }
 
   // Xóa
   function deleteItem(id) {
-    let deletedItem = stateProducts.filter( (item) => item.id !== id);
-    setProducts( deletedItem )
+    let deletedItem = stateProducts.filter((item) => item.id !== id);
+    setProducts(deletedItem)
   }
 
-   // Xóa tất cả các item - phải thông qua thông báo
-   function deleteAllItems() { 
-    let deleteItem =  [...stateProducts].splice( 1, 0 );
-    setProducts( deleteItem )
+  // Xóa tất cả các item - phải thông qua thông báo
+  function deleteAllItems() {
+    let deleteItem = [...stateProducts].splice(1, 0);
+    setProducts(deleteItem)
 
-}
+  }
 
   const cartItemElement = stateProducts.map((cart_item) =>
 
@@ -108,14 +110,14 @@ function ShoppingCartPage() {
       {/* Chỉnh số lượng sp */}
       <span className="custom-number">
 
-        <i  onClick={ minusProductNumber } className="fas fa-minus" />
+        <i onClick={() => minusProductNumber(cart_item.quantity, cart_item.id)} className="fas fa-minus" />
 
-        <input onChange={ (event) => valueInputQuantity(event, cart_item.id) }
-          value = { cart_item.quantity } 
-          
+        <input onChange={(event) => getValueInputQuantity(event, cart_item.id)}
+          value={cart_item.quantity}
+
           className="custom-number-input" type="number" />
 
-        <i onClick={ addProductNumber } className="fas fa-plus" />
+        <i onClick={() => addProductNumber(cart_item.quantity, cart_item.id)} className="fas fa-plus" />
 
       </span>
 
@@ -123,9 +125,9 @@ function ShoppingCartPage() {
       <span>{(cart_item.price * cart_item.quantity).toLocaleString()} ₫</span>
 
       {/* icon thùng rác xóa đơn */}
-      <span onClick= { () => deleteItem( cart_item.id ) } 
-        className=" delete-one " type="button"> 
-        <i className="fas fa-trash-alt " /> 
+      <span onClick={() => deleteItem(cart_item.id)}
+        className=" delete-one " type="button">
+        <i className="fas fa-trash-alt " />
       </span>
 
     </div>
@@ -147,8 +149,8 @@ function ShoppingCartPage() {
         <span className=" pro-name-mobile-flex ">
           {cart_item.brand} {cart_item.name}
 
-          <div onClick= { () => deleteItem( cart_item.id ) } > 
-            <i className="fas fa-trash-alt  delete-one " /> 
+          <div onClick={() => deleteItem(cart_item.id)} >
+            <i className="fas fa-trash-alt  delete-one " />
           </div>
 
         </span>
@@ -162,14 +164,15 @@ function ShoppingCartPage() {
           <div className="col-name">SỐ LƯỢNG</div>
           {/* Chỉnh số lượng sp */}
           <div className="custom-number-mobile">
-            
-            <i onClick={ minusProductNumber } className="fas fa-minus" />
-            
-            <input onChange={ (event) => valueInputQuantity(event, cart_item.id) } 
-              value={cart_item.quantity} 
+
+            <i onClick={() => minusProductNumber(cart_item.quantity, cart_item.id)} className="fas fa-minus" />
+
+            <input onChange={(event) => getValueInputQuantity(event, cart_item.id)}
+              value={cart_item.quantity}
+
               className="custom-number-input-mobile" type="number" />
 
-            <i onClick={ addProductNumber } className="fas fa-plus" />
+            <i  onClick={() => addProductNumber(cart_item.quantity, cart_item.id)} className="fas fa-plus" />
 
           </div>
         </span>
@@ -220,28 +223,28 @@ function ShoppingCartPage() {
           {loading
             ? (<div className="loadding_products-list__mobile"> Đang tải các sản phẩm, xin chờ... </div>)
             : stateProducts.length === 0 ?
-            (<div className="empty-cart-message__mobile">Giỏ hàng của bạn đang trống! </div>)
-            : (cartItemElementMobile)
+              (<div className="empty-cart-message__mobile">Giỏ hàng của bạn đang trống! </div>)
+              : (cartItemElementMobile)
           }
         </div>
-     
+
 
         {/* Nút tiếp tục mua hàng và xóa tất cả */}
-        <div className=  {` ${ stateProducts.length === 0 ? "justify-content__center" 
-          : 'justify-content__space-between' }  cart-button-buy-delete-all   container `} >
+        <div className={` ${stateProducts.length === 0 ? "justify-content__center"
+          : 'justify-content__space-between'}  cart-button-buy-delete-all   container `} >
 
-          <Link to="/products"> 
-            <span className= {` button-buy `}  type="button"> TIẾP TỤC MUA HÀNG </span> 
-          </Link>  
-          
-          <span onClick= { deleteAllItems } 
-            className= {` ${ stateProducts.length > 0 ? "d-flex" : 'd-none' } button-delete-all `}  type="button" > XÓA TOÀN BỘ 
+          <Link to="/products">
+            <span className={` button-buy `} type="button"> TIẾP TỤC MUA HÀNG </span>
+          </Link>
+
+          <span onClick={deleteAllItems}
+            className={` ${stateProducts.length > 0 ? "d-flex" : 'd-none'} button-delete-all `} type="button" > XÓA TOÀN BỘ
           </span>
 
         </div>
 
         {/* Khối giảm giá và tính tổng tiền với giảm giá */}
-        <DiscountTotalCalculation stateProducts = { stateProducts } />
+        <DiscountTotalCalculation stateProducts={stateProducts} />
         {/* Khối giảm giá */}
         {/* Khối Thành tiền */}
 
