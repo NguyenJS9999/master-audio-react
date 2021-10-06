@@ -28,6 +28,12 @@
 .order__first-info {
   margin-bottom: 0rem;
 }
+.order__first-info label {
+  margin-bottom: 0.25rem;
+}
+.required {
+  color: var(--color-danger);
+} 
 .order__first-info input {
   width: 100%;
 }
@@ -55,20 +61,23 @@
 }
 
 /* Thông tin đơn thàng và phương thức thanh toán */
-.order-payment__container {
+.info-order--payment__container {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 3rem;
 }
 
 /* Thông tin đơn hàng */
 .order__details {
+  border: 1px solid rgba(18, 18, 18, 0.1);
   width: 100%;
-  height: fit-content;
+  height: fit-content;  
   background-color: #fff;
   padding: 2rem 1.5rem;
-  border: 1px solid rgba(18, 18, 18, 0.1);
+  margin-top: 0 !important;
 }
 .order__list {
   margin-bottom: 0rem;
@@ -77,8 +86,13 @@
   padding: 0.75rem 0;
   font-weight: 500;
 }
+
 .order-item {
   border-bottom: 1px solid rgba(18, 18, 18, 0.1);
+}
+.check-out__img-item {
+  width: 50px;
+  height: auto;
 }
 .order-row,
 .order-row-small {
@@ -116,6 +130,10 @@
 }
 
 /* Khối phương thức thanh toán */
+.collapse:not(.show) {
+  display: flex;
+}
+
 .payment-methods__container {
   width: 100%;
   height: fit-content;

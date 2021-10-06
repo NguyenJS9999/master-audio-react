@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../store/cartSlice"
 
 import "./ProductDetail.css";
 import Newsletter from "../../newsletter/NewsLetter"
 
+
 function ProductDetailPage() {
   // Mảng data 1 { item }
-  const [stateProductDetail, setProductDetail] = useState([]);
+  const [stateProductDetail, setProductDetail] = useState( {} );
   const [loading, setLoading] = useState(true);
   // Redux
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // Lấy chuỗi params
   let { id } = useParams();
 
-  // Lấy về mảng các {} từ API
+  // Lấy về mảng 1 {} từ API vs Param
   useEffect(() => {
     fetch(
       ` https://rest-api-nodejs-reactjs-router.herokuapp.com/products/${id} `
@@ -57,7 +59,7 @@ function ProductDetailPage() {
 
     if (valueQuantity > 0 && valueQuantity <= 100) {
       dataItemClone = { ...stateProductDetail };
-      dataItemClone.quantity =  parseInt(valueQuantity);
+      dataItemClone.quantity = parseInt(valueQuantity);
       setProductDetail(dataItemClone)
     }
     else {
@@ -67,6 +69,22 @@ function ProductDetailPage() {
 
   return (
     <>
+      {/* breadcrumb */}
+      <div className="page-banner     container-fluid ">
+        <div className=" page-banner__content ">
+          <div className=" breadcrumb-title ">{stateProductDetail.brand}</div>
+
+          <div className="page-banner__hr-line" />
+
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item"><a href="./index.html">TRANG CHỦ</a></li>
+              <li className="breadcrumb-item" aria-current="page">{stateProductDetail.name}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      {/* breadcrumb */}
       {loading ?
         <div className='container'>Loadding...</div>
         :
@@ -196,17 +214,15 @@ function ProductDetailPage() {
                     {/* Nút bấm thêm vào giỏ hàng - mua */}
                     <div className="button-cart-buy">
 
-                      <div 
-                        // onClick = { () => dispatch( addProduct( stateProductDetail.quantity ) ) }
+                      <div
+                        onClick = { () => dispatch( addProduct( stateProductDetail ) ) }
                         className="button-cart" type="button">
-                          <i className="fas fa-cart-arrow-down" /> 
-                          Thêm vào giỏ hàng 
+                        <i className="fas fa-cart-arrow-down" />&nbsp;Thêm vào giỏ hàng
                       </div>
 
-                      <Link to="/shopping-cart" 
-                        // onClick = { () => dispatch( addProduct( stateProductDetail.quantity ) ) } 
+                      <Link to="/shopping-cart"
+                        onClick = { () => dispatch( addProduct( stateProductDetail ) ) } 
                       >
-                        
                         <div className="button-buy" type="button">
                           <i className="fas fa-coins" />&nbsp;Mua ngay
                         </div>

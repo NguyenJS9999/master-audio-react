@@ -116,7 +116,7 @@
     margin-top: 1.5rem;
   }
   .order-row-small {
-    padding: 0 0 0.75rem 0;
+    padding: 0.5rem 0 0.75rem 0;
     justify-content: space-between;
   }
   .order-row-small .col-left {
@@ -125,10 +125,10 @@
     font-weight: 500;
     text-align: left;
   }
-  .order-ship-fee,
+  /* .order-ship-fee,
   .order__list {
     border-bottom: 1px solid rgba(18, 18, 18, 0.1);
-  }
+  } */
   .order-payment,
   .order-ship,
   .order-expect {

@@ -1,21 +1,17 @@
-import { useSelector } from "react-redux";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+// Redux
+import { useSelector } from "react-redux";
 
 // import NavigationCss from "./navigation.module.css";
 import "./Navigation.css";
 
+
 function NavigationPage() {
   const [stateStatusMenuMobile, setStatusCategory] = useState(false);
-  
-  const numberItems = useSelector( function( state ) { 
-    console.log( 'state', state )
-    return state.cart.numberItems 
-  });
-  
+  const shoppingList = useSelector((state) => state.cart.listProductCart);
 
-  console.log('numberItems', numberItems)
-
+  // Tắt bật menu hambeger
   function toggleMenuHiddenMobile() {
     if (stateStatusMenuMobile === true) {
       setStatusCategory(false);
@@ -23,7 +19,7 @@ function NavigationPage() {
       setStatusCategory(true);
     }
   }
-
+  // Ấn X ẩn munu hamber
   function closeMenuMobile() {
     setStatusCategory(false);
   }
@@ -40,7 +36,7 @@ function NavigationPage() {
               <div className="icon-menu-search">
 
                 {/* Menu Hambeger ẩn màn iphone - Home - Xây dựng cấu hình */}
-                <div onClick = { toggleMenuHiddenMobile } className=" icon-menu-hidden-mobile  ">
+                <div onClick={toggleMenuHiddenMobile} className=" icon-menu-hidden-mobile  ">
                   <i className="fas fa-bars" />
                 </div>
 
@@ -67,7 +63,7 @@ function NavigationPage() {
                 <Link to="/shopping-cart" className="cart-icon">
                   <span>
                     <i className="fas fa-shopping-cart" />
-                    <span className=" cart-number-items ">{numberItems}</span>
+                    <span className=" cart-number-items ">{shoppingList.length}</span>
                   </span>
                 </Link>
                 {/* Like mobile */}
@@ -89,33 +85,37 @@ function NavigationPage() {
               {/* cart / login */}
               {/* menu cố định đáy chuyển từ nav2 ẩn lên thành hambeger màn max576*/}
               <div className="mobile-header-components">
+                {/* 1 */}
                 <div className="component-wrapper">
                   <div className="mobile-component mobile-home">
-                    <Link to="/">
+                    <NavLink to="/" activeClassName="high-light__menu-bottom" exact>
                       <i className="fas fa-home" />
                       <span>Trang chủ</span>
-                    </Link>
+                    </NavLink>
                   </div>
+                  {/* 2 */}
                   <div className=" mobile-component    mobile-wishlist ">
-                    <Link to="/wish-list">
+                    <NavLink to="/wish-list" activeClassName="high-light__menu-bottom">
                       <div className="mobile-wishlist-status ">
                         <i className="fas fa-heart" />
                         <span className=" mobile-wishlist-number ">
-                          {numberItems}<span></span>
+                          <span></span>
                         </span>
                       </div>
                       <span>Yêu thích</span>
-                    </Link>
+                    </NavLink>
                   </div>
+                  {/* 3 */}
                   <div className="mobile-component mobile-cart">
-                    <Link to="/shopping-cart">
+                    <NavLink to="/shopping-cart" activeClassName="high-light__menu-bottom">
                       <div className="mobile-cart-status">
                         <i className="fas fa-shopping-cart" />
-                        <span className="mobile-cart-number">3</span>
+                        <span className="mobile-cart-number">{shoppingList.length}</span>
                       </div>
                       <span>Giỏ hàng</span>
-                    </Link>
+                    </NavLink>
                   </div>
+                  {/* 4 */}
                   <div className="mobile-component mobile-account">
                     <div className="mobile-account-div">
                       <div className="mobile-accoun-login-status">
@@ -124,6 +124,7 @@ function NavigationPage() {
                       <span>Tài khoản</span>
                     </div>
                   </div>
+
                 </div>
               </div>
               {/* menu cố định đáy */}
@@ -152,7 +153,7 @@ function NavigationPage() {
                 <Link to="/shopping-cart" className="cart-icon">
                   <div>
                     <i className="fas fa-shopping-cart" />
-                    <span className=" cart-number-items ">{numberItems}</span>
+                    <span className=" cart-number-items ">{shoppingList.length}</span>
                   </div>
                 </Link>
                 {/* Like desktop */}
@@ -467,25 +468,30 @@ function NavigationPage() {
             </div>
 
             <div className=" nav-2-menu ">
-              <Link to="/">
+              <NavLink to="/" activeClassName="active" exact>
                 <i className="fas fa-home" />
                 &nbsp;Trang chủ
-              </Link>
-              <Link to="/build-config">
+              </NavLink>
+
+              <NavLink to="/build-config" activeClassName="active">
                 <i className="fas fa-tools" />
                 &nbsp;Xây dựng cấu hình
-              </Link>
-              <Link to="/typical-projects">
+              </NavLink>
+
+              <NavLink to="/typical-projects" activeClassName="active">
                 <i className="fas fa-users-cog" />
                 &nbsp;CÔNG TRÌNH TIÊU BIỂU
-              </Link>
-              <Link to="/news">
+              </NavLink>
+
+              <NavLink to="/news" activeClassName="active">
                 <i className="far fa-newspaper" />
                 &nbsp;Tin tức
-              </Link>
-              <Link to="/contact">
+              </NavLink>
+
+              <NavLink to="/contact" activeClassName="active">
                 <i className="fas fa-map-marked-alt" /> Liên hệ
-              </Link>
+              </NavLink>
+
             </div>
           </div>
         </div>
@@ -493,14 +499,14 @@ function NavigationPage() {
 
         {/*  d-none  Nav Menu2 Ẩn - thu gọn - nền xám */}
         {/* <div className=" backdrop-bg "></div> */}
-        <div onClick = { closeMenuMobile  } 
-          className = { ` ${stateStatusMenuMobile ?  "d-flex" : "d-none" }  backdrop-bg ` } > 
+        <div onClick={closeMenuMobile}
+          className={` ${stateStatusMenuMobile ? "d-flex" : "d-none"}  backdrop-bg `} >
         </div>
         {/* Menu ẩn nhỏ bên trái màn hình */}
-        
-        <div className = { ` ${stateStatusMenuMobile ?  "mobile-nav-bar__translate-left" : "d-none" } mobile-nav-bar ` } >
 
-          <div onClick = { closeMenuMobile  } 
+        <div className={` ${stateStatusMenuMobile ? "mobile-nav-bar__translate-left" : "d-none"} mobile-nav-bar `} >
+
+          <div onClick={closeMenuMobile}
             className="btn-close-menu" type="button">
             <i className="fas fa-times" />
           </div>
@@ -546,29 +552,29 @@ function NavigationPage() {
                   {/*Menu con bên trong accodion được ẩn cuộn ẩn đi */}
                   <div className=" menu-collapse ">
                     <span>
-                      <Link to="/">
+                      <NavLink to="/" activeClassName="active" exact>
                         <div>Trang chủ</div>
-                      </Link>
+                      </NavLink>
                     </span>
                     <span>
-                      <Link to="/build-config">
+                      <NavLink to="/build-config" activeClassName="active">
                         <div>Xây dựng cấu hình</div>
-                      </Link>
+                      </NavLink>
                     </span>
                     <span>
-                      <Link to="/typical-projects">
+                      <NavLink to="/typical-projects" activeClassName="active">
                         <div>CÔNG TRÌNH TIÊU BIỂU</div>
-                      </Link>
+                      </NavLink>
                     </span>
                     <span>
-                      <Link to="/news">
+                      <NavLink to="/news" activeClassName="active">
                         <div>Tin tức</div>
-                      </Link>
+                      </NavLink>
                     </span>
                     <span>
-                      <Link to="/contact">
+                      <NavLink to="/contact" activeClassName="active">
                         <div>Liên hệ</div>
-                      </Link>
+                      </NavLink>
                     </span>
                   </div>
                 </div>

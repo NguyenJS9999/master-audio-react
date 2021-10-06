@@ -1,6 +1,8 @@
 // import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import Slider from "react-slick"; // react-slick.neostack.com
+
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 
@@ -8,7 +10,22 @@ import Newsletter from "../../newsletter/NewsLetter"
 import { Services } from "./Services"
 
 function HomePage() {
-  
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 1500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 8000,
+    cssEase: "linear",
+    arrows: false,
+    fade: true,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+
+  }
+
   return (
     <>
       <main>
@@ -19,7 +36,27 @@ function HomePage() {
           {/* categorys */}
           {/* slick slider */}
           <div className=" banners ">
-            <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-top-home-adamson-system.png?raw=true" alt="banner" />
+
+            <Slider {...settings}>
+              <div>
+                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-top-home-adamson-system.png?raw=true" alt="banner" />
+              </div>
+              <div>
+                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/adamson_CS_Family_1920.png?raw=true" alt="banner" />
+              </div>
+              <div>
+                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/adamson-m-series.png?raw=true" alt="banner" />
+              </div>
+              <div>
+                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/Adamson-S-series.png?raw=true" alt="banner" />
+              </div>
+              {/* <div>
+                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/X14FD_poster.png?raw=true" alt="banner" />
+              </div> */}
+            </Slider>
+
+
+            {/* <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-top-home-adamson-system.png?raw=true" alt="banner" /> */}
           </div>
         </section>
         {/* List sản phẩm - quảng cáo mỗi loại 1 vài sp nội bật */}
@@ -37,7 +74,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
                         </div>
@@ -61,7 +98,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
                         </div>
@@ -85,7 +122,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
                         </div>
@@ -109,7 +146,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
                         </div>
@@ -147,7 +184,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
                         </div>
@@ -171,7 +208,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
                         </div>
@@ -195,7 +232,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
                         </div>
@@ -219,7 +256,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
                         </div>
@@ -257,7 +294,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
                         </div>
@@ -281,7 +318,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
                         </div>
@@ -305,7 +342,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
                         </div>
@@ -329,7 +366,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
                         </div>
@@ -358,8 +395,12 @@ function HomePage() {
             </div>
             {/* Banner giữa 1 */}
             <div className=" featured-product__banners ">
-              <div className=" banners ">
-                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-top-home-adamson-system-bass.png?raw=true" alt="banner" />
+              <div className=" banners-center-1 ">
+                <Slider {...settings}>
+                  <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-adamson-S-Series.png?raw=true" alt="banner" />
+                  <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-top-home-adamson-system-bass.png?raw=true" alt="banner" />
+                  <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/Point-PC-Series-7002.png?raw=true" alt="banner" />
+                </Slider>
               </div>
             </div>
             {/* 4 "MIXER – VANG SỐ VANG CƠ - NÂNG TIẾNG" */}
@@ -373,9 +414,10 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
+                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp"
+                            alt="speak" />
                         </div>
                       </Link>
                       <div className="card-body">
@@ -397,7 +439,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
                         </div>
@@ -421,7 +463,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
                         </div>
@@ -445,7 +487,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
                         </div>
@@ -483,7 +525,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
                         </div>
@@ -507,7 +549,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
                         </div>
@@ -531,7 +573,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
                         </div>
@@ -555,7 +597,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
                         </div>
@@ -584,8 +626,12 @@ function HomePage() {
             </span>
             {/* Banner giữa 2 */}
             <div className=" featured-product__banners ">
-              <div className=" banners ">
-                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-adamson-S-Series.png?raw=true" alt="banner" />
+              <div className=" banners-center-2 ">
+                <Slider {...settings}>
+                    <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/PS-Series-banner.jpg?raw=true" alt="banner" />
+                    <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/xcellence_headers-banner.png?raw=true" alt="banner" />
+                    <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/Nexo-stm-banner.png?raw=true" alt="banner" />
+                </Slider>
               </div>
             </div>
             {/* 6 MICRO */}
@@ -599,7 +645,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
                         </div>
@@ -623,7 +669,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
                         </div>
@@ -647,7 +693,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
                         </div>
@@ -671,7 +717,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
                         </div>
@@ -709,7 +755,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
                         </div>
@@ -733,7 +779,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
                         </div>
@@ -757,7 +803,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
                         </div>
@@ -781,7 +827,7 @@ function HomePage() {
                       {/* <div className="product-card__wishlist">
                         <i className="far fa-heart" />
                       </div> */}
-                      <Link to= {`/products`} >
+                      <Link to={`/products`} >
                         <div className="product-card__img">
                           <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
                         </div>
@@ -886,7 +932,7 @@ function HomePage() {
 
 
     </>
-  
+
   );
 }
 

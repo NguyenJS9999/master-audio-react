@@ -32,10 +32,9 @@
 }
 .social-network-icon i{
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.1s ease;
 }
 .social-network-icon i:hover {
-  transform: scale(1.5);
   color: #E42313;
 }
 
@@ -114,7 +113,7 @@ p {
 @media (min-width: 576px) {
   /* footer chia 1 cột */
   .footer-infors {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 48px;
   }
 

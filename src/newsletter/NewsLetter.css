@@ -2,12 +2,13 @@
 .newsletter-container {
     /* border: 0.1px solid rgb(102, 67, 21); */
     background: #fff;
+    text-align: center;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3.5rem 3rem 2.25rem 0;
+    padding: 3.5rem 0rem 2.25rem 0;
     padding-bottom: 5rem;
   }
   .newsletter-title {

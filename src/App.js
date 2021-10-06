@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+
 import NavigationPage from "./navigation/NavigationPage";
 
 import HomePage from "./pages/home/HomePage";
@@ -27,6 +28,7 @@ function App() {
     <Router>
       <div>
         <NavigationPage />
+       
         {/* <nav>
           <ul>
 
@@ -73,7 +75,7 @@ function App() {
         </nav> */}
 
         <Switch>
-       
+
 
           <Route path="/products" exact>
             <ProductsPage />
@@ -90,7 +92,7 @@ function App() {
           <Route path="/check-out" exact>
             <CheckOutPage />
           </Route>
-          
+
           <Route path="/order-complete" exact>
             <OrderCompletePage />
           </Route>
@@ -123,7 +125,7 @@ function App() {
         <FooterPage />
       </div>
     </Router>
-    
+
   );
 }
 

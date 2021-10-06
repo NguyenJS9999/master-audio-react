@@ -1,3 +1,12 @@
+/* Hight light trang hiện tại */
+.active {
+  border-bottom: 2px solid #fff;
+  border-width: 80%;
+}
+.high-light__menu-bottom {
+  color: var( --color-highlight-border) !important;
+}
+
 /* Start Nav 1 */
 .container-nav-1 {
   border-bottom: 0.1px solid rgba(228, 35, 19, 0.2);

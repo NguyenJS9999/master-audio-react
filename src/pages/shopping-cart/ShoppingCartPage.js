@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../store/cartSlice"
+import { removeProduct } from "../../store/cartSlice"
 
 import "./ShoppingCart.css";
 // import CustomToast from "../../components/CustomToast";
@@ -9,32 +11,36 @@ import "./ShoppingCart.css";
 import Newsletter from "../../newsletter/NewsLetter"
 import { DiscountTotalCalculation } from "./DiscountTotalCalculation"
 
+
+
 function ShoppingCartPage() {
-  // Store prop tạm thời sau thay = redux;
-  const [stateProducts, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  // const [state, set] = useState([]);
+  // Lỗi... ?
+  const shoppingList = useSelector((state) => state.cart.listProductCart);
+  // Redux gửi data lên store
+  const dispatch = useDispatch();
 
+  // const [loading, setLoading] = useState(false);
   // Tải dữ liệu về 1 lần đầu
-  useEffect(() => {
-    // Async await
-    async function fetchData() {
-      const response = await fetch(
-        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products`
-      );
-      const result = await response.json();
-      setProducts(result);
-      setLoading(false)
-    }
+  // useEffect(() => {
+  //   // Async await
+  //   async function fetchData() {
+  //     const response = await fetch(
+  //       `https://rest-api-nodejs-reactjs-router.herokuapp.com/products`
+  //     );
+  //     const result = await response.json();
+  //     setProducts(result);
+  //     setLoading(false)
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
+  //
 
   // Tăng số lượng sp ô input
   function addProductNumber(quantity, id) {
     let cloneDataItems
     if (quantity < 100) {
-      cloneDataItems = stateProducts.map((obj) => ({ ...obj }));
+      cloneDataItems = shoppingList.map((obj) => ({ ...obj }));
       cloneDataItems.forEach((item) => {
         if (item.id === id) {
           item.quantity += 1
@@ -43,13 +49,13 @@ function ShoppingCartPage() {
     } else {
       return
     }
-    setProducts(cloneDataItems);
+    dispatch(setProducts(cloneDataItems));
   }
   // Giảm số lượng sp ô input
   function minusProductNumber(quantity, id) {
     let cloneDataItems
     if (quantity > 1) {
-      cloneDataItems = stateProducts.map((obj) => ({ ...obj }));
+      cloneDataItems = shoppingList.map((obj) => ({ ...obj }));
       cloneDataItems.forEach((item) => {
         if (item.id === id) {
           item.quantity -= 1
@@ -58,16 +64,16 @@ function ShoppingCartPage() {
     } else {
       return
     }
-    setProducts(cloneDataItems);
+    dispatch(setProducts(cloneDataItems))
   }
   // Lấy giá trị ô input số lượng item
   function getValueInputQuantity(event, id) {
     let valueQuantity = event.target.value;
-    let dataItemClone;
+    let cloneDataItems;
 
     if (valueQuantity > 0 && valueQuantity <= 100) {
-      dataItemClone = stateProducts.map((obj) => ({ ...obj }));
-      dataItemClone.forEach((item) => {
+      cloneDataItems = shoppingList.map((obj) => ({ ...obj }));
+      cloneDataItems.forEach((item) => {
         if (item.id === id) {
           item.quantity = parseInt(valueQuantity);
         }
@@ -75,24 +81,25 @@ function ShoppingCartPage() {
     } else {
       return;
     }
-    setProducts(dataItemClone)
+    dispatch(setProducts(cloneDataItems))
   }
 
   // Xóa
   function deleteItem(id) {
-    let deletedItem = stateProducts.filter((item) => item.id !== id);
-    setProducts(deletedItem)
+    let deletedItem = shoppingList.filter((item) => item.id !== id);
+    dispatch(removeProduct(deletedItem))
+    // setProducts(deletedItem)
   }
 
   // Xóa tất cả các item - phải thông qua thông báo
   function deleteAllItems() {
-    let deleteItem = [...stateProducts].splice(1, 0);
-    setProducts(deleteItem)
+    let deleteItem = [...shoppingList].splice(1, 0);
+    dispatch(removeProduct(deleteItem))
+    // setProducts(deleteItem)
 
   }
-
-  const cartItemElement = stateProducts.map((cart_item) =>
-
+  // Cart màn Desktop
+  const cartItemElement = shoppingList.map((cart_item) =>
     <div key={cart_item.id} className="cart-item">
 
       {/* Ảnh sản phẩm */}
@@ -114,7 +121,6 @@ function ShoppingCartPage() {
 
         <input onChange={(event) => getValueInputQuantity(event, cart_item.id)}
           value={cart_item.quantity}
-
           className="custom-number-input" type="number" />
 
         <i onClick={() => addProductNumber(cart_item.quantity, cart_item.id)} className="fas fa-plus" />
@@ -134,7 +140,7 @@ function ShoppingCartPage() {
   )
 
   // Cart màn Modile
-  const cartItemElementMobile = stateProducts.map((cart_item) => (
+  const cartItemElementMobile = shoppingList.map((cart_item) => (
     <div key={cart_item.id} className=" cart-item-mobile ">
       {/* Khối ảnh Trái */}
       <div className=" cart-item-pro-img-mobile ">
@@ -172,7 +178,7 @@ function ShoppingCartPage() {
 
               className="custom-number-input-mobile" type="number" />
 
-            <i  onClick={() => addProductNumber(cart_item.quantity, cart_item.id)} className="fas fa-plus" />
+            <i onClick={() => addProductNumber(cart_item.quantity, cart_item.id)} className="fas fa-plus" />
 
           </div>
         </span>
@@ -188,13 +194,30 @@ function ShoppingCartPage() {
 
   return (
     <>
+      {/* breadcrumb */}
+      <div className="page-banner     container-fluid ">
+        <div className=" page-banner__content ">
+          <div className=" breadcrumb-title ">GIỎ HÀNG CỦA BẠN</div>
+
+          <div className="page-banner__hr-line" />
+
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item"><a href="./index.html">TRANG CHỦ</a></li>
+              <li className="breadcrumb-item" aria-current="page">GIỎ HÀNG</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      {/* breadcrumb */}
+
       <main className=" cart-container-background ">
         {/* cart-container Desktop */}
         <section className=" cart-container   container     ">
 
           <div className="cart-title">
             <span> SẢN PHẨM&nbsp;
-              <small className="cart-title-number-items">({stateProducts.length})</small>
+              <small className="cart-title-number-items">({shoppingList.length})</small>
             </span>
             <span> TÊN SẢN PHẨM</span>
             <span>ĐƠN GIÁ</span>
@@ -205,11 +228,12 @@ function ShoppingCartPage() {
           </div>
 
           <div className="cart-items">
-            {loading
-              ? (<div className="loadding_products-list"> Đang tải các sản phẩm, xin chờ... </div>)
-              : stateProducts.length === 0 ?
-                (<div className="empty-cart-message">Giỏ hàng của bạn đang trống! </div>)
-                : (cartItemElement)
+            {
+              // loading ?
+              // (<div className="loadding_products-list"> Đang tải các sản phẩm, xin chờ... </div>) :
+              shoppingList.length === 0 ?
+                (<div className="empty-cart-message">Giỏ hàng của bạn đang trống! </div>) :
+                (cartItemElement)
             }
           </div>
 
@@ -220,17 +244,18 @@ function ShoppingCartPage() {
 
         {/* cart-container Mobile*/}
         <div className=" cart-container-mobile   container ">
-          {loading
-            ? (<div className="loadding_products-list__mobile"> Đang tải các sản phẩm, xin chờ... </div>)
-            : stateProducts.length === 0 ?
-              (<div className="empty-cart-message__mobile">Giỏ hàng của bạn đang trống! </div>)
-              : (cartItemElementMobile)
+          {
+            // loading
+            // ? (<div className="loadding_products-list__mobile"> Đang tải các sản phẩm, xin chờ... </div>) : 
+            shoppingList.length === 0 ?
+              (<div className="empty-cart-message__mobile">Giỏ hàng của bạn đang trống! </div>) :
+              (cartItemElementMobile)
           }
         </div>
 
 
         {/* Nút tiếp tục mua hàng và xóa tất cả */}
-        <div className={` ${stateProducts.length === 0 ? "justify-content__center"
+        <div className={` ${shoppingList.length === 0 ? "justify-content__center"
           : 'justify-content__space-between'}  cart-button-buy-delete-all   container `} >
 
           <Link to="/products">
@@ -238,13 +263,13 @@ function ShoppingCartPage() {
           </Link>
 
           <span onClick={deleteAllItems}
-            className={` ${stateProducts.length > 0 ? "d-flex" : 'd-none'} button-delete-all `} type="button" > XÓA TOÀN BỘ
+            className={` ${shoppingList.length > 0 ? "d-flex" : 'd-none'} button-delete-all `} type="button" > XÓA TOÀN BỘ
           </span>
 
         </div>
 
         {/* Khối giảm giá và tính tổng tiền với giảm giá */}
-        <DiscountTotalCalculation stateProducts={stateProducts} />
+        <DiscountTotalCalculation stateProducts={shoppingList} />
         {/* Khối giảm giá */}
         {/* Khối Thành tiền */}
 

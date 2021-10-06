@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// Redux
 import { useDispatch } from "react-redux";
+import { addProduct } from "../../store/cartSlice"
 
 import "./ProductsPage.css";
 import "../../App.css";
@@ -8,7 +10,6 @@ import "../../App.css";
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
 import Newsletter from "../../newsletter/NewsLetter"
-import { addProduct } from "../../store/cartSlice"
 
 function ProductsPage() {
   const [stateProducts, setProducts] = useState([]);
@@ -23,9 +24,11 @@ function ProductsPage() {
   const [stateLimitOfPaginate, setLimitOfPaginate] = useState(9);
   // Giá trị 1 nút phân trang
   const [stateNumOfPaginate, setNumOfPaginate] = useState(1);
-  // Redux
-  const dispatch = useDispatch();
-  // console.log('dispatch', dispatch)
+  // Checked
+  const [stateChecked, setChecker] = useState('');
+  // Redux gửi đi
+  const dispatch = useDispatch(); 
+
 
   // Tải dữ liệu về 1 lần đầu
   useEffect(() => {
@@ -42,7 +45,6 @@ function ProductsPage() {
 
     fetchData();
   }, [stateLimitOfPaginate, stateNumOfPaginate]);
-
   // Sắp xếp sp - sort 
   useEffect(() => {
     let filteredList = [...stateProducts];
@@ -61,7 +63,6 @@ function ProductsPage() {
     }
     setFilterResults(filteredList);
   }, [stateInputSearchValue, stateProducts, stateSortValueItem]);
-
   // Lấy giá trị ô Search input
   function inputSearchValue(event) {
     setInputSearchValue(event.target.value);
@@ -77,13 +78,11 @@ function ProductsPage() {
     }
     searchData();
   }
-
   // Lấy giá trị sort trong select dropdown
   function getSortValue(event) {
     setSortValueItem(event.target.value);
     console.log("Giá trị ô select sort item:", stateSortValueItem);
   }
-
   // Lấy giá trị phân trang trong select dropdown
   function getLimitOfPaginate(event) {
     setLimitOfPaginate(event.target.value);
@@ -95,18 +94,34 @@ function ProductsPage() {
     console.log("Số trả về của 1 phân trang:", stateNumOfPaginate, 'num', num);
   }
   // Tích checkbox để lọc sp
-  function filterWithCheckBox(textFilter) {
-    console.log('Lọc với check-box, textFilter', textFilter);
+  function filterWithCheckBox(query, valueFilter) {
     async function filterProduct() {
       const response = await fetch(
-        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products/?q=${textFilter}  `
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products?${query}=${valueFilter}  `
       );
       const result = await response.json();
       setProducts(result);
     }
     filterProduct()
-
+    setChecker(valueFilter)
   }
+  function clearAllFilters() {
+    async function filterProduct() {
+      const response = await fetch(
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/products`
+      );
+      const result = await response.json();
+      setProducts(result);
+    }
+    filterProduct()
+    setChecker('')
+  }
+
+  // function addToCart() {
+  //   let addedProduct =
+  // }
+  // Thông báo đã thêm vào giỏ hàng
+  // function
 
   // List tất cả data
   let ProductCardElement = stateFilterResults.map((item) => (
@@ -130,9 +145,10 @@ function ProductsPage() {
           <p className="card-text product-card__price">
             {item.price.toLocaleString()}&nbsp;₫</p>
 
-          <button onClick={() => dispatch(addProduct(1))}
-            className="btn-addtocart product-card__btn">
-            <i className="fas fa-shopping-cart" />
+          <button
+            onClick={() => dispatch(addProduct(item))}
+            className="btn-addtocart  product-card__btn">
+            <i className="fas fa-shopping-cart" />&nbsp;
             <span>Thêm vào giỏ hàng</span>
           </button>
 
@@ -144,10 +160,12 @@ function ProductsPage() {
   function FilterBrandsComponent() {
     return (
       <div className="products__filter">
-        <h4 className=" section-title    products__filter-title">
-          TÌM SẢN PHẨM
-        </h4>
-        {/* Seacrch */}
+        {/* <h4 className=" section-title    products__filter-title">TÌM SẢN PHẨM</h4> */}
+        {/* Seacrch */} {/* Seacrch */}
+        <div onClick={clearAllFilters}>
+          <button class="section__btn  remove-filter__btn">XÓA LỌC</button>
+        </div>
+
 
         {/* Lọc theo thương hiệu */}
         <div className=" filter__brands">
@@ -155,14 +173,16 @@ function ProductsPage() {
             LỌC THEO THƯƠNG HIỆU
           </h4>
           <div className="filter__list">
+
             <span>
               <input
-                onClick={() => filterWithCheckBox('4 Acoustic')}
+                checked={stateChecked === '4 Acoustic' ? true : false}
+                onChange={() => filterWithCheckBox('brand', '4 Acoustic')}
                 type="radio"
                 id="4 Acoustic"
                 name="filter"
-                defaultValue="4 Acoustic"
               />
+
               <label
                 className="filter__item filter__brand-item"
                 htmlFor="4 Acoustic"
@@ -170,25 +190,29 @@ function ProductsPage() {
                 4 Acoustic
               </label>
             </span>
+
             <span>
               <input
-                onClick={() => filterWithCheckBox('Nexo')}
+                checked={stateChecked === 'Nexo' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'Nexo')}
                 type="radio"
                 id="Nexo"
                 name="filter"
-                defaultValue="Nexo"
+
               />
               <label className="filter__item filter__brand-item" htmlFor="Nexo">
                 Nexo
               </label>
             </span>
+
             <span>
               <input
-                onClick={() => filterWithCheckBox('Adamson')}
+                checked={stateChecked === 'Adamson' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'Adamson')}
                 type="radio"
                 id="Adamson"
                 name="filter"
-                defaultValue="Adamson"
+
               />
               <label
                 className="filter__item filter__brand-item"
@@ -199,11 +223,12 @@ function ProductsPage() {
             </span>
             <span>
               <input
-                onClick={() => filterWithCheckBox('Amate')}
+                checked={stateChecked === 'Amate' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'Amate')}
                 type="radio"
                 id="Amate"
                 name="filter"
-                defaultValue="Amate"
+
               />
               <label
                 className="filter__item filter__brand-item"
@@ -214,11 +239,12 @@ function ProductsPage() {
             </span>
             <span>
               <input
-                onClick={() => filterWithCheckBox('Kuledy')}
+                checked={stateChecked === 'Kuledy' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'Kuledy')}
                 type="radio"
                 id="Kuledy"
                 name="filter"
-                defaultValue="Kuledy"
+
               />
               <label
                 className="filter__item filter__brand-item"
@@ -229,8 +255,11 @@ function ProductsPage() {
             </span>
 
             <span>
-              <input onClick={() => filterWithCheckBox('DK')}
-                type="radio" id="DK" name="filter" defaultValue="DK" />
+
+              <input
+                checked={stateChecked === 'DK' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'DK')}
+                type="radio" id="DK" name="filter" />
               <label className="filter__item filter__brand-item" htmlFor="DK">
                 DK
               </label>
@@ -238,11 +267,11 @@ function ProductsPage() {
 
             <span>
               <input
-                onClick={() => filterWithCheckBox('Baiervires')}
+                checked={stateChecked === 'Baiervires' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'Baiervires')}
                 type="radio"
                 id="Baiervires"
                 name="filter"
-                defaultValue="Baiervires"
               />
               <label
                 className="filter__item filter__brand-item"
@@ -254,11 +283,12 @@ function ProductsPage() {
 
             <span>
               <input
-                onClick={() => filterWithCheckBox('Hous')}
+                checked={stateChecked === 'HOUS' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'HOUS')}
                 type="radio"
                 id="Hous"
                 name="filter"
-                defaultValue="Hous"
+
               />
               <label className="filter__item filter__brand-item" htmlFor="Hous">
                 Hous
@@ -266,11 +296,12 @@ function ProductsPage() {
             </span>
             <span>
               <input
-                onClick={() => filterWithCheckBox('Pioneer Dj')}
+                checked={stateChecked === 'Pioneer' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'Pioneer')}
                 type="radio"
                 id="Pioneer Dj"
                 name="filter"
-                defaultValue="Pioneer Dj"
+
               />
               <label
                 className="filter__item filter__brand-item"
@@ -287,8 +318,10 @@ function ProductsPage() {
           <div className="filter__type-list filter__list">
 
             <span>
-              <input onClick={() => filterWithCheckBox('Subwoofer')}
-                type="radio" name="filter" id="Subwoofer" defaultValue="Subwoofer" />
+              <input
+                checked={stateChecked === 'subwoofer' ? true : false}
+                onChange={() => filterWithCheckBox('type', 'subwoofer')}
+                type="radio" name="filter" id="Subwoofer" value="Subwoofer" />
               <label
                 className="filter__item filter__type-item"
                 htmlFor="Subwoofer"
@@ -299,10 +332,11 @@ function ProductsPage() {
 
             <span>
               <input
-                onClick={() => filterWithCheckBox('full-range')}
+                checked={stateChecked === 'full-range' ? true : false}
+                onChange={() => filterWithCheckBox('type', 'full-range')}
                 type="radio" name="filter"
                 id="full-range"
-                defaultValue="full-range"
+
               />
               <label
                 className="filter__item filter__type-item"
@@ -314,10 +348,11 @@ function ProductsPage() {
 
             <span>
               <input
-                onClick={() => filterWithCheckBox('line-array')}
+                checked={stateChecked === 'line-array' ? true : false}
+                onChange={() => filterWithCheckBox('type', 'line-array')}
                 type="radio" name="filter"
                 id="Line-array"
-                defaultValue="line-array"
+
               />
               <label
                 className="filter__item filter__type-item"
@@ -327,22 +362,10 @@ function ProductsPage() {
               </label>
             </span>
 
-            {/* <span>
-              <input onClick={() => filterWithCheckBox('Line array')}
-                type="radio" name="filter" id="Mid-low" defaultValue="Mid low" />
-              <label
-                className="filter__item filter__type-item"
-                htmlFor="Mid-low"
-              >
-
-                Mid low
-              </label>
-            </span> */}
-
             <span>
-
-              <input onClick={() => filterWithCheckBox('amplifier')}
-                type="radio" name="filter" id="Amplifier" defaultValue="amplifier" />
+              <input
+                checked={stateChecked === 'amplifier' ? true : false} onChange={() => filterWithCheckBox('type', 'amplifier')}
+                type="radio" name="filter" id="Amplifier" />
               <label
                 className="filter__item filter__type-item"
                 htmlFor="Amplifier"
@@ -352,50 +375,23 @@ function ProductsPage() {
             </span>
             <span>
 
-              <input onClick={() => filterWithCheckBox('micro')}
-                type="radio" name="filter" id="Micro" defaultValue="micro" />
+              <input
+                checked={stateChecked === 'micro' ? true : false} onChange={() => filterWithCheckBox('type', 'micro')}
+                type="radio" name="filter" id="Micro" />
               <label className="filter__item filter__type-item" htmlFor="Micro">
                 Micro
               </label>
             </span>
 
-            {/* <span>
-              <input
-                onClick={() => filterWithCheckBox('Digital echo')}
-                type="radio" name="filter"
-                id="Digital-echo"
-                defaultValue="Digital echo"
-              />
-              <label
-                className="filter__item filter__type-item"
-                htmlFor="Digital-echo"
-              >
-                Digital echo
-              </label>
-            </span> */}
-
             <span>
-              <input onClick={() => filterWithCheckBox('Mixer')}
-                type="radio" name="filter" id="Mixer" defaultValue="Mixer" />
+              <input
+                checked={stateChecked === 'Mixer' ? true : false}
+                onChange={() => filterWithCheckBox('type', 'Mixer')}
+                type="radio" name="filter" id="Mixer" />
               <label className="filter__item filter__type-item" htmlFor="Mixer">
                 Mixer
               </label>
             </span>
-
-            {/* <span>
-              <input
-                onClick={() => filterWithCheckBox('Auto power')}
-                type="radio" name="filter"
-                id="Auto-power"
-                defaultValue="Auto power"
-              />
-              <label
-                className="filter__item filter__type-item"
-                htmlFor="Auto-power"
-              >
-                Auto power
-              </label>
-            </span> */}
 
           </div>
         </div>
@@ -406,6 +402,23 @@ function ProductsPage() {
   }
   return (
     <>
+      {/* breadcrumb */}
+      <div className="page-banner     container-fluid ">
+        <div className=" page-banner__content ">
+          <div className=" breadcrumb-title ">Danh mục sản phẩm</div>
+
+          <div className="page-banner__hr-line" />
+
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item"><a href="./index.html">TRANG CHỦ</a></li>
+              <li className="breadcrumb-item" aria-current="page">DANH MỤC</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      {/* breadcrumb */}
+
       {/* Section Products List */}
       <section className=" section-products-list   container-fluid ">
         <div className="products__container container">

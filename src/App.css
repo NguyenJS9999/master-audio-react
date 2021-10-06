@@ -10,7 +10,7 @@
   --color-neutral-bg: #f6f6f6;
   --color-highlight-bg: rgba(228, 35, 19, 0.1);
   --color-neutral-border: rgba(18, 18, 18, 0.2);
-  --color-highlight-border: rgba(228, 35, 19, 0.5);
+  --color-highlight-border: rgba(228, 35, 19, 0.8);
   --color-primary: #c3811d;
   --color-primary-master-audio: rgba(228, 35, 19, 1);
   --color-primary-light: rgba(183, 136, 51, 0.9);
@@ -21,7 +21,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  border-radius: 2px;
+  /* border-radius: 2px; */
   list-style-type: none;
 }
 body {
@@ -60,6 +60,7 @@ input::placeholder {
 .custom-number input {
   max-width: 3.5rem;
 }
+
 /* Loadding ...  */
 .loadding_products-list, .loadding_products-list__mobile {
   /* border: 0.1px solid red; */
@@ -137,3 +138,141 @@ input::-webkit-inner-spin-button {
 
 /* Start */
 /* End */
+
+/* breadcrumb */
+.page-banner {
+  /* border: 1px solid red; */
+  /* background-color: #c4c4c4; */
+  background-image: url("https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/EDM-banner-breadcrumb-Wallpaper.png?raw=true");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0;
+}
+.page-banner__content {
+  width: 100%;
+  padding: 2.25rem 0;
+  background-color: rgba(18, 18, 18, 0.45);
+  color: #fff;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 8px;
+  text-transform: uppercase;
+}
+
+.breadcrumb-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  text-transform: uppercase;
+}
+
+.page-banner__hr-line {
+  background-color: #fff;
+  height: 0.125rem;
+  width: 4rem;
+  margin: auto;
+  margin-bottom: 0.5rem;
+}
+
+.breadcrumb {
+  margin: 0;
+  margin-top: -3px;
+}
+
+.breadcrumb li {
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+}
+.breadcrumb a {
+  color: rgba(255, 255, 255, 1);
+  height: 100%;
+}
+
+/* Ghi đề CSS bootstrap - thay dấy / thành > */
+.breadcrumb-item + .breadcrumb-item::before {
+  content: var(--bs-breadcrumb-divider, ">") !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* ***************************************** */
+/* Start Responsive by @Media same bootstrap */
+
+/* X-Small */
+@media (max-width: 576px) {
+  /* Giảm khoảng cách lề và cỡ chữ cho breacum ở màn iphone 5 */
+  .breadcrumb-container {
+    /* padding: 3px 8px; */
+    font-size: 12px;
+    /* margin-top: 89px; */
+    /* height: 28px; */
+  }
+  .breadcrumb-content {
+    padding: 0px;
+    padding-top: 2px;
+    /* height: 25px; */
+  }
+}
+/* Small */
+@media (min-width: 576px) {
+  /* Giảm khoảng cách lề và cỡ chữ cho breacum ở màn trên 567px */
+  .breadcrumb-container {
+    /* padding: 4px 30px; */
+    font-size: 12px;
+    /* margin-top: 89px; */
+    /* height: 32px; */
+  }
+  .breadcrumb-content {
+    max-width: 100% !important;
+    /* margin-top: 5px; */
+  }
+}
+
+/* Medium */
+@media (min-width: 768px) {
+  /* Giảm khoảng cách lề và cỡ chữ cho breacum ở màn trên 768px */
+  .breadcrumb-container {
+    /* padding: 8px 40px; */
+    font-size: 12px;
+    /* margin-top: 100px; */
+    /* height: 36px; */
+  }
+  .breadcrumb-content {
+    max-width: 100% !important;
+    /* margin-top: 5px; */
+  }
+}
+
+/* Large */
+@media (min-width: 992px) {
+  /* Giảm khoảng cách lề và cỡ chữ cho breacum ở màn trên 768px */
+  .breadcrumb-container {
+    font-size: 14px;
+  }
+  .breadcrumb-content {
+    max-width: 960px !important;
+  }
+}
+
+/* Extra large */
+@media (min-width: 1200px) {
+  /* Giảm khoảng cách lề và cỡ chữ cho breacum ở màn trên 768px */
+  .breadcrumb-container {
+    font-size: 16px;
+  }
+  .breadcrumb-content {
+    max-width: 1140px !important;
+  }
+}
+
+/* Extra extra large */
+@media (min-width: 1400px) {
+  .breadcrumb-content {
+    max-width: 1320px !important;
+  }
+}
+/* End Responsive by @Media same  bootstrap*/

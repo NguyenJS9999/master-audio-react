@@ -10,6 +10,23 @@ function ContactPage() {
 
   return (
     <>
+      {/* breadcrumb */}
+      <div className="page-banner     container-fluid ">
+        <div className=" page-banner__content ">
+          <div className=" breadcrumb-title ">LIÊN HỆ MASTER AUDIO</div>
+
+          <div className="page-banner__hr-line" />
+
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item"><a href="./index.html">TRANG CHỦ</a></li>
+              <li className="breadcrumb-item" aria-current="page">LIÊN HỆ</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      {/* breadcrumb */}
+
       <div className='about-container-background  container-fluid '>
         <div className=" about-container  container  ">
           <div className=" name-company ">CÔNG TY CỔ PHẦN MASTER AUDIO VIỆT NAM</div>

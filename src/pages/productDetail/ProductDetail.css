@@ -7,7 +7,8 @@
   /* border: 1px solid red; */
   /* margin: 0px 80px; */
   padding-top: 40px;
-  padding-bottom: 80px;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -602,6 +603,9 @@
   /* Khối mua sắm bỏ/giảm padding */
   .product-detail-buy {
     padding: 0px;
+  }
+  .product-amount-detail {
+    justify-content: center;
   }
   /* 2 khối trạng thái hàng và số lượng đặt căn giữa */
   .product-status-amount {

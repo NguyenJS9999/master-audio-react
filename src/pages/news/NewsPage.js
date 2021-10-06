@@ -10,6 +10,23 @@ function NewsPage() {
   
   return (
     <>
+       {/* breadcrumb */}
+       <div className="page-banner     container-fluid ">
+        <div className=" page-banner__content ">
+          <div className=" breadcrumb-title ">TIN TỨC</div>
+
+          <div className="page-banner__hr-line" />
+
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item"><a href="./index.html">TRANG CHỦ</a></li>
+              <li className="breadcrumb-item" aria-current="page">TIN TỨC</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      {/* breadcrumb */}
+
       {/* Blog */}
       <section className=" blog-container   container ">
         <div className=" blogs-title ">

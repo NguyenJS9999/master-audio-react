@@ -1,8 +1,10 @@
 import "./Home.css"
 
 export function Services() {
-    return (
-        <section className=" services-container  container ">
+  return (
+    <>
+      <section className=' services__backgound  container-fluid '>
+        <div className=" services-container  container ">
           <div className=" section__title   services__title ">TẠI SAO CHỌN MASTER AUDIO</div>
           <div className=" services ">
             <div className=" service ">
@@ -40,6 +42,9 @@ export function Services() {
               <p className=" service__content  ">Tổng đài miễn phí 24/24 giải đáp mọi khó khăn của quý khách hàng</p>
             </div>
           </div>
-        </section>
-    )
+        </div>
+      </section>
+
+    </>
+  )
 };
