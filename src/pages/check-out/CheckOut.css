@@ -130,9 +130,10 @@
 }
 
 /* Khối phương thức thanh toán */
-.collapse:not(.show) {
+/* Mở Accordion */
+/* .collapse:not(.show) {
   display: flex;
-}
+} */
 
 .payment-methods__container {
   width: 100%;

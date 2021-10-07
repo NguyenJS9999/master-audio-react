@@ -18,7 +18,7 @@ export function Services() {
               <i className=" service__icon   fas fa-hand-holding-usd" />
               <div className=" service__title ">Giá thành hợp lý</div>
               <p className=" service__content  ">
-                Tặng kèm phụ kiện với đơn hàng trên 20,000,000 VND cho tất cả các khách hàng
+                Tặng kèm phụ kiện với đơn hàng trên 20,000,000 VNĐ cho tất cả các khách hàng
               </p>
             </div>
             <div className=" service ">
@@ -26,7 +26,7 @@ export function Services() {
               <div className=" service__title ">Miễn phí lặp đặt</div>
               <p className=" service__content  ">
                 Miễn phí vận chuyển và lắp đặt
-                với đơn hàng trên 50,000,000 VND
+                với đơn hàng trên 50,000,000 VNĐ
               </p>
             </div>
             <div className=" service ">

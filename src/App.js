@@ -21,14 +21,14 @@ import ContactPage from "./pages/contact/ContactPage";
 
 import FooterPage from "./footer/FooterPage";
 
-
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <Router>
       <div>
         <NavigationPage />
-       
+
         {/* <nav>
           <ul>
 
@@ -74,8 +74,7 @@ function App() {
           </ul>
         </nav> */}
 
-        <Switch>
-
+        <Switch id="go-on__top">
 
           <Route path="/products" exact>
             <ProductsPage />
@@ -122,6 +121,12 @@ function App() {
           </Route>
         </Switch>
 
+    
+        <a href="#go-on__top" className="go-on__top-page">
+          <i className="fas fa-chevron-up"></i>
+        </a>
+
+        <ScrollToTop />
         <FooterPage />
       </div>
     </Router>

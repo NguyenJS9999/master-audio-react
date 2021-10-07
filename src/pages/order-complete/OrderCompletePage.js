@@ -10,7 +10,7 @@ function OrderCompletePage() {
     const objectCurrentOrderInfor = currentOrderInfor[0]
 
     const orderItemElement = shoppingList.map((item) => (
-        <div className="order-item order-row">
+        <div key={item.id} className="order-item order-row">
             <div className="col-left">
                 {item.brand}&nbsp;{item.name}&nbsp;x<span className="order-item__quantity">&nbsp;{item.quantity}</span>
             </div>

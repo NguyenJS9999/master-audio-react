@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import "./TypicalProjects.css";
 // import CustomToast from "../../components/CustomToast";
@@ -7,9 +7,7 @@ import "./TypicalProjects.css";
 import Newsletter from "../../newsletter/NewsLetter"
 
 function TypicalProjectsPage() {
-  useEffect(() => {
-    console.log("TypicalProjectsPage");
-  }, []);
+
 
   return (
     <>

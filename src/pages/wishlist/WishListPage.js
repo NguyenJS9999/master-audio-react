@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import "./WishList.css";
 // import CustomToast from "../../components/CustomToast";
@@ -7,9 +7,7 @@ import "./WishList.css";
 import Newsletter from "../../newsletter/NewsLetter"
 
 function WishlistPage() {
-  useEffect(() => {
-    console.log("WishlistPage");
-  }, []);
+
   return (
     <>
       {/* breadcrumb */}

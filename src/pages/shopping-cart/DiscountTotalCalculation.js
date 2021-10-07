@@ -39,7 +39,6 @@ export function DiscountTotalCalculation({ stateProducts }) {
 
   //  Thay đổi thảng state trong if else?
   function applyDiscountCode() {
-    console.log('Áp dụng mã giảm giá')
     if (stateDiscountValue === "M10") {
       setNumDiscountValue(Math.round((stateNetMoney / 100) * 10))
     }

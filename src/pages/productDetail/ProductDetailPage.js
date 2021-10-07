@@ -9,7 +9,7 @@ import Newsletter from "../../newsletter/NewsLetter"
 
 function ProductDetailPage() {
   // Mảng data 1 { item }
-  const [stateProductDetail, setProductDetail] = useState( {} );
+  const [stateProductDetail, setProductDetail] = useState( [] );
   const [loading, setLoading] = useState(true);
   // Redux
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ function ProductDetailPage() {
       return;
     }
   }
-
+  
   return (
     <>
       {/* breadcrumb */}
@@ -86,7 +86,8 @@ function ProductDetailPage() {
       </div>
       {/* breadcrumb */}
       {loading ?
-        <div className='container'>Loadding...</div>
+        // <Loadding />
+        <div className='loadding-text_center  container'></div>
         :
         (
           <main>
@@ -107,19 +108,19 @@ function ProductDetailPage() {
                     {/* 2 */}
                     <div className="tab-pane fade " id="product-detail-image-02" role="tabpanel" aria-labelledby="product-detail-image-02-tab">
                       <div className=" product-image ">
-                        <img src={stateProductDetail.image} alt="chi tiết sản phẩm" />
+                        <img src={stateProductDetail.thumbnail[1]} alt="chi tiết sản phẩm" />
                       </div>
                     </div>
                     {/* 3 */}
                     <div className="tab-pane fade " id="product-detail-image-03" role="tabpanel" aria-labelledby="product-detail-image-03-tab">
                       <div className=" product-image ">
-                        <img src={stateProductDetail.image} alt="chi tiết sản phẩm" />
+                        <img src={stateProductDetail.thumbnail[2]} alt="chi tiết sản phẩm" />
                       </div>
                     </div>
                     {/* 4 */}
                     <div className="tab-pane fade " id="product-detail-image-04" role="tabpanel" aria-labelledby="product-detail-image-04-tab">
                       <div className=" product-image ">
-                        <img src={stateProductDetail.image} alt="chi tiết sản phẩm" />
+                        <img src={stateProductDetail.thumbnail[3]} alt="chi tiết sản phẩm" />
                       </div>
                     </div>
                     {/* 5 */}
@@ -129,34 +130,34 @@ function ProductDetailPage() {
                   {/* Các ảnh khác thu nhỏ đã xóa ( nav-item và nav-link ) */}
                   <ul className="nav nav-tabs" id="myTab" role="tablist">
                     {/* 1 */}
-                    <li className="  " role="presentation">
+                    <li    role="presentation">
                       <span className="  nav-link   active   " id="product-detail-image-01-tab" data-bs-toggle="tab" data-bs-target="#product-detail-image-01" type="button" role="tab" aria-controls="product-detail-image-01" aria-selected="true">
                         <div className="images-other">
-                          <img src={stateProductDetail.image} alt="chi tiết sản phẩm" />
+                          <img src={stateProductDetail.thumbnail[0]} alt="chi tiết sản phẩm" />
                         </div>
                       </span>
                     </li>
                     {/* 2 */}
-                    <li className="  " role="presentation">
+                    <li    role="presentation">
                       <span className=" nav-link  " id="product-detail-image-02-tab" data-bs-toggle="tab" data-bs-target="#product-detail-image-02" type="button" role="tab" aria-controls="product-detail-image-02" aria-selected="true">
                         <div className="images-other">
-                          <img src={stateProductDetail.image} alt="chi tiết sản phẩm" />
+                          <img src={stateProductDetail.thumbnail[1]} alt="chi tiết sản phẩm" />
                         </div>
                       </span>
                     </li>
                     {/* 3 */}
-                    <li className="  " role="presentation">
+                    <li    role="presentation">
                       <span className=" nav-link  " id="product-detail-image-03-tab" data-bs-toggle="tab" data-bs-target="#product-detail-image-03" type="button" role="tab" aria-controls="product-detail-image-03" aria-selected="true">
                         <div className="images-other">
-                          <img src={stateProductDetail.image} alt="chi tiết sản phẩm" />
+                          <img src={stateProductDetail.thumbnail[2]} alt="chi tiết sản phẩm" />
                         </div>
                       </span>
                     </li>
                     {/* 4 */}
-                    <li className="  " role="presentation">
+                    <li    role="presentation">
                       <span className=" nav-link  " id="product-detail-image-04-tab" data-bs-toggle="tab" data-bs-target="#product-detail-image-04" type="button" role="tab" aria-controls="product-detail-image-04" aria-selected="true">
                         <div className="images-other">
-                          <img src={stateProductDetail.image} alt="chi tiết sản phẩm" />
+                          <img src={stateProductDetail.thumbnail[3]} alt="chi tiết sản phẩm" />
                         </div>
                       </span>
                     </li>

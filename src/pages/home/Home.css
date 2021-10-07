@@ -11,7 +11,8 @@
   max-height: 100vh;
 }
 .banners-center-1 img, .banners-center-2 img {
-  max-height: 100vh;
+  /* max-height: 100vh; */
+  background-color: var(--color-neutral-bg);
 }
 /* List sản phẩm - quảng cáo mỗi loại 1 vài sp nội bật */
 .featured-products-container {
@@ -35,7 +36,7 @@
   overflow: hidden;
   height: 600px;
   margin-top: -2.5rem;
-  margin-bottom: -2.5rem;
+  margin-bottom: -2.7rem;
 }
 .featured-product--title,
 .typical-projects--title {

@@ -81,17 +81,14 @@ function ProductsPage() {
   // Lấy giá trị sort trong select dropdown
   function getSortValue(event) {
     setSortValueItem(event.target.value);
-    console.log("Giá trị ô select sort item:", stateSortValueItem);
   }
   // Lấy giá trị phân trang trong select dropdown
   function getLimitOfPaginate(event) {
     setLimitOfPaginate(event.target.value);
-    console.log("Số sp 1 trang:", stateSortValueItem);
   }
   // Phân Trang - Lấy giá trị 1 nút phân trang
   function getNumOfPaginate(num) {
     setNumOfPaginate(num);
-    console.log("Số trả về của 1 phân trang:", stateNumOfPaginate, 'num', num);
   }
   // Tích checkbox để lọc sp
   function filterWithCheckBox(query, valueFilter) {
@@ -116,15 +113,12 @@ function ProductsPage() {
     filterProduct()
     setChecker('')
   }
-
-  // function addToCart() {
-  //   let addedProduct =
-  // }
   // Thông báo đã thêm vào giỏ hàng
   // function
 
   // List tất cả data
   let ProductCardElement = stateFilterResults.map((item) => (
+    
     <div className=" col__product-card " key={item.id}>
       <div className=" product-card ">
         {/* <div className="product-card__wishlist">
@@ -163,7 +157,7 @@ function ProductsPage() {
         {/* <h4 className=" section-title    products__filter-title">TÌM SẢN PHẨM</h4> */}
         {/* Seacrch */} {/* Seacrch */}
         <div onClick={clearAllFilters}>
-          <button class="section__btn  remove-filter__btn">XÓA LỌC</button>
+          <button className="section__btn  remove-filter__btn">XÓA LỌC</button>
         </div>
 
 
@@ -479,14 +473,14 @@ function ProductsPage() {
             <div className=" products-list ">
               <div className=" products-list__inner ">
                 {loading
-                  ? (<div className="loadding_products-list"> Đang tải các sản phẩm, xin chờ... </div>)
+                  ? (<div className="loadding_products-list"></div>)
                   : stateFilterResults.length === 0 && stateInputSearchValue ? ("Không tìm thấy sản phẩm phù hợp!")
-                    : (ProductCardElement)}
+                  : (ProductCardElement)}
               </div>
             </div>
 
             {/* Phân trang */}
-            <div className="products__pagination">
+            <div className={` ${loading ? 'd-none' : 'products__pagination'}  `}>
               <nav aria-label="page-navigation">
                 <ul className="pagination">
 

@@ -12,7 +12,6 @@ export const orderSlice = createSlice({
     
     removeAllOrderInfo : (state, action) => {
         state.orderInfor.slice( ('orderInfor'.length - 1), ('orderInfor'.length)  )
-        // animals.slice(animals.length-1, animals.length)
         localStorage.setItem("orderInfor", JSON.stringify(state.orderInfor));
 
     },

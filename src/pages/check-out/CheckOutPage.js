@@ -1,6 +1,8 @@
-// import { useState } from "react";
+import {  useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+// import { accordion } from "bootstrap"
+
 
 import "./CheckOut.css";
 // import CustomToast from "../../components/CustomToast";
@@ -8,10 +10,21 @@ import "./CheckOut.css";
 import Newsletter from "../../newsletter/NewsLetter"
 
 function CheckOutPage() {
-  const shoppingList = useSelector((state) => state.cart.listProductCart);  
-  const orderInfor =  useSelector((state) => state.order.orderInfor);
-  const currentOrderInfor = orderInfor[ orderInfor.length-1 ]; 
+  const shoppingList = useSelector((state) => state.cart.listProductCart);
+  const orderInfor = useSelector((state) => state.order.orderInfor);
+  const currentOrderInfor = orderInfor[orderInfor.length - 1];
   const objectCurrentOrderInfor = currentOrderInfor[0]
+
+  const [stateInputBilling, setInputBilling] = useState();
+
+  function valueInforInput(event) {
+    setInputBilling(event.target.value)
+    console.log('stateInputBilling', stateInputBilling)
+  }
+  // function regexInput() {
+  //   console.log('Yêu cầu nhập thông tin cá nhân')
+
+  // }
 
 
   const orderItemElement = shoppingList.map((item) => (
@@ -23,9 +36,10 @@ function CheckOutPage() {
         <span className="order-item__quantity"><strong>{item.quantity}</strong></span>
       </div>
 
-      <div className="col-right order-item__unit-price">{ (item.price) * (item.quantity).toLocaleString() }&nbsp;₫</div>
+      <div className="col-right order-item__unit-price">{((item.price) * (item.quantity)).toLocaleString()}&nbsp;₫</div>
     </div>
   ));
+
 
   return (
     <>
@@ -58,39 +72,59 @@ function CheckOutPage() {
                 <div className="order__first-info row g-3">
                   <div className="order__name">
                     <label htmlFor='name' >Họ và tên <span className='required'>*</span></label>
-                    <input id='name' type="text" className=" name-input" placeholder="" />
+                    <input onChange={(event) => valueInforInput(event)}
+                      id='name' type="text" className=" name-input" placeholder="" />
+
                     <div className="feedback-noti">Vui lòng nhập họ tên</div>
                   </div>
+
                   <div className="order__phone">
                     <label htmlFor='phone' >Số điện thoại <span className='required'>*</span></label>
-                    <input id='phone' type="text" className=" phone-input" placeholder="(+84)" />
+                    <input onChange={(event) => valueInforInput(event)}
+                      id='phone' type="text" className=" phone-input" placeholder="(+84)" />
+
                     <div className="feedback-noti">Vui lòng nhập số điện thoại</div>
                   </div>
+
                   <div className="order__address">
                     <label htmlFor='address' >Địa chỉ <span className='required'>*</span></label>
-                    <input id='address' type="text" className=" address-input" placeholder="Số nhà, nghách, ngõ" />
+                    <input onChange={(event) => valueInforInput(event)}
+                      id='address' type="text" className=" address-input" placeholder="Số nhà, nghách, ngõ" />
+
                     <div className="feedback-noti">Vui lòng nhập địa chỉ</div>
                   </div>
+
                   <div className="order__city">
                     <label htmlFor='city' >Tỉnh/Thành phố <span className='required'>*</span></label>
-                    <input id='city' type="text" className=" city-input" placeholder="" />
+                    <input onChange={(event) => valueInforInput(event)}
+                      id='city' type="text" className=" city-input" placeholder="" />
+
                     <div className="feedback-noti">Vui lòng nhập tỉnh/thành phố</div>
                   </div>
+
                   <div className="order__district">
                     <label htmlFor='order__district' >Quận/Huyện <span className='required'>*</span></label>
-                    <input id='order__district' type="text" className=" district-input" placeholder="" />
+                    <input onChange={(event) => valueInforInput(event)}
+                      id='order__district' type="text" className=" district-input" placeholder="" />
+
                     <div className="valid-feedback feedback-noti">
                       Vui lòng nhập quận/huyện
                     </div>
                   </div>
+
                   <div className="order__ward">
                     <label htmlFor='ward' >Phường/Xã <span className='required'>*</span></label>
-                    <input id='ward' type="text" className=" ward-input" placeholder="" />
+                    <input onChange={(event) => valueInforInput(event)}
+                      id='ward' type="text" className=" ward-input" placeholder="" />
+
                     <div className="feedback-noti">Vui lòng nhập phường/xã</div>
                   </div>
+
                   <div className="order__ship-method">
-                    <select className="form-select ship-method-select" id="ship-method">
-                      <option selected value>
+                    <select
+                      className="form-select ship-method-select" id="ship-method">
+
+                      <option defaultValue="default" value>
                         Phương thức vận chuyển *
                       </option>
                       <option value="standard">Tiêu chuẩn</option>
@@ -98,6 +132,7 @@ function CheckOutPage() {
                       <option value="fast">Nhanh</option>
                       <option value="super-fast">Hỏa tốc</option>
                     </select>
+
                     <div className="feedback-noti">
                       Vui lòng chọn phương thức vận chuyển
                     </div>
@@ -113,9 +148,11 @@ function CheckOutPage() {
               {/* Phuong thức thanh toán */}
               <div className=" payment-methods__container  ">
                 <h4 className=" order__title ">PHƯƠNG THỨC THANH TOÁN</h4>
+
                 {/* Các phương thức thanh toán - accordion */}
                 <div className=" payment-methods   accordion" id="payment-methods">
                   <div className="accordion-item">
+
                     <h2 className="accordion-header" id="headingVisa">
                       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#visa" aria-expanded="false" aria-controls="visa">
                         <div className="form-check">
@@ -126,7 +163,9 @@ function CheckOutPage() {
                         </div>
                       </button>
                     </h2>
+
                     <div id="visa" className="accordion-collapse collapse" aria-labelledby="headingVisa" data-bs-parent="#payment-methods">
+
                       <div className="accordion-body">
                         <div className="row g-2">
                           <div className="col-12">
@@ -135,28 +174,33 @@ function CheckOutPage() {
                               Vui lòng nhập số thẻ
                             </div>
                           </div>
+
                           <div className="col-12">
                             <input type="text" className="form-control visa-card-name" placeholder="Tên chủ thẻ *" aria-label="Card name" />
                             <div className="feedback-noti">
                               Vui lòng nhập tên chủ thẻ
                             </div>
                           </div>
+
                           <div className="col-12">
                             <input type="text" className="form-control visa-card-date" name="datepicker" id="datepicker" placeholder="MM/YYYY *" />
                             <div className="feedback-noti">
                               Vui lòng nhập ngày hết hạn
                             </div>
                           </div>
+
                           <div className="col-12">
                             <input type="text" className="form-control visa-card-cvv" placeholder="CVV/CVC *" aria-label="CVV-CVC" />
                             <div className="feedback-noti">
                               Vui lòng nhập số CVV/CVC
                             </div>
                           </div>
+
                         </div>
                       </div>
                     </div>
                   </div>
+                  {/* Chuyển khoản ngân hàng */}
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingBankTransfer">
                       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bankTransfer" aria-expanded="false" aria-controls="bankTransfer">
@@ -168,6 +212,7 @@ function CheckOutPage() {
                         </div>
                       </button>
                     </h2>
+
                     <div id="bankTransfer" className="accordion-collapse collapse" aria-labelledby="headingBankTransfer" data-bs-parent="#payment-methods">
                       <div className="accordion-body">
                         Thực hiện chuyển khoản vào tài khoản ngân hàng của
@@ -182,6 +227,7 @@ function CheckOutPage() {
                       </div>
                     </div>
                   </div>
+                  {/* Thanh toán tiền mặt khi nhận hàng */}
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingCod">
                       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cod" aria-expanded="false" aria-controls="cod">
@@ -220,20 +266,20 @@ function CheckOutPage() {
                 {/* Tổng tiền */}
                 <div className="order-price order-row-small">
                   <div className="col-left">Tạm tính</div>
-                  <div className="col-right">{ objectCurrentOrderInfor.temporarySum.toLocaleString() }&nbsp;₫</div>
+                  <div className="col-right">{objectCurrentOrderInfor.temporarySum.toLocaleString()}&nbsp;₫</div>
                 </div>
 
                 <div className="check-out__order-discount order-row-small">
                   <div className="col-left">VAT (10%)</div>
                   <div className="col-right">
-                    + <span className="discount-amount">{ objectCurrentOrderInfor.vat.toLocaleString() }&nbsp;₫</span>
+                    + <span className="discount-amount">{objectCurrentOrderInfor.vat.toLocaleString()}&nbsp;₫</span>
                   </div>
                 </div>
 
                 <div className=" tax-avt    order-row-small">
                   <div className="col-left">Giảm giá</div>
                   <div className="col-right">
-                    - <span className=" discount-amount ">{ objectCurrentOrderInfor.discount.toLocaleString() }&nbsp;₫</span>
+                    - <span className=" discount-amount ">{objectCurrentOrderInfor.discount.toLocaleString()}&nbsp;₫</span>
                   </div>
                 </div>
 
@@ -244,14 +290,14 @@ function CheckOutPage() {
 
                 <div className="order-subtotal order-row">
                   <div className="col-left">TỔNG TIỀN</div>
-                  <div className="col-right">{ objectCurrentOrderInfor.gross.toLocaleString() }&nbsp;₫</div>
+                  <div className="col-right">{objectCurrentOrderInfor.gross.toLocaleString()}&nbsp;₫</div>
                 </div>
               </div>
 
               {/* Nút tiến hành đặt hàng */}
               <div className="col-12">
-                <Link to="/order-complete">
-                  <button className="section__btn w-100 btn-place-order" type="button">ĐẶT HÀNG </button>
+                <Link to="/order-complete" >
+                  <button className="section__btn w-100 btn-place-order  disabled" type="button">ĐẶT HÀNG </button>
                 </Link>
               </div>
 
