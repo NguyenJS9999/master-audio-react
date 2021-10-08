@@ -148,13 +148,13 @@ function ProductsPage() {
           </div> */}
 
           <button onClick={() => dispatch(addProduct(item))}
-            type="button" className="btn-addtocart  product-card__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            type="button" className="btn-addtocart  product-card__btn" data-bs-toggle="modal" data-bs-target={`#${item.id}`}>
             <i className="fas fa-cart-arrow-down" />&nbsp;
             Thêm vào giỏ hàng
           </button>
 
           {/* <!-- Modal --> */}
-          <CustomModal proTitle='Đã thêm sản phẩm vào giỏ hàng!' imgUrl={item.image} proBrand={item.brand} proName={item.name} />
+          <CustomModal proTitle='Đã thêm sản phẩm vào giỏ hàng!' imgUrl={item.image} proBrand={item.brand} proName={item.name} proId={item.id} />
 
 
         </div>

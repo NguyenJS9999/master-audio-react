@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Slider from "react-slick"; // react-slick.neostack.com
+// import { Button } from "react-bootstrap";
 
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/cartSlice"
