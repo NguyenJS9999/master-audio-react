@@ -1,0 +1,11 @@
+
+.toast-title {
+    color: var(--color-success);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.toast-header img {
+    width: 50px;
+}
+

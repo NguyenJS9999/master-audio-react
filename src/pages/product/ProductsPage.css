@@ -300,10 +300,11 @@ p {
 
 .btn-addtocart,
 .btn-buynow {
-  width: 100%;
+  border: 1px solid var(--color-neutral-border);
+  width: 100% !important;
   background-color: transparent;
   color: var(--color-text-light);
-  border: 1px solid var(--color-neutral-border);
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -312,6 +313,9 @@ p {
   padding: 0.55rem 0.5rem 0.75rem 0.5rem;
   max-height: 3rem;
   border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .product-card__btn:hover {
   border: 1px solid var(--color-highlight-border);

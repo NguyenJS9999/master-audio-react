@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // Redux
 import { useDispatch } from "react-redux";
 import { addOrderInfor } from "../../store/orderInforSlice"
-import { removeAllOrderInfo } from "../../store/orderInforSlice"
+// import { removeAllOrderInfo } from "../../store/orderInforSlice"
 
 export function DiscountTotalCalculation({ stateProducts }) {
   const [stateNetMoney, setNetMoney] = useState(0);
@@ -17,12 +17,12 @@ export function DiscountTotalCalculation({ stateProducts }) {
   // Redux gửi đi
   const dispatch = useDispatch();
   // Mảng thông tin đơn hàng - gửi đi
-  let orderInfor = [ {
+  let orderInfor =  [{
     temporarySum: stateNetMoney,
     vat : VAT,
     discount: numDiscountValue,
     gross: grossMoney
-  } ]
+  } ];
 
   useEffect(() => {
     let sum = 0;
@@ -107,7 +107,7 @@ export function DiscountTotalCalculation({ stateProducts }) {
 
           {/* count-money */}
           <span className=" make-payment ">
-            <Link to="/check-out" onClick={() => dispatch(addOrderInfor( orderInfor ), removeAllOrderInfo() )}
+            <Link to="/check-out" onClick={() => dispatch(addOrderInfor( orderInfor ) )}
               className=" make-payment-button    section__btn " >
 
               <i className="fas fa-hand-holding-usd" /> &nbsp;TIẾN HÀNH ĐẶT HÀNG

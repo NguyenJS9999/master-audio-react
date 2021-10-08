@@ -136,6 +136,11 @@ input::placeholder {
 button:not(:disabled) {
   cursor: pointer;
 }
+/* Ẩn nút ko cho chuyển trang vs ẩn bàn tay */
+.cursor__not-allowed {
+  cursor: not-allowed !important;
+  opacity: 0.8;
+}
 /* Ẩn nút */
 /* Thông báo Giỏ hàng trống */
 .empty-cart-message,
@@ -164,6 +169,28 @@ input::-webkit-inner-spin-button {
   font-style: italic;
   font-size: 0.8rem;
   display: none;
+}
+/* Thông báo đã thêm so vào giỏ hàng */
+.add-to-cart_done {
+  padding: 2rem;
+  background-color: rgba(228,35,19, 0.3);
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  z-index: 10;
+}
+/* Modal thông báo đãn thêm sp vào giỏ hàng */
+.modal-body img {
+  width: 80px;
+}
+.modal-body span{
+  font-size: 18px;
+}
+.modal-body strong{
+  font-size: 20px;
+}
+.modal-dialog {
+  margin-top: 8rem;
 }
 
 /* Start Responsive by @Media same bootstrap */

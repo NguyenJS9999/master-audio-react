@@ -55,6 +55,13 @@ function OrderCompletePage() {
                                 </div>
                                 {/* order-item */}
                                 { orderItemElement }
+
+                                <div className="order-complete__vat order-row-small">
+                                    <div className="col-left">Thuế VAT (10%)</div>
+                                    <div className="col-right">
+                                        + <span className="discount-amount">{objectCurrentOrderInfor.vat.toLocaleString()}&nbsp;₫</span>
+                                    </div>
+                                </div>
                              
                                 <div className="order-complete__discount order-row-small">
                                     <div className="col-left">Giảm giá</div>

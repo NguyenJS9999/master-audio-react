@@ -5,11 +5,12 @@ import { addProduct } from "../../store/cartSlice"
 
 import "./ProductDetail.css";
 import Newsletter from "../../newsletter/NewsLetter"
-
+// import CustomToast from "../../components/CustomToast";
+// import CustomModal from "../../components/Modal";
 
 function ProductDetailPage() {
   // Mảng data 1 { item }
-  const [stateProductDetail, setProductDetail] = useState( [] );
+  const [stateProductDetail, setProductDetail] = useState([]); console.log('stateProductDetail', stateProductDetail)
   const [loading, setLoading] = useState(true);
   // Redux
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ function ProductDetailPage() {
       return;
     }
   }
-  
+
   return (
     <>
       {/* breadcrumb */}
@@ -130,7 +131,7 @@ function ProductDetailPage() {
                   {/* Các ảnh khác thu nhỏ đã xóa ( nav-item và nav-link ) */}
                   <ul className="nav nav-tabs" id="myTab" role="tablist">
                     {/* 1 */}
-                    <li    role="presentation">
+                    <li role="presentation">
                       <span className="  nav-link   active   " id="product-detail-image-01-tab" data-bs-toggle="tab" data-bs-target="#product-detail-image-01" type="button" role="tab" aria-controls="product-detail-image-01" aria-selected="true">
                         <div className="images-other">
                           <img src={stateProductDetail.thumbnail[0]} alt="chi tiết sản phẩm" />
@@ -138,7 +139,7 @@ function ProductDetailPage() {
                       </span>
                     </li>
                     {/* 2 */}
-                    <li    role="presentation">
+                    <li role="presentation">
                       <span className=" nav-link  " id="product-detail-image-02-tab" data-bs-toggle="tab" data-bs-target="#product-detail-image-02" type="button" role="tab" aria-controls="product-detail-image-02" aria-selected="true">
                         <div className="images-other">
                           <img src={stateProductDetail.thumbnail[1]} alt="chi tiết sản phẩm" />
@@ -146,7 +147,7 @@ function ProductDetailPage() {
                       </span>
                     </li>
                     {/* 3 */}
-                    <li    role="presentation">
+                    <li role="presentation">
                       <span className=" nav-link  " id="product-detail-image-03-tab" data-bs-toggle="tab" data-bs-target="#product-detail-image-03" type="button" role="tab" aria-controls="product-detail-image-03" aria-selected="true">
                         <div className="images-other">
                           <img src={stateProductDetail.thumbnail[2]} alt="chi tiết sản phẩm" />
@@ -154,7 +155,7 @@ function ProductDetailPage() {
                       </span>
                     </li>
                     {/* 4 */}
-                    <li    role="presentation">
+                    <li role="presentation">
                       <span className=" nav-link  " id="product-detail-image-04-tab" data-bs-toggle="tab" data-bs-target="#product-detail-image-04" type="button" role="tab" aria-controls="product-detail-image-04" aria-selected="true">
                         <div className="images-other">
                           <img src={stateProductDetail.thumbnail[3]} alt="chi tiết sản phẩm" />
@@ -215,19 +216,16 @@ function ProductDetailPage() {
                     {/* Nút bấm thêm vào giỏ hàng - mua */}
                     <div className="button-cart-buy">
 
-                      <div
-                        onClick = { () => dispatch( addProduct( stateProductDetail ) ) }
-                        className="button-cart" type="button">
+                      <div onClick={() => dispatch(addProduct(stateProductDetail))}
+                        className="button-cart" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i className="fas fa-cart-arrow-down" />&nbsp;Thêm vào giỏ hàng
                       </div>
 
                       <Link to="/shopping-cart"
-                        onClick = { () => dispatch( addProduct( stateProductDetail ) ) } 
-                      >
+                        onClick={() => dispatch(addProduct(stateProductDetail))} >
                         <div className="button-buy" type="button">
                           <i className="fas fa-coins" />&nbsp;Mua ngay
                         </div>
-
                       </Link>
 
                     </div>
@@ -248,6 +246,33 @@ function ProductDetailPage() {
           </main>
         )
       }
+      {/* <CustomModal 
+        proTitle='Đã thêm sản phẩm vào giỏ hàng!' 
+        imgUrl={stateProductDetail.image} 
+        proBrand={stateProductDetail.brand} 
+        proName={stateProductDetail.name} /> */}
+
+      {/* Modal - Đã thêm sp vào giỏ hàng */}
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title text-center" id="exampleModalLabel">Đã thêm sản phẩm vào giỏ hàng!</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <img src={stateProductDetail.image} alt={stateProductDetail.name} />
+              <strong>{stateProductDetail.brand}</strong>&nbsp;
+              <span>{stateProductDetail.name}</span>
+            </div>
+            {/* <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
+            </div> */}
+          </div>
+        </div>
+      </div>
+      {/* Modal - Đã thêm sp vào giỏ hàng */}
 
       {/* Email nhận tin tức mới */}
       <Newsletter />

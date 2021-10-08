@@ -1,31 +1,84 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+//  Redux
+import { useDispatch, useSelector } from "react-redux";
+import { addCustomerInfor } from "../../store/checkOutSlice"
+
+
 // import { accordion } from "bootstrap"
 
 
 import "./CheckOut.css";
 // import CustomToast from "../../components/CustomToast";
-// import CustomTab from "../../components/Tab";
+// import CustomTab from "../../components/Tab";`
 import Newsletter from "../../newsletter/NewsLetter"
 
 function CheckOutPage() {
   const shoppingList = useSelector((state) => state.cart.listProductCart);
   const orderInfor = useSelector((state) => state.order.orderInfor);
   const currentOrderInfor = orderInfor[orderInfor.length - 1];
-  const objectCurrentOrderInfor = currentOrderInfor[0]
+  const objectCurrentOrderInfor = currentOrderInfor[0];
 
-  const [stateInputBilling, setInputBilling] = useState();
+  // const [ state, set ] = useState();
+  const [stateOrderStatus, setOrderStatus] = useState(false);
 
-  function valueInforInput(event) {
-    setInputBilling(event.target.value)
-    console.log('stateInputBilling', stateInputBilling)
+  const [stateInputName, setInputName] = useState('');
+  const [stateInputPhone, setInputPhone] = useState(null);
+  const [stateInputAddress, setInputAddress] = useState('');
+  const [stateInputCity, setInputCity] = useState('');
+  const [stateInputDistrict, setInputDistrict] = useState('');
+  const [stateInputWard, setInputWard] = useState('');
+  const [stateInputOrderNotes, setInputOrderNotes] = useState('');
+
+  // Redux gửi data khách hàng lên store
+  const dispatch = useDispatch();
+  // Mảng chứa thông tin khách hàng nhập vàp
+  let customerDataInput =  [{
+      name: stateInputName,
+      phone: stateInputPhone,
+      address: stateInputAddress,
+      city: stateInputCity,
+      district: stateInputDistrict,
+      ward: stateInputWard,
+      note: stateInputOrderNotes
+    }];
+  // Kiểm tra liên tục ô input để bật nút
+  useEffect(() => {
+    if (stateInputName === '' || stateInputPhone === '' || stateInputAddress === '' ||
+      stateInputCity === '' || stateInputDistrict === '' || stateInputWard === '') {
+      console.log('Vui lòng nhập')
+      setOrderStatus(false);
+      // Lỗi
+    }
+    else if (stateInputName || stateInputPhone || stateInputAddress ||
+      stateInputCity || stateInputDistrict || stateInputWard) {
+      console.log('Đã nhập')
+      setOrderStatus(true)
+    }
+
+  }, [stateInputName, stateInputPhone, stateInputAddress,
+    stateInputCity, stateInputDistrict, stateInputWard])
+
+  // Lấy ra giá trị ô input mỗi trường
+  function getValueInforInput(event, nameInput) {
+    let eventTargetValue = event.target.value
+    if (nameInput === 'name') {
+      setInputName( eventTargetValue );
+    } else if (nameInput === 'phone') {
+      setInputPhone( eventTargetValue );
+    } else if (nameInput === 'address') {
+      setInputAddress( eventTargetValue );
+    } else if (nameInput === 'city') {
+      setInputCity( eventTargetValue );
+    } else if (nameInput === 'district') {
+      setInputDistrict( eventTargetValue );
+    } else if (nameInput === 'ward') {
+      setInputWard( eventTargetValue );
+    } else if (nameInput === 'order-notes') {
+      setInputOrderNotes( eventTargetValue );
+    }
+
   }
-  // function regexInput() {
-  //   console.log('Yêu cầu nhập thông tin cá nhân')
-
-  // }
-
 
   const orderItemElement = shoppingList.map((item) => (
     <div key={item.id} className="order-item order-row">
@@ -62,17 +115,23 @@ function CheckOutPage() {
 
       <section className="section-order__container container-fluid">
         <div className="order container">
-          <div className="order-form needs-validation">
+          <div
+            // dùng <form onSubmit={handleSubmit(onSubmit)}
+            className="order-form needs-validation">
 
             <div className=" info-order--payment__container ">
 
               {/* Thông tin thanh toán */}
               <div className="order-info">
                 <h4 className="order__title">Thông tin thanh toán</h4>
+
                 <div className="order__first-info row g-3">
+
                   <div className="order__name">
                     <label htmlFor='name' >Họ và tên <span className='required'>*</span></label>
-                    <input onChange={(event) => valueInforInput(event)}
+                    <input
+                      // {...register("name")} 
+                      onChange={(event) => getValueInforInput(event, 'name')}
                       id='name' type="text" className=" name-input" placeholder="" />
 
                     <div className="feedback-noti">Vui lòng nhập họ tên</div>
@@ -80,7 +139,8 @@ function CheckOutPage() {
 
                   <div className="order__phone">
                     <label htmlFor='phone' >Số điện thoại <span className='required'>*</span></label>
-                    <input onChange={(event) => valueInforInput(event)}
+                    <input
+                      onChange={(event) => getValueInforInput(event, 'phone')}
                       id='phone' type="text" className=" phone-input" placeholder="(+84)" />
 
                     <div className="feedback-noti">Vui lòng nhập số điện thoại</div>
@@ -88,7 +148,8 @@ function CheckOutPage() {
 
                   <div className="order__address">
                     <label htmlFor='address' >Địa chỉ <span className='required'>*</span></label>
-                    <input onChange={(event) => valueInforInput(event)}
+                    <input
+                      onChange={(event) => getValueInforInput(event, 'address')}
                       id='address' type="text" className=" address-input" placeholder="Số nhà, nghách, ngõ" />
 
                     <div className="feedback-noti">Vui lòng nhập địa chỉ</div>
@@ -96,16 +157,18 @@ function CheckOutPage() {
 
                   <div className="order__city">
                     <label htmlFor='city' >Tỉnh/Thành phố <span className='required'>*</span></label>
-                    <input onChange={(event) => valueInforInput(event)}
+                    <input
+                      onChange={(event) => getValueInforInput(event, 'city')}
                       id='city' type="text" className=" city-input" placeholder="" />
 
                     <div className="feedback-noti">Vui lòng nhập tỉnh/thành phố</div>
                   </div>
 
                   <div className="order__district">
-                    <label htmlFor='order__district' >Quận/Huyện <span className='required'>*</span></label>
-                    <input onChange={(event) => valueInforInput(event)}
-                      id='order__district' type="text" className=" district-input" placeholder="" />
+                    <label htmlFor='district' >Quận/Huyện <span className='required'>*</span></label>
+                    <input
+                      onChange={(event) => getValueInforInput(event, 'district')}
+                      id='district' type="text" className=" district-input" placeholder="" />
 
                     <div className="valid-feedback feedback-noti">
                       Vui lòng nhập quận/huyện
@@ -114,7 +177,8 @@ function CheckOutPage() {
 
                   <div className="order__ward">
                     <label htmlFor='ward' >Phường/Xã <span className='required'>*</span></label>
-                    <input onChange={(event) => valueInforInput(event)}
+                    <input
+                      onChange={(event) => getValueInforInput(event, 'ward')}
                       id='ward' type="text" className=" ward-input" placeholder="" />
 
                     <div className="feedback-noti">Vui lòng nhập phường/xã</div>
@@ -137,9 +201,11 @@ function CheckOutPage() {
                       Vui lòng chọn phương thức vận chuyển
                     </div>
                   </div>
-
+                  {/* Ghi chú đơn hàng */}
                   <div className=" mb-3 ">
-                    <textarea className=" order-note form-control " id="order-note" rows={3} placeholder="Ghi chú đơn hàng" />
+                    <textarea onChange={(event) => getValueInforInput(event, 'order-notes')}
+                      className=" order-note form-control "
+                      id="order-note" rows={3} placeholder="Ghi chú đơn hàng" />
                   </div>
 
                 </div>
@@ -294,11 +360,22 @@ function CheckOutPage() {
                 </div>
               </div>
 
+              <button  onClick={() => dispatch( addCustomerInfor(customerDataInput) ) }>Gửi data kh</button>
+
               {/* Nút tiến hành đặt hàng */}
               <div className="col-12">
-                <Link to="/order-complete" >
-                  <button className="section__btn w-100 btn-place-order  disabled" type="button">ĐẶT HÀNG </button>
-                </Link>
+                {stateOrderStatus ?
+                  (<Link disabled={true}
+                    // onClick={() => dispatch( addCustomerInfor(customerDataInput) ) }
+                    to="/order-complete" >
+                    <button className="section__btn w-100 btn-place-order " type="submit" >ĐẶT HÀNG </button>
+                  </Link>)
+                  :
+                  (<button
+                    className="section__btn w-100 btn-place-order   cursor__not-allowed " type="button">ĐẶT HÀNG
+                  </button>)
+                }
+                {/* cursor__not-allowed */}
               </div>
 
             </div>

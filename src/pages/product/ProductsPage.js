@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 // Redux
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/cartSlice"
+// import CustomToast from "../../components/CustomToast";
+import CustomModal from "../../components/Modal";
 
 import "./ProductsPage.css";
 import "../../App.css";
@@ -27,7 +29,7 @@ function ProductsPage() {
   // Checked
   const [stateChecked, setChecker] = useState('');
   // Redux gửi đi
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
 
   // Tải dữ liệu về 1 lần đầu
@@ -118,7 +120,7 @@ function ProductsPage() {
 
   // List tất cả data
   let ProductCardElement = stateFilterResults.map((item) => (
-    
+
     <div className=" col__product-card " key={item.id}>
       <div className=" product-card ">
         {/* <div className="product-card__wishlist">
@@ -139,12 +141,21 @@ function ProductsPage() {
           <p className="card-text product-card__price">
             {item.price.toLocaleString()}&nbsp;₫</p>
 
-          <button
-            onClick={() => dispatch(addProduct(item))}
+          {/* <div onClick={() => dispatch(addProduct(item))}
             className="btn-addtocart  product-card__btn">
             <i className="fas fa-shopping-cart" />&nbsp;
             <span>Thêm vào giỏ hàng</span>
+          </div> */}
+
+          <button onClick={() => dispatch(addProduct(item))}
+            type="button" className="btn-addtocart  product-card__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i className="fas fa-cart-arrow-down" />&nbsp;
+            Thêm vào giỏ hàng
           </button>
+
+          {/* <!-- Modal --> */}
+          <CustomModal proTitle='Đã thêm sản phẩm vào giỏ hàng!' imgUrl={item.image} proBrand={item.brand} proName={item.name} />
+
 
         </div>
       </div>
@@ -413,6 +424,7 @@ function ProductsPage() {
       </div>
       {/* breadcrumb */}
 
+
       {/* Section Products List */}
       <section className=" section-products-list   container-fluid ">
         <div className="products__container container">
@@ -475,7 +487,7 @@ function ProductsPage() {
                 {loading
                   ? (<div className="loadding_products-list"></div>)
                   : stateFilterResults.length === 0 && stateInputSearchValue ? ("Không tìm thấy sản phẩm phù hợp!")
-                  : (ProductCardElement)}
+                    : (ProductCardElement)}
               </div>
             </div>
 
