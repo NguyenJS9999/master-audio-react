@@ -217,7 +217,7 @@ function ProductDetailPage() {
                     <div className="button-cart-buy">
 
                       <div onClick={() => dispatch(addProduct(stateProductDetail))}
-                        className="button-cart" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        className="button-cart" type="button" data-bs-toggle="modal" data-bs-target={`#${stateProductDetail.id}`}>
                         <i className="fas fa-cart-arrow-down" />&nbsp;Thêm vào giỏ hàng
                       </div>
 
@@ -239,8 +239,8 @@ function ProductDetailPage() {
                     <div> <strong>KINH DOANH 2: </strong> <span>0777 891 992</span> </div>
                     <div> <strong>KINH DOANH 3: </strong> <span>0942 97 96 96</span> </div>
                   </div>
-                </div> {/* product-detail-buy */}
-              </div> {/* 1 */}
+                </div>
+              </div>
             </section>
 
           </main>
@@ -253,7 +253,7 @@ function ProductDetailPage() {
         proName={stateProductDetail.name} /> */}
 
       {/* Modal - Đã thêm sp vào giỏ hàng */}
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id={stateProductDetail.Id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">

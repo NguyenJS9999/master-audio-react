@@ -889,7 +889,7 @@ trang khác dùng chung ở nav tác động */
 }
 .categorys {
   border: 0.1px solid rgba(228,35,19, 0.2);
-  border-radius: 2px;
+  border-radius: 0px;
   width: 100%;
   padding: 0px 0px 0px 0px;
   font-size: 16px;

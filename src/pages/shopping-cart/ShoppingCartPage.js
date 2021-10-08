@@ -19,23 +19,6 @@ function ShoppingCartPage() {
   // Redux gửi data lên store
   const dispatch = useDispatch();
 
-  // const [loading, setLoading] = useState(false);
-  // Tải dữ liệu về 1 lần đầu
-  // useEffect(() => {
-  //   // Async await
-  //   async function fetchData() {
-  //     const response = await fetch(
-  //       `https://rest-api-nodejs-reactjs-router.herokuapp.com/products`
-  //     );
-  //     const result = await response.json();
-  //     setProducts(result);
-  //     setLoading(false)
-  //   }
-
-  //   fetchData();
-  // }, []);
-  //
-
   // Tăng số lượng sp ô input
   function addProductNumber(quantity, id) {
     let cloneDataItems
@@ -87,14 +70,14 @@ function ShoppingCartPage() {
   // Xóa
   function deleteItem(id) {
     let deletedItem = shoppingList.filter((item) => item.id !== id);
-    dispatch(removeProduct(deletedItem))
+    dispatch(setProducts(deletedItem))
     // setProducts(deletedItem)
   }
 
   // Xóa tất cả các item - phải thông qua thông báo
   function deleteAllItems() {
     let deleteItem = [...shoppingList].splice(1, 0);
-    dispatch(removeProduct(deleteItem))
+    dispatch(setProducts(deleteItem))
     // setProducts(deleteItem)
 
   }

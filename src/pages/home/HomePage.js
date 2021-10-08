@@ -51,7 +51,7 @@ function HomePage() {
 
   // Khuyến mãi hot nhât tháng 9
   const betserElement = stateBestSellingMonth.map((item) => (
-    <div className=" col__product-card ">
+    <div key={item.price} className=" col__product-card ">
       <div className=" product-card ">
         {/* <div className="product-card__wishlist">
           <i className="far fa-heart" />
@@ -75,7 +75,7 @@ function HomePage() {
           </button> */}
 
           <div onClick={() => dispatch(addProduct(item))}
-            className="btn-addtocart product-card__btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            className="btn-addtocart product-card__btn" type="button" data-bs-toggle="modal" data-bs-target={`#${item.id}`}>
             <i className="fas fa-cart-arrow-down" />&nbsp;Thêm vào giỏ hàng
           </div>
 

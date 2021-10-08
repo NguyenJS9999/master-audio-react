@@ -360,8 +360,6 @@ function CheckOutPage() {
                 </div>
               </div>
 
-              <button  onClick={() => dispatch( addCustomerInfor(customerDataInput) ) }>Gửi data kh</button>
-
               {/* Nút tiến hành đặt hàng */}
               <div className="col-12">
                 {stateOrderStatus ?
