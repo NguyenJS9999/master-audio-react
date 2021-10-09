@@ -17,12 +17,12 @@ export function DiscountTotalCalculation({ stateProducts }) {
   // Redux gửi đi
   const dispatch = useDispatch();
   // Mảng thông tin đơn hàng - gửi đi
-  let orderInfor =  [{
+  let orderInfor =  {
     temporarySum: stateNetMoney,
     vat : VAT,
     discount: numDiscountValue,
     gross: grossMoney
-  } ];
+  };
 
   useEffect(() => {
     let sum = 0;

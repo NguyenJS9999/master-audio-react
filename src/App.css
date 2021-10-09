@@ -180,6 +180,13 @@ input::-webkit-inner-spin-button {
   z-index: 10;
 }
 /* Modal thông báo đãn thêm sp vào giỏ hàng */
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.25rem;
+}
 .modal-body img {
   width: 80px;
 }

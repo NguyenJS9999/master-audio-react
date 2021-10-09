@@ -5,9 +5,9 @@ import "./OrderComplete.css"
 
 function OrderCompletePage() {
     const shoppingList = useSelector((state) => state.cart.listProductCart);
+    // Thông tin khác hàng
     const orderInfor = useSelector((state) => state.order.orderInfor);
-    const currentOrderInfor = orderInfor[orderInfor.length - 1];
-    const objectCurrentOrderInfor = currentOrderInfor[0]
+    const objectCurrentOrderInfor = orderInfor[0];
 
     const orderItemElement = shoppingList.map((item) => (
         <div key={item.id} className="order-item order-row">

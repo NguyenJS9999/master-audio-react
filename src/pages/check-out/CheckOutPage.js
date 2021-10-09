@@ -15,25 +15,28 @@ import Newsletter from "../../newsletter/NewsLetter"
 
 function CheckOutPage() {
   const shoppingList = useSelector((state) => state.cart.listProductCart);
-  const orderInfor = useSelector((state) => state.order.orderInfor);
-  const currentOrderInfor = orderInfor[orderInfor.length - 1];
-  const objectCurrentOrderInfor = currentOrderInfor[0];
+  // Số liệu tính toán
+  const currentOrderInfor  = useSelector((state) => state.order.orderInfor );
+  // const orderInfor = currentOrderInfor[ currentOrderInfor.length - 1 ];
+  const objectCurrentOrderInfor = currentOrderInfor[ 0 ];
 
   // const [ state, set ] = useState();
   const [stateOrderStatus, setOrderStatus] = useState(false);
+  // Form nhập thông tin khách hàng
+  const [ stateInputName, setInputName ] = useState('');
+  const [ stateInputPhone, setInputPhone ] = useState(null);
+  const [ stateInputAddress, setInputAddress ] = useState('');
+  const [ stateInputCity, setInputCity ] = useState('');
+  const [ stateInputDistrict, setInputDistrict ] = useState('');
+  const [ stateInputWard, setInputWard ] = useState('');
+  const [ stateInputOrderNotes, setInputOrderNotes ] = useState('');
+  const [ stateShippingMethod, setShippingMethod ] = useState('');
 
-  const [stateInputName, setInputName] = useState('');
-  const [stateInputPhone, setInputPhone] = useState(null);
-  const [stateInputAddress, setInputAddress] = useState('');
-  const [stateInputCity, setInputCity] = useState('');
-  const [stateInputDistrict, setInputDistrict] = useState('');
-  const [stateInputWard, setInputWard] = useState('');
-  const [stateInputOrderNotes, setInputOrderNotes] = useState('');
-
+  
   // Redux gửi data khách hàng lên store
   const dispatch = useDispatch();
   // Mảng chứa thông tin khách hàng nhập vàp
-  let customerDataInput =  [{
+  let customerDataInput =  {
       name: stateInputName,
       phone: stateInputPhone,
       address: stateInputAddress,
@@ -41,23 +44,23 @@ function CheckOutPage() {
       district: stateInputDistrict,
       ward: stateInputWard,
       note: stateInputOrderNotes
-    }];
+    };
   // Kiểm tra liên tục ô input để bật nút
   useEffect(() => {
     if (stateInputName === '' || stateInputPhone === '' || stateInputAddress === '' ||
-      stateInputCity === '' || stateInputDistrict === '' || stateInputWard === '') {
-      console.log('Vui lòng nhập')
+      stateInputCity === '' || stateInputDistrict === '' || stateInputWard === ''|| 
+      stateShippingMethod ==='') {
+      // console.log('Vui lòng nhập đủ thông tin')
       setOrderStatus(false);
       // Lỗi
     }
     else if (stateInputName || stateInputPhone || stateInputAddress ||
-      stateInputCity || stateInputDistrict || stateInputWard) {
-      console.log('Đã nhập')
+      stateInputCity || stateInputDistrict || stateInputWard || stateShippingMethod) {
       setOrderStatus(true)
     }
 
   }, [stateInputName, stateInputPhone, stateInputAddress,
-    stateInputCity, stateInputDistrict, stateInputWard])
+    stateInputCity, stateInputDistrict, stateInputWard, stateShippingMethod])
 
   // Lấy ra giá trị ô input mỗi trường
   function getValueInforInput(event, nameInput) {
@@ -76,8 +79,10 @@ function CheckOutPage() {
       setInputWard( eventTargetValue );
     } else if (nameInput === 'order-notes') {
       setInputOrderNotes( eventTargetValue );
+    }else if (nameInput === 'shipping-method') {
+      setShippingMethod( eventTargetValue );
     }
-
+    
   }
 
   const orderItemElement = shoppingList.map((item) => (
@@ -141,7 +146,7 @@ function CheckOutPage() {
                     <label htmlFor='phone' >Số điện thoại <span className='required'>*</span></label>
                     <input
                       onChange={(event) => getValueInforInput(event, 'phone')}
-                      id='phone' type="text" className=" phone-input" placeholder="(+84)" />
+                      id='phone' type="number" className=" phone-input" placeholder="(+84)" />
 
                     <div className="feedback-noti">Vui lòng nhập số điện thoại</div>
                   </div>
@@ -185,12 +190,10 @@ function CheckOutPage() {
                   </div>
 
                   <div className="order__ship-method">
-                    <select
+                    <select onChange={(event) => getValueInforInput(event, 'shipping-method')}
                       className="form-select ship-method-select" id="ship-method">
 
-                      <option defaultValue="default" value>
-                        Phương thức vận chuyển *
-                      </option>
+                      <option defaultValue="default" value> Phương thức vận chuyển * </option>
                       <option value="standard">Tiêu chuẩn</option>
                       <option value="save">Tiết kiệm</option>
                       <option value="fast">Nhanh</option>
@@ -364,7 +367,7 @@ function CheckOutPage() {
               <div className="col-12">
                 {stateOrderStatus ?
                   (<Link disabled={true}
-                    // onClick={() => dispatch( addCustomerInfor(customerDataInput) ) }
+                    onClick={() => dispatch( addCustomerInfor(customerDataInput) ) }
                     to="/order-complete" >
                     <button className="section__btn w-100 btn-place-order " type="submit" >ĐẶT HÀNG </button>
                   </Link>)

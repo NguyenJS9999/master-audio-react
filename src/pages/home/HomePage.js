@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/cartSlice"
 // import CustomToast from "../../components/CustomToast";
 // import CustomTab from "../../components/Tab";
-import CustomModal from "../../components/Modal";
+// import CustomModal from "../../components/Modal";
 
 import Newsletter from "../../newsletter/NewsLetter"
 import { Services } from "./Services"
@@ -51,7 +51,7 @@ function HomePage() {
 
   // Khuyến mãi hot nhât tháng 9
   const betserElement = stateBestSellingMonth.map((item) => (
-    <div key={item.price} className=" col__product-card ">
+    <div key={item.id} className=" col__product-card ">
       <div className=" product-card ">
         {/* <div className="product-card__wishlist">
           <i className="far fa-heart" />
@@ -66,7 +66,7 @@ function HomePage() {
           <p className="card-text product-card__name">
             {item.name}
           </p>
-          <p className="card-text product-card__price">{(item.price).toLocaleString()}</p>
+          <p className="card-text product-card__price">{(item.price).toLocaleString()}&nbsp;₫</p>
 
           {/* <button onClick={() => dispatch(addProduct(item))}
             className="btn-addtocart product-card__btn">
@@ -79,11 +79,29 @@ function HomePage() {
             <i className="fas fa-cart-arrow-down" />&nbsp;Thêm vào giỏ hàng
           </div>
 
-          <CustomModal
+          {/* <CustomModal
             proTitle='Đã thêm sản phẩm vào giỏ hàng!'
             imgUrl={item.image}
             proBrand={item.brand}
-            proName={item.name} />
+            proName={item.name} /> */}
+
+          <div className="modal fade" id={item.id} tabIndex="-1" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title text-center"  >Đã thêm sản phẩm vào giỏ hàng!</h5>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div className="modal-body">
+                  <img src={item.image} alt={item.name} />
+                  <strong>{item.brand}</strong>&nbsp;
+                  <span>{item.name}</span>
+                </div>
+          
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>

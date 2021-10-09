@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+// Redux
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/cartSlice"
 
-import "./ProductDetail.css";
-import Newsletter from "../../newsletter/NewsLetter"
 // import CustomToast from "../../components/CustomToast";
 // import CustomModal from "../../components/Modal";
+// import CustomModalBootstrap from "../../components/CustomModalBootstrap";
+
+
+import "./ProductDetail.css";
+import Newsletter from "../../newsletter/NewsLetter"
 
 function ProductDetailPage() {
   // Mảng data 1 { item }
-  const [stateProductDetail, setProductDetail] = useState([]); console.log('stateProductDetail', stateProductDetail)
+  const [stateProductDetail, setProductDetail] = useState( {} );
   const [loading, setLoading] = useState(true);
   // Redux
   const dispatch = useDispatch();
@@ -217,9 +221,18 @@ function ProductDetailPage() {
                     <div className="button-cart-buy">
 
                       <div onClick={() => dispatch(addProduct(stateProductDetail))}
-                        className="button-cart" type="button" data-bs-toggle="modal" data-bs-target={`#${stateProductDetail.id}`}>
+                        className="button-cart" type="button" 
+                        data-bs-toggle="modal" data-bs-target={`#${stateProductDetail.id}`}
+                      >
                         <i className="fas fa-cart-arrow-down" />&nbsp;Thêm vào giỏ hàng
                       </div>
+
+                      {/* <CustomModal proTitle='Đã thêm sản phẩm vào giỏ hàng!'
+                        imgUrl={stateProductDetail.image} proBrand={'Nexo'}
+                        proName={stateProductDetail.name} proId={stateProductDetail.id}
+                      /> */}
+
+                      {/* <CustomModalBootstrap /> */}
 
                       <Link to="/shopping-cart"
                         onClick={() => dispatch(addProduct(stateProductDetail))} >
@@ -229,7 +242,9 @@ function ProductDetailPage() {
                       </Link>
 
                     </div>
+
                   </div>
+
                   <div className="bottom-line" />
 
                   {/* 3*/}
@@ -252,30 +267,33 @@ function ProductDetailPage() {
         proBrand={stateProductDetail.brand} 
         proName={stateProductDetail.name} /> */}
 
-      {/* Modal - Đã thêm sp vào giỏ hàng */}
-      <div className="modal fade" id={stateProductDetail.Id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title text-center" id="exampleModalLabel">Đã thêm sản phẩm vào giỏ hàng!</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-              <img src={stateProductDetail.image} alt={stateProductDetail.name} />
-              <strong>{stateProductDetail.brand}</strong>&nbsp;
-              <span>{stateProductDetail.name}</span>
-            </div>
-            {/* <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
-            </div> */}
-          </div>
-        </div>
-      </div>
-      {/* Modal - Đã thêm sp vào giỏ hàng */}
-
       {/* Email nhận tin tức mới */}
       <Newsletter />
+
+      <div className="modal fade" id={stateProductDetail.id} tabIndex="-1" aria-hidden="true">
+                <div className="modal-dialog">
+
+                    <div className="modal-content">
+
+                        <div className="modal-header">
+                            <h5 className="modal-title text-center"  >Đã thêm sản phẩm vào giỏ hàng! </h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div className="modal-body">
+                            <img src={stateProductDetail.image} alt={stateProductDetail.name} />
+                            <strong>{stateProductDetail.brand}</strong>&nbsp;
+                            <span>{stateProductDetail.name}</span>
+                        </div>
+                        {/* <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div> */}
+                        
+                    </div>
+
+                </div>
+            </div>
     </>
   );
 }

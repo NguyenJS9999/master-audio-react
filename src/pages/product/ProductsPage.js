@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // Redux
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/cartSlice"
+
 // import CustomToast from "../../components/CustomToast";
 import CustomModal from "../../components/Modal";
 
@@ -154,8 +155,10 @@ function ProductsPage() {
           </button>
 
           {/* <!-- Modal --> */}
-          <CustomModal proTitle='Đã thêm sản phẩm vào giỏ hàng!' imgUrl={item.image} proBrand={item.brand} proName={item.name} proId={item.id} />
-
+          <CustomModal proTitle='Đã thêm sản phẩm vào giỏ hàng!' 
+            imgUrl={item.image} proBrand={item.brand} 
+            proName={item.name} proId={item.id} 
+          />
 
         </div>
       </div>

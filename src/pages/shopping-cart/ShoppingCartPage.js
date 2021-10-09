@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../store/cartSlice"
-import { removeProduct } from "../../store/cartSlice"
 
 import "./ShoppingCart.css";
 // import CustomToast from "../../components/CustomToast";
