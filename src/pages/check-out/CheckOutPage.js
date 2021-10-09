@@ -19,6 +19,7 @@ function CheckOutPage() {
   const currentOrderInfor  = useSelector((state) => state.order.orderInfor );
   // const orderInfor = currentOrderInfor[ currentOrderInfor.length - 1 ];
   const objectCurrentOrderInfor = currentOrderInfor[ 0 ];
+  console.log('objectCurrentOrderInfor', objectCurrentOrderInfor)
 
   // const [ state, set ] = useState();
   const [stateOrderStatus, setOrderStatus] = useState(false);
@@ -335,7 +336,7 @@ function CheckOutPage() {
                 {/* Tổng tiền */}
                 <div className="order-price order-row-small">
                   <div className="col-left">Tạm tính</div>
-                  <div className="col-right">{objectCurrentOrderInfor.temporarySum.toLocaleString()}&nbsp;₫</div>
+                  <div className="col-right">{objectCurrentOrderInfor.net.toLocaleString()}&nbsp;₫</div>
                 </div>
 
                 <div className="check-out__order-discount order-row-small">

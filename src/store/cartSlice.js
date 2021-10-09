@@ -13,7 +13,7 @@ export const cartSlice = createSlice({
     addProduct: (state, action) => {
       let statusHadItem = false;
       for ( let i = 0; i < state.listProductCart.length; i++) {
-        // Có tồn tại
+        // Đã tồn tại trên 1sp
         if ( state.listProductCart[i].id === action.payload.id ) {
           state.listProductCart[i].quantity += action.payload.quantity;
           statusHadItem = true;

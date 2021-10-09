@@ -244,9 +244,28 @@ function ShoppingCartPage() {
             <span className={` button-buy `} type="button"> TIẾP TỤC MUA HÀNG </span>
           </Link>
 
-          <span onClick={deleteAllItems}
-            className={` ${shoppingList.length > 0 ? "d-flex" : 'd-none'} button-delete-all `} type="button" > XÓA TOÀN BỘ
+          <span className={` ${shoppingList.length > 0 ? "d-flex" : 'd-none'} button-delete-all `}
+            type="button" data-bs-toggle="modal" data-bs-target="#deleteAllItem">
+            XÓA TOÀN BỘ
           </span>
+
+          <div class="modal fade" id="deleteAllItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Xác nhận</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Bạn có chắc chắn muốn xóa toàn bộ sản phẩm trong giỏ hàng?
+                </div>
+                <div class="modal-footer">
+                  <button onClick={deleteAllItems} type="button" class="btn btn-success" data-bs-dismiss="modal">Chắc chắn</button>
+                  <button type="button" class="btn btn-danger">Hủy bỏ</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
 
@@ -259,6 +278,7 @@ function ShoppingCartPage() {
 
       {/* Email nhận tin tức mới */}
       <Newsletter />
+
     </>
   );
 }

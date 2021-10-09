@@ -17,9 +17,9 @@ export function DiscountTotalCalculation({ stateProducts }) {
   // Redux gửi đi
   const dispatch = useDispatch();
   // Mảng thông tin đơn hàng - gửi đi
-  let orderInfor =  {
-    temporarySum: stateNetMoney,
-    vat : VAT,
+  let moneyInfor = {
+    net: stateNetMoney,
+    vat: VAT,
     discount: numDiscountValue,
     gross: grossMoney
   };
@@ -107,11 +107,21 @@ export function DiscountTotalCalculation({ stateProducts }) {
 
           {/* count-money */}
           <span className=" make-payment ">
-            <Link to="/check-out" onClick={() => dispatch(addOrderInfor( orderInfor ) )}
-              className=" make-payment-button    section__btn " >
+            {stateNetMoney > 0 ?
+              <Link to="/check-out" onClick={() => dispatch(addOrderInfor(moneyInfor))}
+                className=" make-payment-button    section__btn " >
 
-              <i className="fas fa-hand-holding-usd" /> &nbsp;TIẾN HÀNH ĐẶT HÀNG
-            </Link>
+                <i className="fas fa-hand-holding-usd" /> &nbsp;TIẾN HÀNH ĐẶT HÀNG
+              </Link> 
+              :
+              <div className=" cursor__not-allowed  make-payment-button    section__btn " >
+                <i className="fas fa-hand-holding-usd" /> &nbsp;TIẾN HÀNH ĐẶT HÀNG
+              </div>
+            }
+
+
+
+
           </span>
         </div>
 
@@ -119,3 +129,4 @@ export function DiscountTotalCalculation({ stateProducts }) {
     </>
   )
 }
+

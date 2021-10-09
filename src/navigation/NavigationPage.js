@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 // Redux
 import { useSelector } from "react-redux";
@@ -8,8 +8,20 @@ import "./Navigation.css";
 
 
 function NavigationPage() {
-  const [stateStatusMenuMobile, setStatusCategory] = useState(false);
+  const [ stateStatusMenuMobile, setStatusCategory ] = useState(false);
   const shoppingList = useSelector((state) => state.cart.listProductCart);
+  const [ stateQuantityAllItem , setQuantityAllItem ] = useState( 0 );
+  
+  // Lấy ra số lượng từng Loại sp và cộng lại = số sp
+  useEffect( () => {
+    let cloneQuantityItem = shoppingList.map( (obj) => obj.quantity)
+    console.log('cloneQuantityItem', cloneQuantityItem)
+    let sum = 0;
+    cloneQuantityItem.forEach(function(numberQuantity) {
+      sum += numberQuantity;
+    })
+    setQuantityAllItem(sum)
+  }, [shoppingList])
 
   // Tắt bật menu hambeger
   function toggleMenuHiddenMobile() {
@@ -63,7 +75,7 @@ function NavigationPage() {
                 <Link to="/shopping-cart" className="cart-icon">
                   <span>
                     <i className="fas fa-shopping-cart" />
-                    <span className=" cart-number-items ">{shoppingList.length}</span>
+                    <span className=" cart-number-items ">{stateQuantityAllItem}</span>
                   </span>
                 </Link>
                 {/* Like mobile */}
@@ -110,7 +122,7 @@ function NavigationPage() {
                     <NavLink to="/shopping-cart" activeClassName="high-light__menu-bottom">
                       <div className="mobile-cart-status">
                         <i className="fas fa-shopping-cart" />
-                        <span className="mobile-cart-number">{shoppingList.length}</span>
+                        <span className="mobile-cart-number">{stateQuantityAllItem}</span>
                       </div>
                       <span>Giỏ hàng</span>
                     </NavLink>
@@ -153,7 +165,7 @@ function NavigationPage() {
                 <Link to="/shopping-cart" className="cart-icon">
                   <div>
                     <i className="fas fa-shopping-cart" />
-                    <span className=" cart-number-items ">{shoppingList.length}</span>
+                    <span className=" cart-number-items ">{stateQuantityAllItem}</span>
                   </div>
                 </Link>
                 {/* Like desktop */}
