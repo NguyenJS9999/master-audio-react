@@ -12,7 +12,7 @@ function OrderCompletePage() {
     const orderItemElement = shoppingList.map((item) => (
         <div key={item.id} className="order-item order-row">
             <div className="col-left">
-                {item.brand}&nbsp;{item.name}&nbsp;x<span className="order-item__quantity">&nbsp;{item.quantity}</span>
+                {item.brand}&nbsp;{item.name}&nbsp;x<strong className="order-item__quantity">&nbsp;{item.quantity}</strong>
             </div>
             <div className="col-right order-item__unit-price">{ ((item.price )*(item.quantity)).toLocaleString()  }&nbsp;₫</div>
         </div>

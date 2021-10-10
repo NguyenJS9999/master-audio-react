@@ -249,19 +249,19 @@ function ShoppingCartPage() {
             XÓA TOÀN BỘ
           </span>
 
-          <div class="modal fade" id="deleteAllItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">Xác nhận</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div className="modal fade" id="deleteAllItem" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="staticBackdropLabel">Xác nhận</h5>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                   Bạn có chắc chắn muốn xóa toàn bộ sản phẩm trong giỏ hàng?
                 </div>
-                <div class="modal-footer">
-                  <button onClick={deleteAllItems} type="button" class="btn btn-success" data-bs-dismiss="modal">Chắc chắn</button>
-                  <button type="button" class="btn btn-danger">Hủy bỏ</button>
+                <div className="modal-footer">
+                  <button onClick={deleteAllItems} type="button" className="btn btn-success" data-bs-dismiss="modal">Chắc chắn</button>
+                  <button type="button" className="btn btn-danger">Hủy bỏ</button>
                 </div>
               </div>
             </div>

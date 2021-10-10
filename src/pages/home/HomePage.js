@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Slider from "react-slick"; // react-slick.neostack.com
-// import { Button } from "react-bootstrap";
+import AOS from "aos";
 
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/cartSlice"
-// import CustomToast from "../../components/CustomToast";
-// import CustomTab from "../../components/Tab";
-// import CustomModal from "../../components/Modal";
 
 import Newsletter from "../../newsletter/NewsLetter"
 import { Services } from "./Services"
@@ -29,6 +26,8 @@ function HomePage() {
     pauseOnHover: false,
 
   }
+
+  AOS.init();
 
   const [stateBestSellingMonth, setBestSellingMonth] = useState([]);
   // Redux gửi đi
@@ -85,7 +84,7 @@ function HomePage() {
             proBrand={item.brand}
             proName={item.name} /> */}
 
-          <div className="modal fade" id={item.id} tabIndex="-1" aria-hidden="true">
+          <div className="modal fade" id={item.id} aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
@@ -95,10 +94,11 @@ function HomePage() {
 
                 <div className="modal-body">
                   <img src={item.image} alt={item.name} />
+                  <span className='modal-body_type'>{item.type}</span>&nbsp;
                   <strong>{item.brand}</strong>&nbsp;
                   <span>{item.name}</span>
                 </div>
-          
+
               </div>
             </div>
           </div>
@@ -137,8 +137,6 @@ function HomePage() {
               </div> */}
             </Slider>
 
-
-            {/* <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-top-home-adamson-system.png?raw=true" alt="banner" /> */}
           </div>
         </section>
         {/* List sản phẩm - quảng cáo mỗi loại 1 vài sp nội bật */}
@@ -847,7 +845,9 @@ function HomePage() {
         {/* VLOG công trình tiêu biểu */}
         <section className=" vlog-typical-projects    container ">
           <div className=" typical-projects--title ">CÁC CÔNG TRÌNH TIÊU BIỂU</div>
-          <div className=" typical-projects-list ">
+
+          <div className=" typical-projects-list "  >
+
             <div className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/Karaoke-Lasvegas.png" alt="construction" />

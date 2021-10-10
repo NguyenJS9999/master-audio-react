@@ -480,27 +480,27 @@ function NavigationPage() {
             </div>
 
             <div className=" nav-2-menu ">
-              <NavLink to="/" activeClassName="active" exact>
+              <NavLink to="/" activeClassName="active_nav" exact>
                 <i className="fas fa-home" />
                 &nbsp;Trang chủ
               </NavLink>
 
-              <NavLink to="/build-config" activeClassName="active">
+              <NavLink to="/build-config" activeClassName="active_nav">
                 <i className="fas fa-tools" />
                 &nbsp;Xây dựng cấu hình
               </NavLink>
 
-              <NavLink to="/typical-projects" activeClassName="active">
+              <NavLink to="/typical-projects" activeClassName="active_nav">
                 <i className="fas fa-users-cog" />
                 &nbsp;CÔNG TRÌNH TIÊU BIỂU
               </NavLink>
 
-              <NavLink to="/news" activeClassName="active">
+              <NavLink to="/news" activeClassName="active_nav">
                 <i className="far fa-newspaper" />
                 &nbsp;Tin tức
               </NavLink>
 
-              <NavLink to="/contact" activeClassName="active">
+              <NavLink to="/contact" activeClassName="active_nav">
                 <i className="fas fa-map-marked-alt" /> Liên hệ
               </NavLink>
 
@@ -564,27 +564,27 @@ function NavigationPage() {
                   {/*Menu con bên trong accodion được ẩn cuộn ẩn đi */}
                   <div className=" menu-collapse ">
                     <span>
-                      <NavLink to="/" activeClassName="active" exact>
+                      <NavLink to="/" activeClassName="active_nav--mobile" exact>
                         <div>Trang chủ</div>
                       </NavLink>
                     </span>
                     <span>
-                      <NavLink to="/build-config" activeClassName="active">
+                      <NavLink to="/build-config" activeClassName="active_nav--mobile">
                         <div>Xây dựng cấu hình</div>
                       </NavLink>
                     </span>
                     <span>
-                      <NavLink to="/typical-projects" activeClassName="active">
+                      <NavLink to="/typical-projects" activeClassName="active_nav--mobile">
                         <div>CÔNG TRÌNH TIÊU BIỂU</div>
                       </NavLink>
                     </span>
                     <span>
-                      <NavLink to="/news" activeClassName="active">
+                      <NavLink to="/news" activeClassName="active_nav--mobile">
                         <div>Tin tức</div>
                       </NavLink>
                     </span>
                     <span>
-                      <NavLink to="/contact" activeClassName="active">
+                      <NavLink to="/contact" activeClassName="active_nav--mobile">
                         <div>Liên hệ</div>
                       </NavLink>
                     </span>

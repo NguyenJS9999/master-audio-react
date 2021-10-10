@@ -99,6 +99,89 @@
   margin-bottom: 2.25rem;
 }
 
+/* MOBILE - LỌC SẢN PHẨM */
+/* Nền đen che mờ */
+/* .backdrop-bg,  */
+.mobile-filter-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1199;
+  overflow: hidden;
+  background: rgba(18, 18, 18, 0.6);
+
+  display: none;
+  transition: all 0.45s ease;
+}
+.mobile-products__filter {
+  /* border: 1px solid red; */
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 50%);
+  background-color: #fff;
+  /* Tạm */
+  height: 100vh;
+  min-width: 280px;
+  z-index: 2000;
+  padding: 0.75rem;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Ẩn Lọc sang trái */
+  /* transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%); */
+
+  /* transform: translateX(0%); */
+  transition: all 0.45s ease;
+}
+.mobile-products__filter-open {
+  transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  -webkit-transform: translateX(0%);
+}
+.mobile-products__filter-close {
+  transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  box-shadow: none;
+}
+
+.backdrop-bg.open-menu {
+  opacity: 1;
+  z-index: 1100;
+}
+
+.backdrop-bg.open-menu .mobile-nav-bar {
+  transform: translateX(0);
+  -ms-transform: translateX(-100%);
+  -webkit-transform: translateX(0);
+}
+
+/* Close */
+.btn-close-menu,
+.btn-close-filter {
+  cursor: pointer;
+  font-size: 22px;
+  position: absolute;
+  top: 0.15rem;
+  right: 0.5rem;
+}
+.remove-filter__btn,
+.filter__btn {
+  width: 100%;
+  margin-bottom: 2.25rem;
+}
+/* Phần thẻ lọc */
+.filter-entry {
+  margin-bottom: 2.25rem;
+}
+
 /* End Section Products List */
 
 /* Start Danh cách các sản phẩm */
@@ -331,10 +414,11 @@ p {
 .page-prev,
 .page-next {
   /* border: 1px solid rgb(0, 132, 255); */
+  vertical-align: middle;
   display: flex;
   justify-content: center;
   align-items: center;
-  vertical-align: middle;
+  gap: 1rem;
 }
 .pagination-item {
   margin: 0 0.25rem;
@@ -343,6 +427,9 @@ p {
 .pagination-item:nth-child(2) .pagination-link {
   color: #fff;
   background-color: var(--color-primary-master-audio);
+}
+.page-item:first-child .page-link {
+  border-radius: 25px;
 }
 .pagination-link {
   color: var(--color-logo);
@@ -363,6 +450,30 @@ p {
 .page-prev {
   opacity: 0.6;
   pointer-events: none;
+}
+/* React Bootstap */
+.page-link {
+  border: 1px solid var(--color-primary-master-audio);
+  border-radius: 25px;
+  color: var(--color-primary-master-audio);
+  padding: 0.25rem 0.75rem;
+}
+.page-link:hover {
+  background: var(--color-primary-master-audio);
+  color: #fff;
+}
+.page-link:focus {
+  background: var(--color-primary-master-audio);
+  color: #fff;
+}
+.page-item:last-child .page-link {
+  border-radius: 25px;
+}
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: var(--color-primary-master-audio);
+  border-color: var(--color-primary-master-audio);
 }
 
 /* End Section Products List */

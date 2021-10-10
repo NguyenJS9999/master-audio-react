@@ -1,7 +1,11 @@
 /* Hight light trang hiện tại */
-.active {
-  border-bottom: 2px solid #fff;
-  border-width: 80%;
+/* trước là .active */
+.active_nav {
+  border-bottom: 2px solid #fff !important;
+}
+.active_nav--mobile {
+  color: var(--color-highlight-border);
+  font-weight: 500;
 }
 .high-light__menu-bottom {
   color: var( --color-highlight-border) !important;
@@ -864,6 +868,7 @@ trang khác dùng chung ở nav tác động */
 }
 .nav-2-menu a {
   color: white;
+  border: 2px solid rgba(255, 255, 255, 0);
 }
 .nav-2-menu a:hover {
   color: white;

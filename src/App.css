@@ -1,7 +1,7 @@
 /* CSS Dùng chung, mã màu tạo tay, các thẻ chung */
 :root {
   --color-danger: #ee3b47;
-  --color-success: #1fd312;
+  --color-success: #0db102;;
   --color-info: #167efb;
   --color-logo: #2c2e3e;
   --color-logo-light: #34374c;
@@ -185,7 +185,13 @@ input::-webkit-inner-spin-button {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.1rem;
+}
+.modal-title {
+  color: var(--color-success);
+}
+.modal-body_type {
+  text-transform: capitalize;
 }
 .modal-body img {
   width: 80px;

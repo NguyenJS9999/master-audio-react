@@ -1,8 +1,8 @@
 
-function CustomModal( { proTitle, imgUrl, proBrand, proName, proId } ) {
+function CustomModal( { proTitle, imgUrl, proBrand, proName, proType, proId } ) {
     return (
         <>
-            <div className="modal fade" id={proId} tabIndex="-1" aria-hidden="true">
+            <div className="modal fade" id={proId} aria-hidden="true">
                 <div className="modal-dialog">
 
                     <div className="modal-content">
@@ -14,6 +14,7 @@ function CustomModal( { proTitle, imgUrl, proBrand, proName, proId } ) {
 
                         <div className="modal-body">
                             <img src={imgUrl} alt={proName} />
+                            <span className='modal-body_type'>{proType}</span>&nbsp;
                             <strong>{proBrand}</strong>&nbsp;
                             <span>{proName}</span>
                         </div>

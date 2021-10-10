@@ -270,7 +270,7 @@ function ProductDetailPage() {
       {/* Email nhận tin tức mới */}
       <Newsletter />
 
-      <div className="modal fade" id={stateProductDetail.id} tabIndex="-1" aria-hidden="true">
+      <div className="modal fade" id={stateProductDetail.id} aria-hidden="true">
                 <div className="modal-dialog">
 
                     <div className="modal-content">
@@ -282,6 +282,7 @@ function ProductDetailPage() {
 
                         <div className="modal-body">
                             <img src={stateProductDetail.image} alt={stateProductDetail.name} />
+                            <span className='modal-body_type'>{stateProductDetail.type}</span>&nbsp;
                             <strong>{stateProductDetail.brand}</strong>&nbsp;
                             <span>{stateProductDetail.name}</span>
                         </div>

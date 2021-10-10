@@ -142,7 +142,7 @@
 }
 .product__brand {
   letter-spacing: .06em;
-  margin-bottom: 0;
+  margin-bottom: 0.25rem;
   text-transform: uppercase;
 }
 .product-detail__name {
@@ -215,13 +215,16 @@
 /* Style cho ô input riêng - nhập lượng hàng */
 .custom-number-input {
   border: 1px solid rgba(208, 208, 208, 0.5);
-  border-radius: 2px;
+  border-radius: 0px !important;
   background: rgba(255, 255, 255, 1);
   /* max-width: 4rem; */
   text-align: center;
 }
 .custom-number-input:hover {
-  border: 1px solid rgba(208, 208, 208, 1);
+  border: 1px solid rgba(228,35,19, 0.5);
+}
+.custom-number-input:focus {
+  border: 1px solid rgba(228,35,19, 0.5);
 }
 /* 2 Nút tăng giảm */
 .custom-number i {
