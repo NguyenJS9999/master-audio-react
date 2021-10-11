@@ -74,8 +74,10 @@ function ProductDetailPage() {
 
   return (
     <>
+      {/* stateProductDetail.image */}
       {/* breadcrumb */}
-      <div className="page-banner     container-fluid ">
+      <div style={{backgroundImage: `url("${stateProductDetail.image}")`}}
+        className="page-banner_detail-page     container-fluid ">
         <div className=" page-banner__content ">
           <div className=" breadcrumb-title ">{stateProductDetail.brand}</div>
 

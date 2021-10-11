@@ -29,6 +29,8 @@ function ProductsPage() {
   const [stateNumOfPaginate, setNumOfPaginate] = useState(1);
   // Checked
   const [stateChecked, setChecker] = useState('');
+  // Filter
+  const [stateToggleFilterMobile, setToggleFilterMobile] = useState(false);
   // Redux gửi đi
   const dispatch = useDispatch();
 
@@ -128,7 +130,7 @@ function ProductsPage() {
       </Pagination.Item>,
     );
   }
-  const [stateToggleFilterMobile, setToggleFilterMobile] = useState(false);
+  
   // Lọc MOBILE
   function toggleFilterMobile() {
     if (stateToggleFilterMobile === true) {
@@ -188,12 +190,9 @@ function ProductsPage() {
     return (
       <div className="products__filter">
         {/* <h4 className=" section-title    products__filter-title">TÌM SẢN PHẨM</h4> */}
-        {/* Seacrch */} {/* Seacrch */}
-        <div onClick={clearAllFilters}>
-          <button className="section__btn  remove-filter__btn">XÓA LỌC</button>
-        </div>
-
-
+        {/* Seacrch */}
+        <button onClick={clearAllFilters} className="section__btn  remove-filter__btn">XÓA LỌC</button>
+     
         {/* Lọc theo thương hiệu */}
         <div className=" filter__brands">
           <h4 className="section-title    filter-title">
@@ -522,7 +521,8 @@ function ProductsPage() {
             <h4 className="section-title filter-title">LỌC SẢN PHẨM</h4>
 
             <div className="remove-filter-container">
-              <button className="section__btn remove-filter__btn">XÓA LỌC</button>
+              <button onClick={clearAllFilters}
+                className="section__btn remove-filter__btn">XÓA LỌC</button>
             </div>
             {/* MOBILE - Lọc theo thương hiệu */}
             <div className=" filter__brands">
@@ -807,7 +807,7 @@ function ProductsPage() {
 
               </div>
             </div>
-             {/* Loc theo giá */}
+            {/* Loc theo giá */}
           </div>
           {/* End Khối lọc màn MOBILE ẩn bên trái */}
 

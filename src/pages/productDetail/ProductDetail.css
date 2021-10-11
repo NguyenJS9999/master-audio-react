@@ -1,3 +1,14 @@
+/* bBreadcrumb */
+.page-banner_detail-page {
+  background-image: url("https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/EDM-banner-breadcrumb-Wallpaper.png?raw=true");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: cover; */
+  background-color: #fff;
+  padding: 0;
+
+} 
+
 .product-detail__background {
   background: #fff;
 }
@@ -365,9 +376,9 @@
   width: 100%;
 }
 /* Cấu hình */
-.product-configuration {
-  /* border: 0.1px solid rgba(228, 35, 19, 1); */
-}
+/* .product-configuration {
+  border: 0.1px solid rgba(228, 35, 19, 1);
+} */
 
 /* Kho ảnh sản phẩm */
 .img-gallery {
@@ -407,11 +418,12 @@
   padding: 16px;
 }
 /*  */
-.same-products {
-  /* border: 1px dotted #ba13e4; */
-}
-.slide-same-products {
-}
+/* .same-products {
+  border: 1px dotted #ba13e4;
+} */
+/* .slide-same-products {
+    border: 1px dotted #ba13e4;
+} */
 /* Ghi đè css hai bút chuyển slide */
 .slick-prev,
 .slick-arrow {
@@ -642,10 +654,6 @@
   .same-products-title {
     font-size: 22px;
   }
-  .product {
-    /* padding: 2px 4px;
-    margin: 0px 8px; */
-  }
   .product-details {
     margin-top: 10px;
   }
@@ -711,11 +719,6 @@
     margin: auto;
   }
 
-  /* Khối sản phẩm tương tự khoảng cách các sp giảm, lê trong giảm */
-  .product {
-    /* padding: 4px 8px;
-    margin: 0px 10px; */
-  }
 }
 
 /* Medium */
@@ -768,12 +771,6 @@
   .same-products-container {
     margin: auto;
   }
-
-  /* Khối sản phẩm tương tự khoảng cách các sp giảm, lê trong giảm */
-  .product {
-    /* padding: 6px 10px;
-    margin: 0px 16px; */
-  }
 }
 
 /* Large */
@@ -805,12 +802,6 @@
   /* Khối sản phẩm tương tự giảm độ dày lề */
   .same-products-container {
     margin: auto;
-  }
-
-  /* Khối sản phẩm tương tự khoảng cách các sp giảm, lê trong giảm */
-  .product {
-    /* padding: 8px 12px;
-    margin: 0px 18px; */
   }
 }
 
@@ -845,12 +836,6 @@
   .same-products-container {
     /* margin: 40px 80px 40px 80px; */
     margin: auto;
-  }
-
-  /* Khối sản phẩm tương tự khoảng cách các sp giảm, lê trong giảm */
-  .product {
-    /* padding: 10px 16px;
-    margin: 0px 18px; */
   }
 }
 
