@@ -28,28 +28,97 @@ function HomePage() {
   }
 
   AOS.init();
+  // Khuyển mãi theo tháng - thời gian thực
+  const currendTime = new Date();
+  const month = (currendTime.getMonth() + 1)
 
   const [stateBestSellingMonth, setBestSellingMonth] = useState([]);
+  const [stateFullSubArrayMidlow, seteFullSubArrayMidlow] = useState([]);
+  const [stateMixer, setMixer] = useState([]);
+  const [stateAmplifier, setAmplifier] = useState([]);
+  const [stateMicro, setMicro] = useState([]);
+  const [stateAutoPower, setAutoPower] = useState([]);
+
   // Redux gửi đi
   const dispatch = useDispatch();
 
-  // Tải dữ liệu về 1 lần đầu
+  const [stateLoadding, setLoading] = useState(true);
+  // Sản phẩm bán chạy tháng
   useEffect(() => {
-    // Async await
+    async function fetchData() {
+      const response = await fetch(
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/betser-month`
+      );
+      const result = await response.json();
+      setBestSellingMonth(result);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+  // LOA FULL - SUB - ARRAY - MIDLOW
+  useEffect(() => {
     async function fetchData() {
       const response = await fetch(
         `https://rest-api-nodejs-reactjs-router.herokuapp.com/full-sub-array-midlow`
       );
       const result = await response.json();
-      setBestSellingMonth(result);
-      // setLoading(false);
+      seteFullSubArrayMidlow(result);
+      setLoading(false);
     }
-
     fetchData();
-  }, []);
+  }, [])
+  // MIXER – VANG SỐ VA G CƠ - NÂNG TIẾNG
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/mixer`
+      );
+      const result = await response.json();
+      setMixer(result);
+      setLoading(false);
+    }
+    fetchData();
+  }, [])
+  // CỤC ĐẨY CÔNG SUẤT - AMPLY
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/amplifier`
+      );
+      const result = await response.json();
+      setAmplifier(result);
+      setLoading(false);
+    }
+    fetchData();
+  }, [])
+  // MICRO
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/micro`
+      );
+      const result = await response.json();
+      setMicro(result);
+      setLoading(false);
+    }
+    fetchData();
+  }, [])
+  // QUẢN LÝ NGUỒN
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://rest-api-nodejs-reactjs-router.herokuapp.com/auto-power`
+      );
+      const result = await response.json();
+      setAutoPower(result);
+      setLoading(false);
+    }
+    fetchData();
+  }, [])
 
-  // Khuyến mãi hot nhât tháng 9
-  const betserElement = stateBestSellingMonth.map((item) => (
+  // Render Element
+  // Khuyến mãi hot nhât tháng 
+  const betserMonthElement = stateBestSellingMonth.map((item) => (
     <div key={item.id} className=" col__product-card ">
       <div className=" product-card ">
         {/* <div className="product-card__wishlist">
@@ -107,6 +176,137 @@ function HomePage() {
       </div>
     </div>
   ))
+  // 3 LOA FULL - SUB - ARRAY - MIDLOW 
+  const fullSubArrayMidlowElement = stateFullSubArrayMidlow.map((item) => (
+    <div key={item.id} className=" col__product-card ">
+      <div className=" product-card ">
+        {/* <div className="product-card__wishlist">
+          <i className="far fa-heart" />
+        </div> */}
+        <Link to={`/product-detail/${item.slug}/${item.id}`} >
+          <div className="product-card__img">
+            <img src={item.image} alt="speak" />
+          </div>
+        </Link>
+        <div className="card-body">
+          <h5 className=" product-card__brand ">{item.brand}</h5>
+          <p className="card-text product-card__name">
+            {item.name}
+          </p>
+          <p className="card-text product-card__price">{item.price.toLocaleString()}&nbsp;₫</p>
+          <button className="btn-addtocart product-card__btn">
+            <i className="fas fa-shopping-cart" />&nbsp;
+            <span>Thêm vào giỏ hàng</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  ));
+  // 4 MIXER – VANG SỐ VANG CƠ - NÂNG TIẾNG
+  const mixerElement = stateMixer.map((item) => (
+    <div key={item.id} className=" col__product-card ">
+      <div className=" product-card ">
+        {/* <div className="product-card__wishlist">
+          <i className="far fa-heart" />
+        </div> */}
+        <Link to={`/product-detail/${item.slug}/${item.id}`} >
+          <div className="product-card__img">
+            <img src={item.image} alt="speak" />
+          </div>
+        </Link>
+        <div className="card-body">
+          <h5 className=" product-card__brand ">{item.brand}</h5>
+          <p className="card-text product-card__name">
+            {item.name}
+          </p>
+          <p className="card-text product-card__price">{item.price.toLocaleString()}&nbsp;₫</p>
+          <button className="btn-addtocart product-card__btn">
+            <i className="fas fa-shopping-cart" />&nbsp;
+            <span>Thêm vào giỏ hàng</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  ));
+  // 5 CỤC ĐẨY CÔNG SUẤT - AMPLY
+  const amplifierElement = stateAmplifier.map((item) => (
+    <div key={item.id} className=" col__product-card ">
+      <div className=" product-card ">
+        {/* <div className="product-card__wishlist">
+        <i className="far fa-heart" />
+      </div> */}
+        <Link to={`/product-detail/${item.slug}/${item.id}`} >
+          <div className="product-card__img">
+            <img src={item.image} alt="speak" />
+          </div>
+        </Link>
+        <div className="card-body">
+          <h5 className=" product-card__brand ">{item.brand}</h5>
+          <p className="card-text product-card__name">
+            {item.name}
+          </p>
+          <p className="card-text product-card__price">{item.price.toLocaleString()}&nbsp;₫</p>
+          <button className="btn-addtocart product-card__btn">
+            <i className="fas fa-shopping-cart" />&nbsp;
+            <span>Thêm vào giỏ hàng</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  ));
+  // 6 MICRO
+  const microElement = stateMicro.map((item) => (
+    <div key={item.id} className=" col__product-card ">
+      <div className=" product-card ">
+        {/* <div className="product-card__wishlist">
+          <i className="far fa-heart" />
+        </div> */}
+        <Link to={`/product-detail/${item.slug}/${item.id}`} >
+          <div className="product-card__img">
+            <img src={item.image} alt="speak" />
+          </div>
+        </Link>
+        <div className="card-body">
+          <h5 className=" product-card__brand ">{item.brand}</h5>
+          <p className="card-text product-card__name">
+            {item.name}
+          </p>
+          <p className="card-text product-card__price">{item.price.toLocaleString()}&nbsp;₫</p>
+          <button className="btn-addtocart product-card__btn">
+            <i className="fas fa-shopping-cart" />&nbsp;
+            <span>Thêm vào giỏ hàng</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  ));
+  // 7 QUẢN LÝ NGUỒN
+  const autoPoweElement = stateAutoPower.map((item) => (
+    <div key={item.id} className=" col__product-card ">
+      <div className=" product-card ">
+        {/* <div className="product-card__wishlist">
+          <i className="far fa-heart" />
+        </div> */}
+        <Link to={`/product-detail/${item.slug}/${item.id}`} >
+          <div className="product-card__img">
+            <img src={item.image} alt="speak" />
+          </div>
+        </Link>
+        <div className="card-body">
+          <h5 className=" product-card__brand ">{item.brand}</h5>
+          <p className="card-text product-card__name">
+            {item.name}
+          </p>
+          <p className="card-text product-card__price">{item.price.toLocaleString()}&nbsp;₫</p>
+          <button className="btn-addtocart product-card__btn">
+            <i className="fas fa-shopping-cart" />&nbsp;
+            <span>Thêm vào giỏ hàng</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  ));
 
   return (
     <>
@@ -121,16 +321,28 @@ function HomePage() {
 
             <Slider {...settings}>
               <div>
-                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/banner-top-home-adamson-system.png?raw=true" alt="banner" />
+                <picture>
+                  <source srcSet="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/adamson_CS_Family_1920.png?raw=true" style={{ width: '100%' }} />
+                  <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/banner/webp/adamson_CS_Family_1920.webp" alt="banner" style={{ width: '100%' }} />
+                </picture>
               </div>
               <div>
-                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/adamson_CS_Family_1920.png?raw=true" alt="banner" />
+                <picture>
+                  <source srcSet="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/adamson-m-series.png?raw=true" style={{ width: '100%' }} />
+                  <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/banner/webp/adamson-m-series.webp" alt="banner" style={{ width: '100%' }} />
+                </picture>
               </div>
               <div>
-                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/adamson-m-series.png?raw=true" alt="banner" />
+                <picture>
+                  <source srcSet="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/adamson-m-series.png?raw=true" style={{ width: '100%' }} />
+                  <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/banner/webp/adamson-m-series.webp" alt="banner" style={{ width: '100%' }} />
+                </picture>
               </div>
               <div>
-                <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/Adamson-S-series.png?raw=true" alt="banner" />
+                <picture>
+                  <source srcSet="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/Adamson-S-series.png?raw=true" style={{ width: '100%' }} />
+                  <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/banner/webp/Adamson-S-series.webp" alt="banner" style={{ width: '100%' }} />
+                </picture>
               </div>
               {/* <div>
                 <img src="https://github.com/NguyenKeo/MasterAudio/blob/main/img/banner/X14FD_poster.png?raw=true" alt="banner" />
@@ -146,10 +358,10 @@ function HomePage() {
             {/* 1 KHUYẾN MÃI HOT NHẤT THÁNG ... {} */}
             <div className=" featured-product__backgound   container-fluid ">
               <div className=" featured-product container ">
-                <div className=" featured-product--title ">KHUYẾN MÃI HOT NHẤT THÁNG 9</div>
+                <div className=" featured-product--title ">SẢN PHẨM HOT NHẤT THÁNG {month}</div>
                 <div className=" featured-product__list  ">
-                  {betserElement}
-                  {/* 5 */}
+                  {/* List */}
+                  {stateLoadding ? <div className="loadding_home-list"></div> : betserMonthElement}
                 </div>
                 <div className=" featured-product__btn ">
                   <Link to="/products">
@@ -159,217 +371,14 @@ function HomePage() {
               </div>
             </div>
             {/* 2 COMBO KARAOKE GIA ĐÌNH ĐƯỢC YÊU THÍCH NHẤT */}
-            <div className=" featured-product__backgound    container-fluid ">
-              <div className=" featured-product container">
-                <div className=" featured-product--title ">COMBO KARAOKE GIA ĐÌNH ĐƯỢC YÊU THÍCH NHẤT</div>
-                <div className=" featured-product__list  ">
-                  {/* 1 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">4 Acoustic</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer PCS 318NB
-                        </p>
-                        <p className="card-text product-card__price">65,200,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 2 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Nexo</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange PS15
-                        </p>
-                        <p className="card-text product-card__price">87,715,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 3 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Adamson</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange Point 15
-                        </p>
-                        <p className="card-text product-card__price">99,111,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 4 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Amate</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer X218WFD
-                        </p>
-                        <p className="card-text product-card__price">179.697.708₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 5 */}
-                </div>
-                <div className=" featured-product__btn ">
-                  <Link to="/products">
-                    <div className="section__btn ">XEM THÊM SẢN PHẨM</div>
-                  </Link>
-                </div>
-              </div>
-            </div>
+
             {/* 3 LOA FULL - SUB - ARRAY - MIDLOW */}
             <div className=" featured-product__backgound    container-fluid ">
               <div className=" featured-product container ">
                 <div className=" featured-product--title ">LOA FULL - SUB - ARRAY - MIDLOW</div>
                 <div className=" featured-product__list  ">
-                  {/* 1 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">4 Acoustic</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer PCS 318NB
-                        </p>
-                        <p className="card-text product-card__price">65,200,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 2 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Nexo</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange PS15
-                        </p>
-                        <p className="card-text product-card__price">87,715,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 3 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Adamson</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange Point 15
-                        </p>
-                        <p className="card-text product-card__price">99,111,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 4 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Amate</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer X218WFD
-                        </p>
-                        <p className="card-text product-card__price">179.697.708₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 5 */}
+                  {/* List */}
+                  {stateLoadding ? <div className="loadding_home-list"></div> : fullSubArrayMidlowElement}
                 </div>
                 <div className=" featured-product__btn ">
                   <Link to="/products">
@@ -388,109 +397,14 @@ function HomePage() {
                 </Slider>
               </div>
             </div>
-            {/* 4 "MIXER – VANG SỐ VANG CƠ - NÂNG TIẾNG" */}
+            {/* 4 MIXER – VANG SỐ VANG CƠ - NÂNG TIẾNG */}
             <span className=" featured-product__backgound  container-fluid ">
               <div className=" featured-product container   container-fluid ">
                 <div className=" featured-product--title ">MIXER – VANG SỐ VANG CƠ - NÂNG TIẾNG</div>
                 <div className=" featured-product__list  ">
-                  {/* 1 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp"
-                            alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">4 Acoustic</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer PCS 318NB
-                        </p>
-                        <p className="card-text product-card__price">65,200,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 2 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Nexo</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange PS15
-                        </p>
-                        <p className="card-text product-card__price">87,715,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 3 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Adamson</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange Point 15
-                        </p>
-                        <p className="card-text product-card__price">99,111,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 4 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Amate</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer X218WFD
-                        </p>
-                        <p className="card-text product-card__price">179.697.708₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 5 */}
+                  {/* List */}
+                  {stateLoadding ? <div className="loadding_home-list"></div> : mixerElement}
+
                 </div>
                 <div className=" featured-product__btn ">
                   <Link to="/products">
@@ -504,103 +418,9 @@ function HomePage() {
               <div className=" featured-product container   container-fluid ">
                 <div className=" featured-product--title ">CỤC ĐẨY CÔNG SUẤT - AMPLY</div>
                 <div className=" featured-product__list  ">
-                  {/* 1 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">4 Acoustic</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer PCS 318NB
-                        </p>
-                        <p className="card-text product-card__price">65,200,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 2 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Nexo</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange PS15
-                        </p>
-                        <p className="card-text product-card__price">87,715,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 3 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Adamson</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange Point 15
-                        </p>
-                        <p className="card-text product-card__price">99,111,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 4 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Amate</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer X218WFD
-                        </p>
-                        <p className="card-text product-card__price">179.697.708₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 5 */}
+                  {/* List */}
+                  {stateLoadding ? <div className="loadding_home-list"></div> : amplifierElement}
+
                 </div>
                 <div className=" featured-product__btn ">
                   <Link to="/products">
@@ -624,103 +444,8 @@ function HomePage() {
               <div className=" featured-product container   container-fluid ">
                 <div className=" featured-product--title ">MICRO</div>
                 <div className=" featured-product__list  ">
-                  {/* 1 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">4 Acoustic</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer PCS 318NB
-                        </p>
-                        <p className="card-text product-card__price">65,200,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 2 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Nexo</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange PS15
-                        </p>
-                        <p className="card-text product-card__price">87,715,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 3 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Adamson</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange Point 15
-                        </p>
-                        <p className="card-text product-card__price">99,111,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 4 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Amate</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer X218WFD
-                        </p>
-                        <p className="card-text product-card__price">179.697.708₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 5 */}
+                  {/* List */}
+                  {stateLoadding ? <div className="loadding_home-list"></div> : microElement}
                 </div>
                 <div className=" featured-product__btn ">
                   <Link to="/products">
@@ -734,103 +459,9 @@ function HomePage() {
               <div className=" featured-product container   container-fluid ">
                 <div className=" featured-product--title ">QUẢN LÝ NGUỒN</div>
                 <div className=" featured-product__list  ">
-                  {/* 1 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/4-acoustic/subwoofer/PCS-318NB/PCS-318NB-01.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">4 Acoustic</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer PCS 318NB
-                        </p>
-                        <p className="card-text product-card__price">65,200,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 2 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/nexo/full-range/ps15/ps15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Nexo</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange PS15
-                        </p>
-                        <p className="card-text product-card__price">87,715,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 3 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/adamson/full-range/point15/point15.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Adamson</h5>
-                        <p className="card-text product-card__name">
-                          Fullrange Point 15
-                        </p>
-                        <p className="card-text product-card__price">99,111,000₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 4 */}
-                  <div className=" col__product-card ">
-                    <div className=" product-card ">
-                      {/* <div className="product-card__wishlist">
-                        <i className="far fa-heart" />
-                      </div> */}
-                      <Link to={`/products`} >
-                        <div className="product-card__img">
-                          <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/amate/subwoofer/X218WF/X218WF.webp" alt="speak" />
-                        </div>
-                      </Link>
-                      <div className="card-body">
-                        <h5 className=" product-card__brand ">Amate</h5>
-                        <p className="card-text product-card__name">
-                          Subwoofer X218WFD
-                        </p>
-                        <p className="card-text product-card__price">179.697.708₫</p>
-                        <button className="btn-addtocart product-card__btn">
-                          <i className="fas fa-shopping-cart" />&nbsp;
-                          <span>Thêm vào giỏ hàng</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 5 */}
+                  {/* List */}
+                  {stateLoadding ? <div className="loadding_home-list"></div> : autoPoweElement}
+
                 </div>
                 <div className=" featured-product__btn ">
                   <Link to="/products">
@@ -848,55 +479,82 @@ function HomePage() {
 
           <div className=" typical-projects-list "  >
 
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/Karaoke-Lasvegas.png" alt="construction" />
                 <span className=" typical-project-title ">Karaoke Lasvegas</span>
               </Link>
             </div>
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/Karaoke-X-Men-Club.png" alt="construction" />
                 <span className=" typical-project-title ">Karaoke X-Men Club</span>
               </Link>
             </div>
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/Karaoke-Blue-Eyes.png" alt="construction" />
                 <span className=" typical-project-title ">Karaoke Blue Eyes</span>
               </Link>
             </div>
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/Karaoke-Golden-Star.png" alt="construction" />
                 <span className=" typical-project-title ">Karaoke Golden Star</span>
               </Link>
             </div>
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/Karaoke-Grand-300.png" alt="construction" />
                 <span className=" typical-project-title ">Karaoke Grand 300</span>
               </Link>
             </div>
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/Karaoke-New-Sky.png" alt="construction" />
                 <span className=" typical-project-title ">Karaoke New Sky</span>
               </Link>
             </div>
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/Karaoke-O2png.jpg" alt="construction" />
                 <span className=" typical-project-title ">Karaoke O2</span>
               </Link>
             </div>
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/TOP-ONE-KTV.png" alt="construction" />
                 <span className=" typical-project-title ">Karaoke TOP ONE KTV</span>
               </Link>
             </div>
-            <div className=" typical-project-card--col ">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={1200}
+              className=" typical-project-card--col ">
               <Link to="/typical-projects" className=" typical-project ">
                 <img src="https://raw.githubusercontent.com/NguyenKeo/MasterAudio/main/img/construction/karaoke-family.png" alt="construction" />
                 <span className=" typical-project-title ">Karaoke Family</span>

@@ -15,7 +15,6 @@ function NavigationPage() {
   // Lấy ra số lượng từng Loại sp và cộng lại = số sp
   useEffect( () => {
     let cloneQuantityItem = shoppingList.map( (obj) => obj.quantity)
-    console.log('cloneQuantityItem', cloneQuantityItem)
     let sum = 0;
     cloneQuantityItem.forEach(function(numberQuantity) {
       sum += numberQuantity;

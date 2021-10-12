@@ -34,7 +34,7 @@
 .featured-product__banners {
   /* width: 100%; */
   overflow: hidden;
-  height: 600px;
+  height: 60vh;
   margin-top: -2.5rem;
   margin-bottom: -2.7rem;
 }

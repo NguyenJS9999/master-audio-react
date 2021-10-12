@@ -188,7 +188,9 @@
 .products__wrapper {
   /* border: 1px solid rgb(0, 255, 0); */
   width: 100%;
-  /* margin-left: 2rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .mobile-filter-icon {
   display: flex;
@@ -256,8 +258,16 @@
   box-shadow: none !important;
   border: none;
 }
+
+/* Lọc-tìm kiếm và danh sách sp */
+.sorts-search_products-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0rem;
+}
 /* Lựa chọn lọc */
-.products__sorts {
+.products__sorts-search {
   /* border: 1px solid red; */
   /* margin: 2.375rem 0.75rem 4rem 0; */
   display: flex;

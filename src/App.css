@@ -65,11 +65,9 @@ input::placeholder {
   background-color: rgba(228, 35, 19, 0.2);
   color: white;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  padding-top: -4px;
-  font-size: 25px;
-  font-weight: 100;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
   text-decoration-line: none;
 
   display: flex;
@@ -78,7 +76,7 @@ input::placeholder {
 
   position: fixed;
   right: 20px;
-  bottom: 100px;
+  bottom: 50px;
 
   transition: all 0.1s ease;
 }
@@ -131,6 +129,16 @@ input::placeholder {
   100% {
     transform: rotate(360deg);
   }
+}
+.loadding_home-list {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 0.5s linear infinite;
 }
 /* Nút bị ẩn ko hiện ngón tay */
 button:not(:disabled) {

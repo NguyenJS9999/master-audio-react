@@ -681,7 +681,6 @@
   /* Ảnh chi tiết sản phẩm rộng full khi các khối ngoài xếp dọc*/
   .product-detail-image {
     width: 100%;
-    padding: 0px;
   }
 
   /* Khối tên và mã sản phẩm căn giữ chữ */
@@ -725,18 +724,10 @@
 @media (min-width: 768px) {
   /* Giảm kích thướng lề 2 bên khối ảnh/mua */
   .product-detail-image-buy-container {
-    /* margin: 0px 40px; */
     margin: auto;
     flex-direction: row;
-    /* margin-top: 32px; */
     grid-gap: 12px;
   }
-  /* Ảnh chi tiết sản phẩm rộng giảm % rộng đủ vừa chiều dọc */
-  .product-detail-image {
-    /* width: 80%; */
-    padding: 0px;
-  }
-
   /* Khối tên và mã sản phẩm căn giữ chữ */
   .product-name-code {
     align-items: flex-start;
@@ -779,10 +770,6 @@
   .product-detail-image-buy-container {
     grid-gap: 16px;
   }
-  .product-detail-image {
-    /* width: 75%; */
-    padding: 0px;
-  }
 
   /* 2 khối trạng thái hàng và số lượng đặt giảm khoảng cách lưới */
   .product-status-amount {
@@ -812,11 +799,6 @@
     /* margin-top: 40px; */
     grid-gap: 20px;
   }
-  /* Ảnh chi tiết sản phẩm rộng giảm % rộng đủ vừa chiều dọc */
-  .product-detail-image {
-    /* width: 65%; */
-    padding: 0px;
-  }
   /* 2 khối trạng thái hàng và số lượng đặt giữ khoảng cách lưới */
   .product-status-amount {
     grid-gap: 24px;
@@ -841,12 +823,6 @@
 
 /* Extra extra large */
 @media (min-width: 1400px) {
-  /* Ảnh chi tiết sản phẩm rộng giảm % rộng đủ vừa chiều dọc */
-  .product-detail-image {
-    /* width: 55%; */
-    padding: 0px;
-  }
-
   /* Khối miêu tả sản phẩm chữ, giảm/giữ độ dày lề ngoài */
   .product-description {
     margin: 8px 80px;

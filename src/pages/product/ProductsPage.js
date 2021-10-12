@@ -24,7 +24,7 @@ function ProductsPage() {
   // Giá trị ô option sắp xếp giá
   const [stateSortValueItem, setSortValueItem] = useState("default");
   // Giá trị ô option số sp 1 trang
-  const [stateLimitOfPaginate, setLimitOfPaginate] = useState(9);
+  const [stateLimitOfPaginate, setLimitOfPaginate] = useState(6);
   // Giá trị 1 nút phân trang
   const [stateNumOfPaginate, setNumOfPaginate] = useState(1);
   // Checked
@@ -130,7 +130,7 @@ function ProductsPage() {
       </Pagination.Item>,
     );
   }
-  
+
   // Lọc MOBILE
   function toggleFilterMobile() {
     if (stateToggleFilterMobile === true) {
@@ -192,7 +192,7 @@ function ProductsPage() {
         {/* <h4 className=" section-title    products__filter-title">TÌM SẢN PHẨM</h4> */}
         {/* Seacrch */}
         <button onClick={clearAllFilters} className="section__btn  remove-filter__btn">XÓA LỌC</button>
-     
+
         {/* Lọc theo thương hiệu */}
         <div className=" filter__brands">
           <h4 className="section-title    filter-title">
@@ -319,6 +319,7 @@ function ProductsPage() {
                 Hous
               </label>
             </span>
+
             <span>
               <input
                 checked={stateChecked === 'Pioneer' ? true : false}
@@ -335,6 +336,41 @@ function ProductsPage() {
                 Pioneer Dj
               </label>
             </span>
+
+            <span>
+              <input
+                checked={stateChecked === 'Allen&Heath' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'Allen&Heath')}
+                type="radio"
+                id="allen-heath"
+                name="mobile_filter"
+
+              />
+              <label
+                className="filter__item filter__brand-item"
+                htmlFor="allen-heath"
+              >
+                Allen & Heath
+              </label>
+            </span>
+
+            <span>
+              <input
+                checked={stateChecked === 'dBacoustic' ? true : false}
+                onChange={() => filterWithCheckBox('brand', 'dBacoustic')}
+                type="radio"
+                id="dBacoustic"
+                name="mobile_filter"
+
+              />
+              <label
+                className="filter__item filter__brand-item"
+                htmlFor="dBacoustic"
+              >
+                dBacoustic
+              </label>
+            </span>
+
           </div>
         </div>
         {/* Lọc theo loại sản phẩm */}
@@ -389,7 +425,7 @@ function ProductsPage() {
 
             <span>
               <input
-                checked={stateChecked === 'amplifier' ? true : false} onChange={() => filterWithCheckBox('type', 'amplifier')}
+                checked={stateChecked === 'Amplifier' ? true : false} onChange={() => filterWithCheckBox('type', 'Amplifier')}
                 type="radio" name="filter" id="Amplifier" />
               <label
                 className="filter__item filter__type-item"
@@ -418,6 +454,16 @@ function ProductsPage() {
               </label>
             </span>
 
+            <span>
+              <input
+                checked={stateChecked === 'Auto power' ? true : false}
+                onChange={() => filterWithCheckBox('type', 'Auto power')}
+                type="radio" name="filter" id="auto-power" />
+              <label className="filter__item filter__type-item" htmlFor="auto-power">
+                Auto power
+              </label>
+            </span>
+
           </div>
         </div>
         {/* LỌC THEO QUỐC GIA */}
@@ -436,10 +482,10 @@ function ProductsPage() {
 
             <span>
               <input
-                checked={stateChecked === 'French' ? true : false}
-                onChange={() => filterWithCheckBox('nation', 'French')}
-                type="radio" name="filter" id="France" />
-              <label className="filter__item filter__Nation-item" htmlFor="France">Pháp</label>
+                checked={stateChecked === 'France' ? true : false}
+                onChange={() => filterWithCheckBox('nation', 'France')}
+                type="radio" name="filter" id="france" />
+              <label className="filter__item filter__Nation-item" htmlFor="france">Pháp</label>
             </span>
 
             <span>
@@ -650,6 +696,7 @@ function ProductsPage() {
                     Hous
                   </label>
                 </span>
+
                 <span>
                   <input
                     checked={stateChecked === 'Pioneer' ? true : false}
@@ -666,6 +713,41 @@ function ProductsPage() {
                     Pioneer Dj
                   </label>
                 </span>
+
+                <span>
+                  <input
+                    checked={stateChecked === 'Allen&Heath' ? true : false}
+                    onChange={() => filterWithCheckBox('brand', 'Allen&Heath')}
+                    type="radio"
+                    id="allen-heath"
+                    name="mobile_filter"
+
+                  />
+                  <label
+                    className="filter__item filter__brand-item"
+                    htmlFor="allen-heath"
+                  >
+                    Allen & Heath
+                  </label>
+                </span>
+
+                <span>
+                  <input
+                    checked={stateChecked === 'dBacoustic' ? true : false}
+                    onChange={() => filterWithCheckBox('brand', 'dBacoustic')}
+                    type="radio"
+                    id="dBacoustic"
+                    name="mobile_filter"
+
+                  />
+                  <label
+                    className="filter__item filter__brand-item"
+                    htmlFor="dBacoustic"
+                  >
+                    dBacoustic
+                  </label>
+                </span>
+
               </div>
             </div>
             {/* MOBILE - Lọc theo loại sản phẩm */}
@@ -749,6 +831,16 @@ function ProductsPage() {
                   </label>
                 </span>
 
+                <span>
+                  <input
+                    checked={stateChecked === 'Auto power' ? true : false}
+                    onChange={() => filterWithCheckBox('type', 'Auto power')}
+                    type="radio" name="filter" id="auto-power" />
+                  <label className="filter__item filter__type-item" htmlFor="auto-power">
+                    Auto power
+                  </label>
+                </span>
+
               </div>
             </div>
             {/* Lọc theo quốc gia */}
@@ -767,10 +859,10 @@ function ProductsPage() {
 
                 <span>
                   <input
-                    checked={stateChecked === 'French' ? true : false}
-                    onChange={() => filterWithCheckBox('nation', 'French')}
-                    type="radio" name="mobile_filter" id="France" />
-                  <label className="filter__item filter__Nation-item" htmlFor="France">Pháp</label>
+                    checked={stateChecked === 'France' ? true : false}
+                    onChange={() => filterWithCheckBox('nation', 'France')}
+                    type="radio" name="mobile_filter" id="france" />
+                  <label className="filter__item filter__Nation-item" htmlFor="france">Pháp</label>
                 </span>
 
                 <span>
@@ -825,56 +917,59 @@ function ProductsPage() {
               </button>
             </div>
 
+            {/* Lọc-tìm kiếm và danh sách sp */}
+            <div className=" sorts-search_products-list ">
+              {/* Chọn lọc sản phẩm   */}
+              <div className=" products__sorts-search ">
+                <div className=" product__search ">
+                  <input
+                    onChange={inputSearchValue}
+                    type="search"
+                    className="header-component__search-input"
+                    placeholder="Tìm kiếm"
+                  />
+                  <i onClick={searchProduct} className="fas fa-search"></i>
+                </div>
 
-            {/* Chọn lọc sản phẩm   */}
-            <div className="products__sorts ">
-              <div className=" product__search ">
-                <input
-                  onChange={inputSearchValue}
-                  type="search"
-                  className="header-component__search-input"
-                  placeholder="Tìm kiếm"
-                />
-                <i onClick={searchProduct} className="fas fa-search"></i>
+                <div className="products__sort-item products__sort-order">
+                  <select
+                    value={stateSortValueItem}
+                    onChange={getSortValue}
+                    className="form-select"
+                    aria-label="select-sort-order"
+                  >
+                    {/* <option selected>Sắp xếp sản phẩm</option> */}
+                    <option value="default">Theo mức độ phổ biến</option>
+                    <option value="ascending">Theo giá từ thấp đến cao</option>
+                    <option value="descending">Theo giá từ cao đến thấp</option>
+                  </select>
+                </div>
+
+                <div className="products__sort-item   products__sort-page-items">
+                  <select
+                    value={stateLimitOfPaginate}
+                    onChange={getLimitOfPaginate}
+                    className="form-select"
+                    aria-label="select-page-items"
+                  >
+                    <option value={3}>3 sản phẩm/trang</option>
+                    <option value={6}>6 sản phẩm/trang</option>
+                    <option value={9}>9 sản phẩm/trang</option>
+                  </select>
+                </div>
               </div>
 
-              <div className="products__sort-item products__sort-order">
-                <select
-                  value={stateSortValueItem}
-                  onChange={getSortValue}
-                  className="form-select"
-                  aria-label="select-sort-order"
-                >
-                  {/* <option selected>Sắp xếp sản phẩm</option> */}
-                  <option value="default">Theo mức độ phổ biến</option>
-                  <option value="ascending">Theo giá từ thấp đến cao</option>
-                  <option value="descending">Theo giá từ cao đến thấp</option>
-                </select>
-              </div>
-
-              <div className="products__sort-item   products__sort-page-items">
-                <select
-                  value={stateLimitOfPaginate}
-                  onChange={getLimitOfPaginate}
-                  className="form-select"
-                  aria-label="select-page-items"
-                >
-                  <option value={3}>3 sản phẩm/trang</option>
-                  <option value={6}>6 sản phẩm/trang</option>
-                  <option value={9}>9 sản phẩm/trang</option>
-                </select>
+              {/* Danh sách các sản phẩm */}
+              <div className=" products-list ">
+                <div className=" products-list__inner ">
+                  {loading
+                    ? (<div className="loadding_products-list"></div>)
+                    : stateFilterResults.length === 0 && stateInputSearchValue ? ("Không tìm thấy sản phẩm phù hợp!")
+                      : (ProductCardElement)}
+                </div>
               </div>
             </div>
-
-            {/* Danh sách các sản phẩm */}
-            <div className=" products-list ">
-              <div className=" products-list__inner ">
-                {loading
-                  ? (<div className="loadding_products-list"></div>)
-                  : stateFilterResults.length === 0 && stateInputSearchValue ? ("Không tìm thấy sản phẩm phù hợp!")
-                    : (ProductCardElement)}
-              </div>
-            </div>
+            {/* Lọc-tìm kiếm và danh sách sp */}
 
             {/* Phân trang */}
             <div className={` ${loading ? 'd-none' : 'products__pagination'}  `}>
